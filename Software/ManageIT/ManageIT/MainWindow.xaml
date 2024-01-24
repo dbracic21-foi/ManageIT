@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ManageIT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Manage IT" Height="450" Width="800">
+    
+    <DockPanel>
+        <StackPanel x:Name="navPanel" DockPanel.Dock="Left" Width="150" Background="SkyBlue">
+            <Label x:Name="lblLoggedUser" FontWeight="Bold" HorizontalContentAlignment="Center" Background="DodgerBlue"/>
+            <Button x:Name="btnSchedule" Content="Work schedule" Height="25" Background="AliceBlue" BorderThickness="0" Click="btnSchedule_Click"/>
+            <Button x:Name="btnWorkOrder" Content="Work orders" Height="25" Background="AliceBlue" BorderThickness="0" Click="btnWorkOrder_Click"/>
+            <Button x:Name="btnClients" Content="Clients" Height="25" Background="AliceBlue" BorderThickness="0" Click="btnClients_Click"/>
+            <Button x:Name="btnReciepts" Content="Reciepts" Height="25" Background="AliceBlue" BorderThickness="0" Click="btnReciepts_Click"/>
+            <Button x:Name="btnExit" Content="Exit" Height="25" Background="DodgerBlue" FontWeight="Bold" BorderThickness="0" Click="btnExit_Click"/>
+        </StackPanel>
+
+        <ContentControl x:Name="contentPanel" DockPanel.Dock="Right">
+        </ContentControl>
+    </DockPanel>
 </Window>
