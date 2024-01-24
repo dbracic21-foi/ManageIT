@@ -21,5 +21,30 @@ namespace ManageIT {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void btnSchedule_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnReciepts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnClients_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnWorkOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -16,7 +16,7 @@
     <Color x:Key="MediumAquamarine">#00ff99</Color>
     <Color x:Key="LightSeaGreen">#00ffcc</Color>
     <Color x:Key="Aqua">#00ffff</Color>
-    <Color x:Key="Cyan">#00ccff</Color>
+    <Color x:Key="CyanRes">#00ccff</Color>
     <Color x:Key="SkyBlue">#0099ff</Color>
     <Color x:Key="DodgerBlue">#0066ff</Color>
     <Color x:Key="RoyalBlue">#0033ff</Color>
