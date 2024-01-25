@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Client.Ext.cs" />
     <Compile Include="Entities\ClientType.cs" />
+    <Compile Include="Entities\ClientType.Ext.cs" />
     <Compile Include="Entities\Receipt.cs" />
     <Compile Include="Entities\Work.cs" />
     <Compile Include="Entities\Worker.cs" />

@@ -1,0 +1,29 @@
+﻿using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
+using EntitiesLayer.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessLogicLayer.Services
+{
+    public class ClientService
+    {
+        public List<Client> GetClients()
+        {
+            using (var clientRepo = new ClientRepo())
+            {
+                return clientRepo.GetAll().ToList();
+            }
+        }
+        public List<ClientViewModel> GetClientsView()
+        {
+            using (var clientRepo = new ClientRepo())
+            {
+                return clientRepo.GetClientView().ToList();
+            }
+        }
+    }
+}
