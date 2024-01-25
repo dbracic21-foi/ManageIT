@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:ManageIT.SideActivities"
         mc:Ignorable="d"
         Title="Update Client" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid Margin="30px">
+    <Grid Margin="30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -36,13 +37,17 @@
 
         <TextBlock Grid.Row="0" Grid.Column="1" x:Name="txtID"/>
         <TextBlock Grid.Row="1" Grid.Column="1" x:Name="txtTypeName"/>
-        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtEmail"/>
-        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtNumber"/>
-        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtFirstName"/>
-        <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtLastName"/>
-        <TextBox Grid.Row="6" Grid.Column="1" x:Name="txtCompanyName"/>
-        <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtIBAN"/>
-        <TextBox Grid.Row="8" Grid.Column="1" x:Name="txtAddress"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtEmail" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtNumber" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtFirstName" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtLastName" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="6" Grid.Column="1" x:Name="txtCompanyName" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtIBAN" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="8" Grid.Column="1" x:Name="txtAddress" Margin="0,0,0,5"/>
 
+        <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Button x:Name="btnSaveUpdate" Content="Save Changes" Margin="5" Width="120" Padding="10" Click="btnSaveUpdate_Click"/>
+            <Button x:Name="btnExitUpdate" Content="Cancel" Margin="5" Width="100" Padding="10" Click="btnExitUpdate_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

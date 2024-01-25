@@ -50,11 +50,31 @@ namespace BusinessLogicLayer.Services
             }
         }
 
-        public void UpdateClient(Client client)
-        { 
+        public bool UpdateClient(Client client)
+        {
             using (var clientRepo = new ClientRepo())
             {
+                List<Client> clients= GetAllClients();
+                foreach (var clientSearch in clients)
+                {
+                    if(clientSearch.Email == client.Email)
+                    {
+                        if(client.ID_client != clientSearch.ID_client)
+                        {
+                            return false;
+                        }
+                    }
+                }
                 clientRepo.UpdateClient(client);
+                return true;
+            }
+        }
+
+        public List<Client> GetAllClients()
+        {
+            using (var clientRepo = new ClientRepo())
+            {
+                return clientRepo.GetAllClients().ToList();
             }
         }
     }

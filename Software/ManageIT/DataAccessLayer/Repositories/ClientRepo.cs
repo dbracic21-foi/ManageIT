@@ -17,6 +17,13 @@ namespace DataAccessLayer.Repositories
 
         }
 
+        public IQueryable<Client> GetAllClients()
+        {
+            var query = from c in Entities
+                        select c;
+
+            return query;
+        }
         public IQueryable<ClientViewModel> GetClientView()
         {
             var query = from c in Entities
@@ -90,7 +97,7 @@ namespace DataAccessLayer.Repositories
                 clientToBeUpdated.CompanyName = client.CompanyName;
                 clientToBeUpdated.IBAN = client.IBAN;
                 clientToBeUpdated.Client_Address = client.Client_Address;
-                clientToBeUpdated.ID_type = client.ID_type;
+                clientToBeUpdated.Number = client.Number;
 
                 SaveChanges();
 

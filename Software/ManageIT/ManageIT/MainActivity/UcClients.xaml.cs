@@ -64,6 +64,10 @@ namespace ManageIT.MainActivity
                 var clientUpdateWindow = new ClientUpdate(clientForUpdate);
                 clientUpdateWindow.ShowDialog();
             }
+            else MessageBox.Show("You have to select a client first!");
+
+            GetAllClients();
+            ShowClients();
         }
 
         private void btnRemoveClient_Click(object sender, RoutedEventArgs e)
