@@ -61,7 +61,7 @@ namespace ManageIT {
 
         private void btnWorkOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            contentPanel.Content = new MainActivity.UcWorkOrders();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
