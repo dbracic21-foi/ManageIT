@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogicLayer.Services;
+using EntitiesLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,28 @@ namespace ManageIT
     /// </summary>
     public partial class Login : Window
     {
+        WorkerService WorkerService = new WorkerService();
         public Login()
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string email = txtEmail.Text;
+            string password = passwordBox.Password;               
+            Worker authenticatedWorker = WorkerService.Authenticate(email, password);
+
+            if (authenticatedWorker != null)
+        {
+            MessageBox.Show("Uspješna prijava!");
+        }
+        else
+        {
+            MessageBox.Show("Neuspješna prijava. Provjerite korisničko ime i lozinku.");
+        }
     }
-}
+
+           
+        }
+    }
