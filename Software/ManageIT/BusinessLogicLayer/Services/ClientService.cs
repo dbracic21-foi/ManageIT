@@ -34,11 +34,27 @@ namespace BusinessLogicLayer.Services
             }
         }
 
+        public Client GetClientById(int id)
+        {
+            using (var clientRepo = new ClientRepo())
+            {
+                Client client = clientRepo.GetClientById(id).FirstOrDefault();
+                return client;
+            }
+        }
         public void DeleteClient(int id)
         {
             using (var clientRepo = new ClientRepo())
             {
                 clientRepo.DeleteClient(id);
+            }
+        }
+
+        public void UpdateClient(Client client)
+        { 
+            using (var clientRepo = new ClientRepo())
+            {
+                clientRepo.UpdateClient(client);
             }
         }
     }

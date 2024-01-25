@@ -2,6 +2,7 @@
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
+using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -54,7 +55,15 @@ namespace ManageIT.MainActivity
 
         private void btnUpdateClient_Click(object sender, RoutedEventArgs e)
         {
+            if (dgClients.SelectedItem != null)
+            {
+                ClientViewModel selectedClient = (ClientViewModel)dgClients.SelectedItem;
+                int clientIdToUpdate = selectedClient.ID_Client;
 
+                Client clientForUpdate = clientService.GetClientById(clientIdToUpdate);
+                var clientUpdateWindow = new ClientUpdate(clientForUpdate);
+                clientUpdateWindow.ShowDialog();
+            }
         }
 
         private void btnRemoveClient_Click(object sender, RoutedEventArgs e)

@@ -3,6 +3,7 @@ using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,13 +54,51 @@ namespace DataAccessLayer.Repositories
             return query;
         }
 
-        public void DeleteClient (int id)
+        public IQueryable<Client> GetClientById(int id)
+        {
+            var query = from c in Entities
+                        where c.ID_client == id
+                        select c;
+
+            return query;
+        }
+
+        public bool DeleteClient (int id)
         {
             var clientToDelete = Entities.FirstOrDefault(c => c.ID_client == id);
             if (clientToDelete != null)
             {
                 Entities.Remove(clientToDelete);
                 SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateClient (Client client)
+        {
+            var clientToBeUpdated = Entities.FirstOrDefault(c => c.ID_client == client.ID_client) as Client;
+            if (clientToBeUpdated != null)
+            {
+                clientToBeUpdated.ID_client = client.ID_client;
+                clientToBeUpdated.Email = client.Email;
+                clientToBeUpdated.FirstName = client.FirstName;
+                clientToBeUpdated.LastName = client.LastName;
+                clientToBeUpdated.CompanyName = client.CompanyName;
+                clientToBeUpdated.IBAN = client.IBAN;
+                clientToBeUpdated.Client_Address = client.Client_Address;
+                clientToBeUpdated.ID_type = client.ID_type;
+
+                SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
