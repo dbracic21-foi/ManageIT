@@ -33,5 +33,24 @@ namespace DataAccessLayer.Repositories
                         };
             return query;
         }
+
+        public IQueryable<ClientViewModel> SearchClients(string key)
+        {
+            var query = from c in Entities
+                        where c.CompanyName.Contains(key) || c.FirstName.Contains(key) || c.LastName.Contains(key)
+                        select new ClientViewModel
+                        {
+                            ID_Client = c.ID_client,
+                            TypeName = c.ClientType.Title,
+                            FirstName = c.FirstName,
+                            LastName = c.LastName,
+                            CompanyName = c.CompanyName,
+                            IBAN = c.IBAN,
+                            Email = c.Email,
+                            Address = c.Client_Address,
+                            Number = c.Number
+                        };
+            return query;
+        }
     }
 }

@@ -29,17 +29,21 @@ namespace ManageIT.MainActivity
         public UcClients()
         {
             InitializeComponent();
+            GetAllClients();
             ShowClients();
         }
 
         private void btnSearchClients_Click(object sender, RoutedEventArgs e)
         {
-
+            string key = txtSearchClients.Text.ToString();
+            clients = clientService.SearchClients(key);
+            ShowClients();
         }
 
         private void btnClearClients_Click(object sender, RoutedEventArgs e)
         {
-
+            GetAllClients();
+            ShowClients();
         }
 
         private void btnAddClient_Click(object sender, RoutedEventArgs e)
@@ -57,15 +61,13 @@ namespace ManageIT.MainActivity
 
         }
 
-        private List<ClientViewModel> GetAllClients()
+        private void GetAllClients()
         {
-            return clientService.GetClientsView();
+            clients = clientService.GetClientsView();
         }
 
         private void ShowClients()
-        {
-            clients = GetAllClients().ToList();
-            
+        {   
             dgClients.ItemsSource = clients;
         }
     }

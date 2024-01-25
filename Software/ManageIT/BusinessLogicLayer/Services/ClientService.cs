@@ -25,5 +25,13 @@ namespace BusinessLogicLayer.Services
                 return clientRepo.GetClientView().ToList();
             }
         }
+
+        public List<ClientViewModel> SearchClients(string key)
+        {
+            using (var clientRepo = new ClientRepo())
+            {
+                return clientRepo.SearchClients(key).ToList();
+            }
+        }
     }
 }
