@@ -35,6 +35,9 @@ namespace EntitiesLayer.Entities {
 
         public int? ID_type { get; set; }
 
+        [StringLength(60)]
+        public string Client_Address { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrder> WorkOrders { get; set; }
 
