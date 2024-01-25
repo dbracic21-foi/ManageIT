@@ -108,5 +108,30 @@ namespace DataAccessLayer.Repositories
                 return false;
             }
         }
+
+        public bool AddClient (Client client, bool saveChanges = true)
+        {
+            var clientType = Context.ClientTypes.SingleOrDefault(c => c.ID_type == client.ClientType.ID_type);
+            Client newClient = new Client();
+
+            newClient.ID_client = client.ID_client;
+            newClient.Email = client.Email;
+            newClient.FirstName = client.FirstName;
+            newClient.LastName = client.LastName;
+            newClient.CompanyName = client.CompanyName;
+            newClient.IBAN = client.IBAN;
+            newClient.Client_Address = client.Client_Address.ToString();
+            newClient.Number = client.Number;
+            newClient.ID_type = client.ID_type;
+
+            Entities.Add(newClient);
+
+            if (saveChanges)
+            {
+                SaveChanges();
+                return true;
+            }
+            else { return false; };
+        }
     }
 }

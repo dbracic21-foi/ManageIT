@@ -77,5 +77,27 @@ namespace BusinessLogicLayer.Services
                 return clientRepo.GetAllClients().ToList();
             }
         }
+
+        public bool AddClient(Client client){
+            using (var clientRepo = new ClientRepo())
+            {
+                List<Client> clients = clientRepo.GetAll().ToList();
+                foreach(var clientSearch in clients)
+                {
+                    if(clientSearch.ID_client == client.ID_client)
+                    {
+                        return false;
+                    }
+                    if (client.ID_client != clientSearch.ID_client)
+                    {
+                        return false;
+                    }
+                }
+                clientRepo.AddClient(client);
+                return true;
+            }
+        {}
+        }
+
     }
 }

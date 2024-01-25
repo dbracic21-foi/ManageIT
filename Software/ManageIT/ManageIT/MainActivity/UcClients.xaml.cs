@@ -50,7 +50,11 @@ namespace ManageIT.MainActivity
 
         private void btnAddClient_Click(object sender, RoutedEventArgs e)
         {
+            ClientAdd clientAddWindow = new ClientAdd();
+            clientAddWindow.Show();
 
+            GetAllClients();
+            ShowClients();
         }
 
         private void btnUpdateClient_Click(object sender, RoutedEventArgs e)
