@@ -11,7 +11,7 @@ namespace DataAccessLayer
     {
         protected ManageITModel Context { get; set; }
         protected DbSet<T> Entities { get; set; }
-        public Repository()
+        public Repository(ManageITModel context)
         {
             Context = new ManageITModel();
             Entities = Context.Set<T>();
