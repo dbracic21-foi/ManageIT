@@ -1,0 +1,34 @@
+﻿<Window x:Class="ManageIT.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ManageIT"
+        mc:Ignorable="d"
+        Title="Login" Height="450" Width="800">
+    <Grid Background="#F4F4F4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="ManageIT" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,20,0,20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+            <Label Content="Korisničko ime:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Width="200" Margin="0,0,10,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+            <Label Content="Lozinka:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <PasswordBox Width="200" Margin="0,0,10,0"/>
+        </StackPanel>
+
+        <Button Content="Prijavi se" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20" Width="150" Background="#007ACC" Foreground="White"/>
+
+       
+    </Grid>
+</Window>
