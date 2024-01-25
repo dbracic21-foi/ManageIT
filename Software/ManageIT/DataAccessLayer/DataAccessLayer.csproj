@@ -52,7 +52,8 @@
   <ItemGroup>
     <Compile Include="ManageITModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\WorkerRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
