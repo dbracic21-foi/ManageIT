@@ -67,8 +67,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SideActivities\AddWorker.xaml.cs">
-      <DependentUpon>AddWorker.xaml</DependentUpon>
+    <Compile Include="SideActivities\AddNewWorker.xaml.cs">
+      <DependentUpon>AddNewWorker.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -107,7 +107,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SideActivities\AddWorker.xaml">
+    <Page Include="SideActivities\AddNewWorker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

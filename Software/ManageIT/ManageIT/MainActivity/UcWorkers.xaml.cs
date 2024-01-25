@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Services;
 using EntitiLayer.Entities;
+using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,9 @@ namespace ManageIT.MainActivity
 
         private void btnAddNewUser_Click(object sender, RoutedEventArgs e)
         {
-
+          AddNewWorker addNewWorker = new AddNewWorker();
+            addNewWorker.Show();
+           
         }
 
         private void btnDeleteUser_Click(object sender, RoutedEventArgs e)

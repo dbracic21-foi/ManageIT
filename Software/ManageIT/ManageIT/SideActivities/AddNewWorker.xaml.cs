@@ -10,19 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ManageIT.SideActivities
 {
     /// <summary>
-    /// Interaction logic for AddWorker.xaml
+    /// Interaction logic for AddNewWorker.xaml
     /// </summary>
-    public partial class AddWorker : UserControl
+    public partial class AddNewWorker : Window
     {
-        public AddWorker()
+        public AddNewWorker()
         {
-            InitializeComponent();
+          
         }
     }
 }

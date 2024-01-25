@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
+
     <Grid Background="AliceBlue">
         <StackPanel Margin="10">
             <Label Content="Ime:"/>
@@ -24,7 +25,9 @@
             <Label Content="Korisničko ime:"/>
             <TextBox x:Name="txtUsername" Width="200" Margin="0,0,0,10"/>
 
-            <Button Content="Dodaj Workera" Width="120" Height="25" Click="btnAddWorker_Click"/>
+            <Button x:Name="btnAddWorker" Content="Dodaj radnika" Width="100" Height="30" Margin="0,0,0,10" Click="btnAddWorker_Click"/>
+
+
         </StackPanel>
     </Grid>
 </UserControl>
