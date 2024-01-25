@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogicLayer.Services;
+using EntitiLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,17 +23,42 @@ namespace ManageIT.SideActivities
     {
         public AddNewWorker()
         {
-          
+          InitializeComponent();
         }
 
         private void btnAddWorker_Click(object sender, RoutedEventArgs e)
         {
+            var worker = new Worker
+            {
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                Email = txtEmail.Text,
+                Password = txtPassword.Password,
+                UserName = txtUsername.Text
 
+            };
+            if(worker.FirstName != "" && worker.LastName != "" && worker.Email !="" && worker.Password !="" )
+            {
+                var services = new WorkerService();
+                bool isSuccessful = services.AddWorker(worker);
+
+                if(isSuccessful == false)
+                {
+                    MessageBox.Show("Worker was not added!");
+                }
+
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Worker fields are important");
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
+       
     }
 }

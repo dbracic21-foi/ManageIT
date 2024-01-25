@@ -12,6 +12,6 @@
             <Button Content="Add New User" Width="120" Height="25" Margin="0,0,10,0" Click="btnAddNewUser_Click"/>
             <Button Content="Delete a User" Width="120" Height="25" Click="btnDeleteUser_Click"/>
         </StackPanel>
-        <DataGrid x:Name="dgUsers" AutoGenerateColumns="True" ItemsSource="{Binding Users}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="800"/>
+        <DataGrid x:Name="dgUsers" AutoGenerateColumns="True" ItemsSource="{Binding Users}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="800" SelectionChanged="dgUsers_SelectionChanged"/>
     </DockPanel>
 </UserControl>

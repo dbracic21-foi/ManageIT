@@ -76,5 +76,10 @@ namespace ManageIT.MainActivity
 
 
         }
+
+        private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

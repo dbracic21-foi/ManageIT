@@ -9,23 +9,23 @@
 
     <Grid Background="AliceBlue">
         <StackPanel Margin="10">
-            <Label Content="Ime:"/>
+            <Label Content="First Name:"/>
             <TextBox x:Name="txtFirstName" Width="200" Margin="0,0,0,10"/>
 
-            <Label Content="Prezime:"/>
+            <Label Content="Last Name:"/>
             <TextBox x:Name="txtLastName" Width="200" Margin="0,0,0,10"/>
 
             <Label Content="Email:"/>
             <TextBox x:Name="txtEmail" Width="200" Margin="0,0,0,10"/>
 
-            <Label Content="Šifra:"/>
+            <Label Content="Password:"/>
             <PasswordBox x:Name="txtPassword" Width="200" Margin="0,0,0,10"/>
 
-            <Label Content="Korisničko ime:"/>
+            <Label Content="Username :"/>
             <TextBox x:Name="txtUsername" Width="200" Margin="0,0,0,10"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-                <Button x:Name="btnAddWorker" Content="Dodaj radnika" Width="100" Height="30" Margin="0,0,10,0" Click="btnAddWorker_Click"/>
+                <Button x:Name="btnAddWorker" Content="Add new worker" Width="100" Height="30" Margin="0,0,10,0" Click="btnAddWorker_Click"/>
                 <Button x:Name="btnCancel" Content="Otkaži" Width="100" Height="30" Margin="0,0,0,0" Click="btnCancel_Click"/>
             </StackPanel>
         </StackPanel>
