@@ -46,7 +46,6 @@
     <Compile Include="Services\ClientTypeService.cs" />
     <Compile Include="Services\WorkerService.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{2d6b8791-2792-416f-b711-dec3dc2a8517}</Project>

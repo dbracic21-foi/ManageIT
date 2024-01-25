@@ -12,7 +12,7 @@ namespace DataAccessLayer.Repositories
 {
     public class ClientRepo : Repository<Client>
     {
-        public ClientRepo() : base(new ManageITModel())
+        public ClientRepo() : base(new ManageIT())
         {
 
         }

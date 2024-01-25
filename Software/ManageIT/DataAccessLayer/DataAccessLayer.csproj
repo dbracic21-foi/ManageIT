@@ -62,7 +62,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\EntitiesLayer\EntitiesLayer.csproj">
       <Project>{40b4dfb8-0194-4f1c-a3e6-32d77eef8826}</Project>
