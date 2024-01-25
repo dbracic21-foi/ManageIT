@@ -23,6 +23,21 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
+        public IQueryable<Worker> GetWorkers()
+        {
+            var query = from w in Entities
+                        select w;
+
+            return query;
+        }
+        public IQueryable<int> GetNumberOfProducts(Worker worker)
+        {
+            var query = from w in Entities
+                        where w.ID_worker == worker.ID_worker
+                        select w.Workers.Count;
+
+            return query;
+        }
      
        
 
