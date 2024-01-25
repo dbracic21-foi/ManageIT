@@ -22,9 +22,26 @@ namespace DataAccessLayer
                         select x;
             return query;
         }
+        public virtual int Remove(T entity, bool saveChanges = true)
+        {
+            Entities.Attach(entity);
+            Entities.Remove(entity);
+            if (saveChanges)
+            {
+                return SaveChanges();
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public virtual void Dispose()
         {
             Context.Dispose();
-        }   
+        }
+        public virtual int SaveChanges()
+        {
+            return Context.SaveChanges();
+        }
     }
 }
