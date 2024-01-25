@@ -18,8 +18,30 @@ namespace ManageIT {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        public MainWindow() {
+
+        public bool IsAdmin { get; private set; }
+
+       
+        public MainWindow()
+        {
             InitializeComponent();
+            InitializeUI();
+        }
+        public MainWindow(int user_role) : this()
+        {
+            if (user_role == 1)
+            {
+                IsAdmin = true;
+            }
+            else
+            {
+                IsAdmin = false;
+            }
+        }
+
+        private void InitializeUI()
+        {
+            btnWorkers.Visibility = IsAdmin ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
@@ -43,6 +65,11 @@ namespace ManageIT {
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnWorkers_Click(object sender, RoutedEventArgs e)
         {
 
         }
