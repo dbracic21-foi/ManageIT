@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.Repositories;
-using EntitiesLayer.Entities;
+using EntitiLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +23,10 @@ namespace BusinessLogicLayer.Services
             {
                 Worker authenticatedWorker = workerRepo.GetWorkerByEmailAndPassword(email, password).FirstOrDefault();
 
-                // Ako je authenticatedWorker != null, to znači da je pronađen korisnik sa zadanim emailom i lozinkom
                 return authenticatedWorker;
             }
         }
+     
 
     }
 }

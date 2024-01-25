@@ -1,13 +1,16 @@
-using EntitiesLayer.Entities;
+using EntitiLayer.Entities;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace DataAccessLayer {
-    public partial class ManageITModel : DbContext {
-        public ManageITModel()
-            : base("name=ManageITModel") {
+namespace DataAccessLayer
+{
+    public partial class ManageIT : DbContext
+    {
+        public ManageIT()
+            : base("name=ManageIT")
+        {
         }
 
         public virtual DbSet<Client> Clients { get; set; }
@@ -15,10 +18,12 @@ namespace DataAccessLayer {
         public virtual DbSet<Receipt> Receipts { get; set; }
         public virtual DbSet<Work> Works { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<WorkerType> WorkerTypes { get; set; }
         public virtual DbSet<WorkOrder> WorkOrders { get; set; }
         public virtual DbSet<WorkType> WorkTypes { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Client>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
@@ -41,6 +46,10 @@ namespace DataAccessLayer {
 
             modelBuilder.Entity<Client>()
                 .Property(e => e.IBAN)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Client>()
+                .Property(e => e.Client_Address)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ClientType>()

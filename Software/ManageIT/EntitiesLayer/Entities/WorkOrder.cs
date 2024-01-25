@@ -1,13 +1,17 @@
-namespace EntitiesLayer.Entities {
+namespace EntitiLayer.Entities
+{
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    //using System.Data.Entity.Spatial;
 
     [Table("WorkOrder")]
-    public partial class WorkOrder {
+    public partial class WorkOrder
+    {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public WorkOrder() {
+        public WorkOrder()
+        {
             Receipts = new HashSet<Receipt>();
         }
 

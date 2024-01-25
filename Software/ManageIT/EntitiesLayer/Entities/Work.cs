@@ -1,11 +1,14 @@
-namespace EntitiesLayer.Entities {
+namespace EntitiLayer.Entities
+{
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    //using System.Data.Entity.Spatial;
 
     [Table("Work")]
-    public partial class Work {
+    public partial class Work
+    {
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
