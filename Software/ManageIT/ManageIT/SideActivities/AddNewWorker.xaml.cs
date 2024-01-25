@@ -23,5 +23,15 @@ namespace ManageIT.SideActivities
         {
           
         }
+
+        private void btnAddWorker_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
