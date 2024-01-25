@@ -4,7 +4,6 @@ namespace EntitiLayer.Entities
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    //using System.Data.Entity.Spatial;
 
     [Table("WorkOrder")]
     public partial class WorkOrder
@@ -19,18 +18,15 @@ namespace EntitiLayer.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_Work_Order { get; set; }
 
-        public int? ID_Work_Type { get; set; }
+        public bool IsFinished { get; set; }
 
-        [StringLength(80)]
-        public string Location { get; set; }
+        public DateTime DateCreated { get; set; }
 
-        public TimeSpan? Duration { get; set; }
+        public int ID_Worker { get; set; }
 
-        public int? ID_Client { get; set; }
+        public int Id_Order_Details { get; set; }
 
-        public int? ID_Worker { get; set; }
-
-        public virtual Client Client { get; set; }
+        public virtual OrderDetail OrderDetail { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Receipt> Receipts { get; set; }

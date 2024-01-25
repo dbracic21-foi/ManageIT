@@ -10,18 +10,18 @@ namespace BusinessLogicLayer.Services
 {
     public class WorkerService
     {
-        public List<Worker> GetWorkerByEmailAndPassword(string email, string password)
+        public List<Worker> GetWorkerByEmailAndPassword(string username, string password)
         {
             using (var workerRepo = new WorkerRepo())
             {
-                return workerRepo.GetWorkerByEmailAndPassword(email, password).ToList();
+                return workerRepo.GetWorkerByEmailAndPassword(username, password).ToList();
             }
         }
-        public Worker Authenticate(string email, string password)
+        public Worker Authenticate(string username, string password)
         {
             using (var workerRepo = new WorkerRepo())
             {
-                Worker authenticatedWorker = workerRepo.GetWorkerByEmailAndPassword(email, password).FirstOrDefault();
+                Worker authenticatedWorker = workerRepo.GetWorkerByEmailAndPassword(username, password).FirstOrDefault();
 
                 return authenticatedWorker;
             }

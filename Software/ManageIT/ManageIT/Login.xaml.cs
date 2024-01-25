@@ -29,9 +29,9 @@ namespace ManageIT
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {        
-            string email = txtEmail.Text;
+            string username = txtUsername.Text;
             string password = passwordBox.Password;               
-            Worker authenticatedWorker = WorkerService.Authenticate(email, password);
+            Worker authenticatedWorker = WorkerService.Authenticate(username, password);
             if (authenticatedWorker != null)
         {
                 int roleid = (int)authenticatedWorker.Id_type;

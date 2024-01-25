@@ -15,10 +15,10 @@ namespace DataAccessLayer.Repositories
 
         }
         
-        public IQueryable<Worker> GetWorkerByEmailAndPassword(string email, string password)
+        public IQueryable<Worker> GetWorkerByEmailAndPassword(string username, string password)
         {
             var query = from w in Entities
-                        where w.Email == email && w.Password == password
+                        where w.UserName == username && w.Password == password
                         select w;
 
             return query;

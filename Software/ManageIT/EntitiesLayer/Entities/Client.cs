@@ -11,7 +11,7 @@ namespace EntitiLayer.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
-            WorkOrders = new HashSet<WorkOrder>();
+            OrderDetails = new HashSet<OrderDetail>();
         }
 
         [Key]
@@ -42,7 +42,7 @@ namespace EntitiLayer.Entities
         public string Client_Address { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrder> WorkOrders { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         public virtual ClientType ClientType { get; set; }
     }
