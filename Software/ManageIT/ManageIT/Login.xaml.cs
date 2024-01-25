@@ -35,8 +35,9 @@ namespace ManageIT
 
             if (authenticatedWorker != null)
         {
-            MessageBox.Show("Uspješna prijava!");
-        }
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+            }
         else
         {
             MessageBox.Show("Neuspješna prijava. Provjerite korisničko ime i lozinku.");
