@@ -44,9 +44,10 @@
   <ItemGroup>
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\ClientType.cs" />
+    <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\Receipt.cs" />
-    <Compile Include="Entities\Work.cs" />
     <Compile Include="Entities\Worker.cs" />
+    <Compile Include="Entities\WorkerType.cs" />
     <Compile Include="Entities\WorkOrder.cs" />
     <Compile Include="Entities\WorkType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

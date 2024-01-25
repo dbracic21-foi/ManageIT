@@ -18,7 +18,6 @@
             <Button x:Name="btnExit" Content="Exit" Height="25" Background="{StaticResource DodgerBlueColorBrush}" FontWeight="Bold" BorderThickness="0" Click="btnExit_Click"/>
         </StackPanel>
 
-        <ContentControl x:Name="contentPanel" DockPanel.Dock="Right">
-        </ContentControl>
+        <ContentControl x:Name="contentPanel" DockPanel.Dock="Right"></ContentControl>
     </DockPanel>
 </Window>

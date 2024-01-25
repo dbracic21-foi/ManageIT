@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ManageIT.MainActivity;
 
 namespace ManageIT {
     /// <summary>
@@ -37,6 +37,7 @@ namespace ManageIT {
             {
                 IsAdmin = false;
             }
+            InitializeUI();
         }
 
         private void InitializeUI()
@@ -56,7 +57,7 @@ namespace ManageIT {
 
         private void btnClients_Click(object sender, RoutedEventArgs e)
         {
-
+            contentPanel.Content = new MainActivity.UcClients();
         }
 
         private void btnWorkOrder_Click(object sender, RoutedEventArgs e)
