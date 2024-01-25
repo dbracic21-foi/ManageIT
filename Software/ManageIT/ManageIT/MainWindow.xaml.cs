@@ -37,6 +37,7 @@ namespace ManageIT {
             {
                 IsAdmin = false;
             }
+            InitializeUI();
         }
 
         private void InitializeUI()

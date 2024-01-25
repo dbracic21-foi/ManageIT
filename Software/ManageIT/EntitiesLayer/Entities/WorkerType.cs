@@ -5,27 +5,24 @@ namespace EntitiLayer.Entities
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("WorkType")]
-    public partial class WorkType
+    [Table("WorkerType")]
+    public partial class WorkerType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public WorkType()
+        public WorkerType()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            Workers = new HashSet<Worker>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID_Work_Type { get; set; }
+        public int Id_type { get; set; }
 
         [Required]
-        [StringLength(60)]
-        public string Name { get; set; }
-
-        [Column(TypeName = "money")]
-        public decimal Price { get; set; }
+        [StringLength(50)]
+        public string Name_type { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<Worker> Workers { get; set; }
     }
 }

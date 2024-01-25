@@ -1,11 +1,13 @@
-namespace EntitiesLayer.Entities {
+namespace EntitiLayer.Entities
+{
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Receipt")]
-    public partial class Receipt {
+    public partial class Receipt
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_receipt { get; set; }

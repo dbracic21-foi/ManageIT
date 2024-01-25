@@ -1,13 +1,17 @@
-namespace EntitiesLayer.Entities {
+namespace  EntitiLayer.Entities
+
+{
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("ClientType")]
-    public partial class ClientType {
+    public partial class ClientType
+    {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ClientType() {
+        public ClientType()
+        {
             Clients = new HashSet<Client>();
         }
 

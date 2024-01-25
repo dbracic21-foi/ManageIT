@@ -1,5 +1,5 @@
 ﻿using BusinessLogicLayer.Services;
-using EntitiesLayer.Entities;
+using EntitiLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,21 +28,23 @@ namespace ManageIT
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string email = txtEmail.Text;
+        {        
+            string username = txtUsername.Text;
             string password = passwordBox.Password;               
-            Worker authenticatedWorker = WorkerService.Authenticate(email, password);
-
+            Worker authenticatedWorker = WorkerService.Authenticate(username, password);
             if (authenticatedWorker != null)
         {
-                MainWindow mainWindow = new MainWindow();
+                int roleid = (int)authenticatedWorker.Id_type;
+                MainWindow mainWindow = new MainWindow(roleid);
                 mainWindow.Show();
+                this.Close();
             }
         else
         {
-            MessageBox.Show("Neuspješna prijava. Provjerite korisničko ime i lozinku.");
+                lblErrorMessage.Content = "Neuspješna prijava. Provjerite korisničko ime i lozinku.";
+                passwordBox.Password = "";
+            }
         }
-    }
 
            
         }

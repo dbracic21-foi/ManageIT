@@ -9,11 +9,11 @@ namespace DataAccessLayer
 {
     public abstract class Repository<T> : IDisposable where T : class
     {
-        protected ManageITModel Context { get; set; }
+        protected ManageIT Context { get; set; }
         protected DbSet<T> Entities { get; set; }
-        public Repository(ManageITModel context)
+        public Repository(ManageIT context)
         {
-            Context = new ManageITModel();
+            Context = new ManageIT();
             Entities = Context.Set<T>();
         }
         public virtual IQueryable<T> GetAll()
