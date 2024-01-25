@@ -19,6 +19,18 @@
             <Button x:Name="btnUpdateClient" Content="Update" Width="60" Height="25" Margin="0,0,5,0" Click="btnUpdateClient_Click"></Button>
             <Button x:Name="btnRemoveClient" Content="Remove" Width="60" Height="25" Margin="0,0,5,0" Click="btnRemoveClient_Click"></Button>
         </StackPanel>
-        <DataGrid x:Name="dgClients" AlternatingRowBackground="AliceBlue"></DataGrid>
+        <DataGrid x:Name="dgClients" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Client ID" Binding="{Binding ID_Client}" />
+                <DataGridTextColumn Header="Type" Binding="{Binding TypeName}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding Number}" />
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Company" Binding="{Binding CompanyName}" />
+                <DataGridTextColumn Header="IBAN" Binding="{Binding IBAN}" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 </UserControl>
