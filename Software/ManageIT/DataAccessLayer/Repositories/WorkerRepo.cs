@@ -38,8 +38,30 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
-     
-       
+        public override int Add(Worker entity, bool saveChanges = true)
+        {
+            var worker = new Worker
+            {
+                ID_worker = entity.ID_worker,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                UserName = entity.UserName,
+                Password = entity.Password,
+                Email = entity.Email,
+               
+            };
+            Entities.Add(worker);
+            if (saveChanges)
+            {
+                return SaveChanges();
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
 
 
     }

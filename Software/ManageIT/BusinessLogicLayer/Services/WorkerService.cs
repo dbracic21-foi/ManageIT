@@ -64,5 +64,15 @@ namespace BusinessLogicLayer.Services
                 }
             }
         }
+        public bool AddWorker(Worker worker)
+        {
+            bool isSuccessful = false;
+            using (var workerRepo = new WorkerRepo())
+            {
+                int affectedRows = workerRepo.Add(worker);
+                isSuccessful = affectedRows > 0;
+            }
+            return isSuccessful;
+        }   
     }
 }
