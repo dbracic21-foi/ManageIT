@@ -29,7 +29,6 @@ namespace ManageIT {
         }
         public MainWindow(int user_role) : this()
         {
-            MessageBox.Show($"Prijavljeni korisnik ima ulogu: {user_role}");
             if (user_role == 1)
             {
                 IsAdmin = true;
@@ -38,6 +37,7 @@ namespace ManageIT {
             {
                 IsAdmin = false;
             }
+            InitializeUI();
         }
 
         private void InitializeUI()
