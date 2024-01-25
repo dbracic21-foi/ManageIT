@@ -22,6 +22,11 @@ namespace DataAccessLayer
                         select x;
             return query;
         }
+
+        public void SaveChanges()
+        {
+            Context.SaveChanges();
+        }
         public virtual void Dispose()
         {
             Context.Dispose();
