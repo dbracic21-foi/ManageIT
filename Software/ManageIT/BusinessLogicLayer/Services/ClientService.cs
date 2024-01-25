@@ -33,5 +33,13 @@ namespace BusinessLogicLayer.Services
                 return clientRepo.SearchClients(key).ToList();
             }
         }
+
+        public void DeleteClient(int id)
+        {
+            using (var clientRepo = new ClientRepo())
+            {
+                clientRepo.DeleteClient(id);
+            }
+        }
     }
 }

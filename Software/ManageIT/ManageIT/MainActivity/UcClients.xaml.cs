@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Services;
 using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -58,9 +59,20 @@ namespace ManageIT.MainActivity
 
         private void btnRemoveClient_Click(object sender, RoutedEventArgs e)
         {
-
+            DeleteClient();
+            GetAllClients();
+            ShowClients();
         }
 
+        private void DeleteClient()
+        {
+            if (dgClients.SelectedItem != null)
+            {
+                ClientViewModel selectedClient = (ClientViewModel)dgClients.SelectedItem;
+                int clientIdToDelete = selectedClient.ID_Client;
+                clientService.DeleteClient(clientIdToDelete);
+            }
+        }
         private void GetAllClients()
         {
             clients = clientService.GetClientsView();

@@ -52,5 +52,15 @@ namespace DataAccessLayer.Repositories
                         };
             return query;
         }
+
+        public void DeleteClient (int id)
+        {
+            var clientToDelete = Entities.FirstOrDefault(c => c.ID_client == id);
+            if (clientToDelete != null)
+            {
+                Entities.Remove(clientToDelete);
+                SaveChanges();
+            }
+        }
     }
 }
