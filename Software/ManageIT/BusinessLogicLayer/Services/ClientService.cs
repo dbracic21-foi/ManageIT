@@ -88,7 +88,7 @@ namespace BusinessLogicLayer.Services
                     {
                         return false;
                     }
-                    if (client.ID_client != clientSearch.ID_client)
+                    if (client.Email == clientSearch.Email)
                     {
                         return false;
                     }

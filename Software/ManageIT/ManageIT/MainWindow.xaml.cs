@@ -72,7 +72,7 @@ namespace ManageIT {
 
         private void btnWorkers_Click(object sender, RoutedEventArgs e)
         {
-
+            contentPanel.Content = new MainActivity.UcWorkers();
         }
     }
 }

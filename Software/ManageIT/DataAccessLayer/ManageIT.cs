@@ -9,7 +9,7 @@ namespace DataAccessLayer
     public partial class ManageIT : DbContext
     {
         public ManageIT()
-            : base("name=ManageITmodel")
+            : base("name=ManageIT")
         {
         }
 

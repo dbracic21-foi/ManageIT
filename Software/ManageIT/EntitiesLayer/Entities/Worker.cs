@@ -19,7 +19,6 @@ namespace EntitiesLayer.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_worker { get; set; }
 
         [StringLength(40)]

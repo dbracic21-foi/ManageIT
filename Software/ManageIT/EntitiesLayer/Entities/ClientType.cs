@@ -1,4 +1,5 @@
-namespace  EntitiesLayer.Entities
+namespace EntitiLayer.Entities
+
 
 {
     using System;
