@@ -15,7 +15,6 @@ namespace EntitiLayer.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_Work_Order { get; set; }
 
         public bool IsFinished { get; set; }

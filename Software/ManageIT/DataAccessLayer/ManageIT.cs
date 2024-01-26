@@ -2,7 +2,11 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
+
 using EntitiLayer.Entities;
+
+using EntitiesLayer.Entities;
+
 
 namespace DataAccessLayer
 {

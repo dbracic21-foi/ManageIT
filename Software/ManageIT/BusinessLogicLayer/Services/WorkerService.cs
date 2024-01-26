@@ -48,6 +48,7 @@ namespace BusinessLogicLayer.Services
             return isSuccessful;
         }
 
+
         private bool CheckIfWorkerCanBeRemoved(Worker worker)
         {
           if(worker == null) return false;
@@ -74,5 +75,12 @@ namespace BusinessLogicLayer.Services
             }
             return isSuccessful;
         }   
+
+        public List<Worker> GetWorkers() {
+            using (var workerRepo = new WorkerRepo()) {
+                return workerRepo.GetAll().ToList();
+            }
+        }
+
     }
 }

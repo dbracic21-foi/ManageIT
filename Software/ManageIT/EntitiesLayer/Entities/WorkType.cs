@@ -15,7 +15,6 @@ namespace EntitiLayer.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_Work_Type { get; set; }
 
         [Required]

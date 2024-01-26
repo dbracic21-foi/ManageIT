@@ -67,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+
     <Compile Include="SideActivities\AddNewWorker.xaml.cs">
       <DependentUpon>AddNewWorker.xaml</DependentUpon>
 			</Compile>
@@ -76,6 +77,9 @@
     </Compile>
     <Compile Include="SideActivities\ClientUpdate.xaml.cs">
       <DependentUpon>ClientUpdate.xaml</DependentUpon>
+
+    <Compile Include="SideActivities\WorkOrderAdd.xaml.cs">
+      <DependentUpon>WorkOrderAdd.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -85,7 +89,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="MainActivity\UcWorkers.xaml">
+
+    <Page Include="MainActivity\UcWorkOrders.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -103,8 +111,13 @@
     <Compile Include="MainActivity\UcClients.xaml.cs">
       <DependentUpon>UcClients.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="MainActivity\UcWorkers.xaml.cs">
       <DependentUpon>UcWorkers.xaml</DependentUpon>
+
+    <Compile Include="MainActivity\UcWorkOrders.xaml.cs">
+      <DependentUpon>UcWorkOrders.xaml</DependentUpon>
+
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -114,6 +127,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="SideActivities\AddNewWorker.xaml">
 			  <SubType>Designer</SubType>
 	  <Generator>MSBuild:Compile</Generator>
@@ -123,6 +137,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SideActivities\ClientUpdate.xaml">
+
+    <Page Include="SideActivities\WorkOrderAdd.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
