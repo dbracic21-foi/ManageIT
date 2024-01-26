@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories {
     public class OrderDetailsRepository: Repository<OrderDetail> {
-        public OrderDetailsRepository(): base(new ManageITModel())
+        public OrderDetailsRepository(): base(new ManageIT())
         {
             
         }

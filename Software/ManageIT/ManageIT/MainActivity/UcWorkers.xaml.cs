@@ -1,5 +1,5 @@
 ﻿using BusinessLogicLayer.Services;
-using EntitiLayer.Entities;
+using EntitiesLayer.Entities;
 using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;

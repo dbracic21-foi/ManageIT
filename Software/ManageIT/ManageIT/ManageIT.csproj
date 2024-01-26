@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="SideActivities\ClientUpdate.xaml.cs">
       <DependentUpon>ClientUpdate.xaml</DependentUpon>
+			</Compile>
 
     <Compile Include="SideActivities\WorkOrderAdd.xaml.cs">
       <DependentUpon>WorkOrderAdd.xaml</DependentUpon>
@@ -91,6 +92,9 @@
     </Page>
 
     <Page Include="MainActivity\UcWorkers.xaml">
+			  <SubType>Designer</SubType>
+	  <Generator>MSBuild:Compile</Generator>
+			</Page>
 
     <Page Include="MainActivity\UcWorkOrders.xaml">
 
@@ -114,6 +118,7 @@
 
     <Compile Include="MainActivity\UcWorkers.xaml.cs">
       <DependentUpon>UcWorkers.xaml</DependentUpon>
+			</Compile>
 
     <Compile Include="MainActivity\UcWorkOrders.xaml.cs">
       <DependentUpon>UcWorkOrders.xaml</DependentUpon>
@@ -137,6 +142,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SideActivities\ClientUpdate.xaml">
+			  <SubType>Designer</SubType>
+	  <Generator>MSBuild:Compile</Generator>
+			</Page>
 
     <Page Include="SideActivities\WorkOrderAdd.xaml">
 

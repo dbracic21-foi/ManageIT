@@ -35,18 +35,7 @@ namespace DataAccessLayer
                 return 0;
             }
         }
-        public virtual int Add(T entity, bool saveChanges = true)
-        {
-            Entities.Add(entity);
-            if (saveChanges)
-            {
-                return SaveChanges();
-            }
-            else
-            {
-                return 0;
-            }
-        }
+       
 
        
         public virtual void Dispose()
@@ -54,9 +43,7 @@ namespace DataAccessLayer
             Context.Dispose();
         }
 
-        public virtual int SaveChanges()
-        {
-
+     
 
         public virtual int Add(T entity, bool saveChanges = true) {
             Entities.Add(entity);

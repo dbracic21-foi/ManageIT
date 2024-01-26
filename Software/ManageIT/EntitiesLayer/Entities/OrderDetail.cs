@@ -1,9 +1,5 @@
-
-namespace EntitiLayer.Entities
+namespace EntitiesLayer.Entities
 {
-
-namespace EntitiesLayer.Entities { 
-
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -18,9 +14,6 @@ namespace EntitiesLayer.Entities {
         }
 
         [Key]
-
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-
         public int Id_Order_Details { get; set; }
 
         public int? ID_Work_Type { get; set; }

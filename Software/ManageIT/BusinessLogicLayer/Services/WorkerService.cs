@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.Repositories;
-using EntitiLayer.Entities;
+using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,11 +76,7 @@ namespace BusinessLogicLayer.Services
             return isSuccessful;
         }   
 
-        public List<Worker> GetWorkers() {
-            using (var workerRepo = new WorkerRepo()) {
-                return workerRepo.GetAll().ToList();
-            }
-        }
+     
 
     }
 }

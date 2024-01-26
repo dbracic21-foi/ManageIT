@@ -1,7 +1,7 @@
 ﻿using BusinessLogicLayer.Services;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
-using EntitiLayer.Entities;
+using EntitiesLayer.Entities;
 using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;

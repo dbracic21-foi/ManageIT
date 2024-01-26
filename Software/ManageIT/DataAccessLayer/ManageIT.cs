@@ -2,18 +2,14 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
-
-using EntitiLayer.Entities;
-
 using EntitiesLayer.Entities;
-
 
 namespace DataAccessLayer
 {
     public partial class ManageIT : DbContext
     {
         public ManageIT()
-            : base("name=ManageIT")
+            : base("name=ManageITModel")
         {
         }
 

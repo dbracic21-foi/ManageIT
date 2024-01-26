@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Repositories {
     public class ClientRepository : Repository<Client> {
 
-        public ClientRepository(): base(new ManageITModel())
+        public ClientRepository(): base(new ManageIT())
         {
 
         }

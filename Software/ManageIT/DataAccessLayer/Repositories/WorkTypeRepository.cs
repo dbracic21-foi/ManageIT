@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories {
     public class WorkTypeRepository : Repository<WorkType> {
-        public WorkTypeRepository() : base(new ManageITModel())
+        public WorkTypeRepository() : base(new ManageIT())
         {
             
         }
