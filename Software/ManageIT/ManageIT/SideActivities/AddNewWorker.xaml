@@ -1,33 +1,46 @@
 ﻿<Window x:Class="ManageIT.SideActivities.AddNewWorker"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ManageIT.MainActivity"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ManageIT.SideActivities"
+        mc:Ignorable="d"
+        Title="Create Client" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid Margin="30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-    <Grid Background="AliceBlue">
-        <StackPanel Margin="10">
-            <Label Content="First Name:"/>
-            <TextBox x:Name="txtFirstName" Width="200" Margin="0,0,0,10"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <Label Content="Last Name:"/>
-            <TextBox x:Name="txtLastName" Width="200" Margin="0,0,0,10"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="First Name:"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Last Name:"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Email:"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Password:"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Gender:"/>
+        <Label Grid.Row="5" Grid.Column="0" Content= "Username:"/>
 
-            <Label Content="Email:"/>
-            <TextBox x:Name="txtEmail" Width="200" Margin="0,0,0,10"/>
 
-            <Label Content="Password:"/>
-            <PasswordBox x:Name="txtPassword" Width="200" Margin="0,0,0,10"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtFirstName"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtLastName" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtEmail" Margin="0,0,0,5"/>
+        <PasswordBox Grid.Row="3" Grid.Column="1" x:Name="passwordBox" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtGender" Margin="0,0,0,5"/>
+         <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtUsername" Margin="0,0,0,5"/>
 
-            <Label Content="Username :"/>
-            <TextBox x:Name="txtUsername" Width="200" Margin="0,0,0,10"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-                <Button x:Name="btnAddWorker" Content="Add new worker" Width="100" Height="30" Margin="0,0,10,0" Click="btnAddWorker_Click"/>
-                <Button x:Name="btnCancel" Content="Otkaži" Width="100" Height="30" Margin="0,0,0,0" Click="btnCancel_Click"/>
-            </StackPanel>
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Button x:Name="btnCreateClient" Content="Add new worker" Margin="5" Width="120" Padding="10" Click="btnAddWorker_Click"/>
+            <Button x:Name="btnExitAdd" Content="Cancel" Margin="5" Width="100" Padding="10" Click="btnCancel_Click"/>
         </StackPanel>
     </Grid>
 </Window>

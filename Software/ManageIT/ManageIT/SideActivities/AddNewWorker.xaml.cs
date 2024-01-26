@@ -33,8 +33,9 @@ namespace ManageIT.SideActivities
                 FirstName = txtFirstName.Text,
                 LastName = txtLastName.Text,
                 Email = txtEmail.Text,
-                Password = txtPassword.Password,
-                UserName = txtUsername.Text
+                Password = passwordBox.Password,
+                Gender = txtGender.Text,
+                UserName = txtUsername.Text,
 
             };
             if(worker.FirstName != "" && worker.LastName != "" && worker.Email !="" && worker.Password !="" )
@@ -59,6 +60,12 @@ namespace ManageIT.SideActivities
         {
             this.Close();
         }
-       
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+  
     }
 }
