@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using EntitiesLayer.Entities;
 using ManageIT.MainActivity;
 
 namespace ManageIT {
@@ -27,9 +28,9 @@ namespace ManageIT {
             InitializeComponent();
             InitializeUI();
         }
-        public MainWindow(int user_role) : this()
+        public MainWindow(Worker worker) : this()
         {
-            if (user_role == 1)
+            if (worker.Id_type == 1)
             {
                 IsAdmin = true;
             }
@@ -37,6 +38,7 @@ namespace ManageIT {
             {
                 IsAdmin = false;
             }
+            lblLoggedUser.Content = worker.UserName;
             InitializeUI();
         }
 
