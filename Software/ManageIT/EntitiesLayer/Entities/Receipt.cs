@@ -5,7 +5,8 @@ namespace EntitiesLayer.Entities {
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Receipt")]
-    public partial class Receipt {
+    public partial class Receipt
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_receipt { get; set; }

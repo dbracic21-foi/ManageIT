@@ -4,24 +4,24 @@ namespace EntitiesLayer.Entities {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("ClientType")]
-    public partial class ClientType
+    [Table("WorkerType")]
+    public partial class WorkerType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ClientType()
+        public WorkerType()
         {
-            Clients = new HashSet<Client>();
+            Workers = new HashSet<Worker>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID_type { get; set; }
+        public int Id_type { get; set; }
 
         [Required]
-        [StringLength(30)]
-        public string Title { get; set; }
+        [StringLength(50)]
+        public string Name_type { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Clients { get; set; }
+        public virtual ICollection<Worker> Workers { get; set; }
     }
 }

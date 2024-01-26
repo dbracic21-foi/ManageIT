@@ -28,5 +28,10 @@ namespace BusinessLogicLayer.Services
             }
         }
 
+        public List<Worker> GetWorkers() {
+            using (var workerRepo = new WorkerRepo()) {
+                return workerRepo.GetAll().ToList();
+            }
+        }
     }
 }

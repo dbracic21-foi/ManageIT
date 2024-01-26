@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using ManageIT.MainActivity;
+using ManageIT.SideActivities;
 
 namespace ManageIT {
     /// <summary>
@@ -20,6 +21,7 @@ namespace ManageIT {
     public partial class MainWindow : Window {
 
         public bool IsAdmin { get; private set; }
+        public int ID_Worker { get; set; }
 
        
         public MainWindow()
@@ -27,8 +29,9 @@ namespace ManageIT {
             InitializeComponent();
             InitializeUI();
         }
-        public MainWindow(int user_role) : this()
+        public MainWindow(int user_role, int id_worker) : this()
         {
+            ID_Worker = id_worker;
             if (user_role == 1)
             {
                 IsAdmin = true;
@@ -61,7 +64,7 @@ namespace ManageIT {
 
         private void btnWorkOrder_Click(object sender, RoutedEventArgs e)
         {
-            contentPanel.Content = new MainActivity.UcWorkOrders();
+            contentPanel.Content = new MainActivity.UcWorkOrders(ID_Worker);
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -72,6 +75,10 @@ namespace ManageIT {
         private void btnWorkers_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public static implicit operator MainWindow(WorkOrderAdd v) {
+            throw new NotImplementedException();
         }
     }
 }

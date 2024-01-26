@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Services;
 using EntitiesLayer.Entities;
+using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,9 @@ namespace ManageIT
 
             if (authenticatedWorker != null)
         {
-                MainWindow mainWindow = new MainWindow();
+                int roleid = (int)authenticatedWorker.Id_type;
+                int workerid = (int)authenticatedWorker.ID_worker;
+                MainWindow mainWindow = new MainWindow(roleid, workerid);
                 mainWindow.Show();
             }
         else

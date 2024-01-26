@@ -1,8 +1,8 @@
-using EntitiesLayer.Entities;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
+using EntitiesLayer.Entities;
 
 namespace DataAccessLayer {
     public partial class ManageITModel : DbContext {
@@ -12,9 +12,10 @@ namespace DataAccessLayer {
 
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<ClientType> ClientTypes { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Receipt> Receipts { get; set; }
-        public virtual DbSet<Work> Works { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<WorkerType> WorkerTypes { get; set; }
         public virtual DbSet<WorkOrder> WorkOrders { get; set; }
         public virtual DbSet<WorkType> WorkTypes { get; set; }
 
@@ -43,9 +44,22 @@ namespace DataAccessLayer {
                 .Property(e => e.IBAN)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Client>()
+                .Property(e => e.Client_Address)
+                .IsUnicode(false);
+
             modelBuilder.Entity<ClientType>()
                 .Property(e => e.Title)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<OrderDetail>()
+                .Property(e => e.Location)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderDetail>()
+                .HasMany(e => e.WorkOrders)
+                .WithRequired(e => e.OrderDetail)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Receipt>()
                 .Property(e => e.Additional_info)
@@ -72,13 +86,18 @@ namespace DataAccessLayer {
                 .IsUnicode(false);
 
             modelBuilder.Entity<Worker>()
-                .HasMany(e => e.Works)
+                .Property(e => e.UserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Worker>()
+                .HasMany(e => e.WorkOrders)
                 .WithRequired(e => e.Worker)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<WorkOrder>()
-                .Property(e => e.Location)
-                .IsUnicode(false);
+            modelBuilder.Entity<Worker>()
+                .HasMany(e => e.Worker1)
+                .WithMany(e => e.Workers)
+                .Map(m => m.ToTable("Work").MapLeftKey("Id_Order_Details").MapRightKey("ID_Worker"));
 
             modelBuilder.Entity<WorkType>()
                 .Property(e => e.Name)

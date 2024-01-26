@@ -1,18 +1,20 @@
-namespace EntitiesLayer.Entities {
+namespace EntitiesLayer.Entities
+{
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Client")]
-    public partial class Client {
+    public partial class Client
+    {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client() {
-            WorkOrders = new HashSet<WorkOrder>();
+        public Client()
+        {
+            OrderDetails = new HashSet<OrderDetail>();
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_client { get; set; }
 
         [StringLength(60)]
@@ -39,7 +41,7 @@ namespace EntitiesLayer.Entities {
         public string Client_Address { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrder> WorkOrders { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         public virtual ClientType ClientType { get; set; }
     }

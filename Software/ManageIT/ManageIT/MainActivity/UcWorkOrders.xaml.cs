@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogicLayer.Services;
+using ManageIT.SideActivities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,8 +20,17 @@ namespace ManageIT.MainActivity {
     /// Interaction logic for UcWorkOrders.xaml
     /// </summary>
     public partial class UcWorkOrders : UserControl {
-        public UcWorkOrders() {
+        public int ID_Worker { get; set; }
+        public UcWorkOrders(int id_worker) {
+            ID_Worker = id_worker;
             InitializeComponent();
+            LoadWorkOrders();
+        }
+
+        private void LoadWorkOrders() {
+            WorkOrderService service = new WorkOrderService();
+            var workOrders = service.GetWorkOrders();
+            dgWorkOrders.ItemsSource = workOrders;
         }
 
         private void btnSearchWorkOrders_Click(object sender, RoutedEventArgs e) {
@@ -31,7 +42,8 @@ namespace ManageIT.MainActivity {
         }
 
         private void btnAddWorkOrder_Click(object sender, RoutedEventArgs e) {
-
+            WorkOrderAdd mainWindow = new WorkOrderAdd(ID_Worker);
+            mainWindow.Show();
         }
 
         private void btnUpdateWorkOrder_Click(object sender, RoutedEventArgs e) {
