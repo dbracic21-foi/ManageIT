@@ -33,6 +33,7 @@ namespace ManageIT.MainActivity
         {
           AddNewWorker addNewWorker = new AddNewWorker();
             addNewWorker.Show();
+            ShowAllWorkers();
            
         }
 

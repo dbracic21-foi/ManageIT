@@ -42,7 +42,7 @@ namespace DataAccessLayer.Repositories
         {
             var worker = new Worker
             {
-                ID_worker = entity.ID_worker,
+                //ID_worker = entity.ID_worker,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 UserName = entity.UserName,
