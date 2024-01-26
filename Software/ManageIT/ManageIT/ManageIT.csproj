@@ -67,20 +67,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-
     <Compile Include="SideActivities\AddNewWorker.xaml.cs">
       <DependentUpon>AddNewWorker.xaml</DependentUpon>
-			</Compile>
-
+    </Compile>
     <Compile Include="SideActivities\ClientAdd.xaml.cs">
       <DependentUpon>ClientAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="SideActivities\ClientUpdate.xaml.cs">
       <DependentUpon>ClientUpdate.xaml</DependentUpon>
-			</Compile>
-
+    </Compile>
     <Compile Include="SideActivities\WorkOrderAdd.xaml.cs">
       <DependentUpon>WorkOrderAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SideActivities\WorkOrderUpdate.xaml.cs">
+      <DependentUpon>WorkOrderUpdate.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -90,14 +90,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="MainActivity\UcWorkers.xaml">
-			  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-			</Page>
-
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainActivity\UcWorkOrders.xaml">
-
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,14 +112,11 @@
     <Compile Include="MainActivity\UcClients.xaml.cs">
       <DependentUpon>UcClients.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="MainActivity\UcWorkers.xaml.cs">
       <DependentUpon>UcWorkers.xaml</DependentUpon>
-			</Compile>
-
+    </Compile>
     <Compile Include="MainActivity\UcWorkOrders.xaml.cs">
       <DependentUpon>UcWorkOrders.xaml</DependentUpon>
-
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -132,22 +126,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="SideActivities\AddNewWorker.xaml">
-			  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-			</Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SideActivities\ClientAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SideActivities\ClientUpdate.xaml">
-			  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-			</Page>
-
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SideActivities\WorkOrderAdd.xaml">
-
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SideActivities\WorkOrderUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

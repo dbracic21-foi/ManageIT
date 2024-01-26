@@ -23,6 +23,8 @@ namespace ManageIT.SideActivities {
             LoadClients();
             LoadWorkers();
             LoadWorkTypes();
+            txtLocation.Text = "";
+            txtLocation.IsEnabled = false;
         }
 
         private void LoadWorkTypes() {
@@ -44,6 +46,19 @@ namespace ManageIT.SideActivities {
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
+            if (cmbClient.SelectedItem == null) {
+                MessageBox.Show("Please select a client!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; 
+            }
+            if (cmbWorker.SelectedItem == null) {
+                MessageBox.Show("Please select a worker!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (cmbWorkType.SelectedItem == null) {
+                MessageBox.Show("Please select a work type!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var orderDetail = new OrderDetail {
                 Client = cmbClient.SelectedItem as Client,
                 Worker = cmbWorker.SelectedItem as Worker,
@@ -63,11 +78,17 @@ namespace ManageIT.SideActivities {
                 IsFinished = false,
             };
             var workOrderService = new WorkOrderService();
-            workOrderService.AddWorkOrder(workOrder);
+
+            if (workOrderService.AddWorkOrder(workOrder)) {
+                MessageBox.Show("Succesfully added a work order!");
+                Close();
+            } else {
+                MessageBox.Show("Please fill in all the fields!");
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
-            Console.WriteLine(CombineDateAndTime(dateWorkOrder.SelectedDate ?? DateTime.Now, TimeSpan.Parse(txtStartTime.Text)));
+            Close();
         }
 
         private void cmbClient_SelectionChanged(object sender, SelectionChangedEventArgs e) {

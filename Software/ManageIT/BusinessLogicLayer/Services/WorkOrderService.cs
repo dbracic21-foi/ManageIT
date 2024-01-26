@@ -23,5 +23,15 @@ namespace BusinessLogicLayer.Services {
                 return workOrders;
             }
         }
+
+        public bool RemoveWorkOrder(WorkOrder workOrder) {
+            bool isSuccessful = false;
+
+            using (var repo = new WorkOrderRepository()) {
+                int affectedRows = repo.Remove(workOrder);
+                isSuccessful = affectedRows > 0;
+            }
+            return isSuccessful;
+        }
     }
 }

@@ -14,18 +14,18 @@ namespace DataAccessLayer.Repositories {
         }
 
         public override int Add(WorkOrder entity, bool saveChanges = true) {
-            var orderDetail = Context.OrderDetails.SingleOrDefault(o => o.Id_Order_Details == entity.OrderDetail.Id_Order_Details);
+            
             var worker = Context.Workers.SingleOrDefault(w => w.ID_worker == entity.ID_Worker);
             var orderService = new OrderDetailsRepository();
             var orderDetails = orderService.GetAll().ToList();
-            var orderDetail1 = orderDetails.LastOrDefault();
+            var orderDetail = orderDetails.LastOrDefault();
 
             var workOrder = new WorkOrder();
             workOrder.IsFinished = entity.IsFinished;
             workOrder.Worker = worker;
             workOrder.ID_Worker = entity.ID_Worker;
             workOrder.DateCreated = entity.DateCreated;
-            workOrder.Id_Order_Details = orderDetail1.Id_Order_Details;
+            workOrder.Id_Order_Details = orderDetail.Id_Order_Details;
 
             Entities.Add(workOrder);
             if (saveChanges) {

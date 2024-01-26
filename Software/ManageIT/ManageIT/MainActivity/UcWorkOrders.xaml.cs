@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Services;
+using EntitiesLayer.Entities;
 using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;
@@ -21,17 +22,15 @@ namespace ManageIT.MainActivity {
     /// </summary>
     public partial class UcWorkOrders : UserControl {
         public int ID_Worker { get; set; }
+        private WorkOrderService service = new WorkOrderService();
+        private OrderDetailService OrderDetailService = new OrderDetailService();
         public UcWorkOrders(int id_worker) {
             ID_Worker = id_worker;
             InitializeComponent();
             LoadWorkOrders();
         }
 
-        private void LoadWorkOrders() {
-            WorkOrderService service = new WorkOrderService();
-            var workOrders = service.GetWorkOrders();
-            dgWorkOrders.ItemsSource = workOrders;
-        }
+        
 
         private void btnSearchWorkOrders_Click(object sender, RoutedEventArgs e) {
 
@@ -47,11 +46,31 @@ namespace ManageIT.MainActivity {
         }
 
         private void btnUpdateWorkOrder_Click(object sender, RoutedEventArgs e) {
-
+            var selectedWorkOrder = GetSelectedWorkOrder() as WorkOrder;
+            var selectedOrderDetail = selectedWorkOrder.Id_Order_Details;
+            var orderDetail = OrderDetailService.GetOrderDetail(selectedOrderDetail) as OrderDetail;
+            if(selectedWorkOrder != null) {
+                WorkOrderUpdate mainWindow = new WorkOrderUpdate(orderDetail as OrderDetail);
+                mainWindow.Show();
+            }
         }
 
         private void btnRemoveWorkOrder_Click(object sender, RoutedEventArgs e) {
+            var selectedWorkOrder = GetSelectedWorkOrder();
+            if(selectedWorkOrder != null) {
+                service.RemoveWorkOrder(selectedWorkOrder as WorkOrder);
+                LoadWorkOrders();
+            }
+        }
 
+        private object GetSelectedWorkOrder() {
+            return dgWorkOrders.SelectedItem as WorkOrder;
+        }
+
+        private void LoadWorkOrders() {
+            WorkOrderService service = new WorkOrderService();
+            var workOrders = service.GetWorkOrders();
+            dgWorkOrders.ItemsSource = workOrders;
         }
     }
 }
