@@ -1,4 +1,4 @@
-﻿using EntitiesLayer.Entities;
+﻿using EntitiLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +42,6 @@ namespace DataAccessLayer.Repositories
         {
             var worker = new Worker
             {
-                //ID_worker = entity.ID_worker,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 UserName = entity.UserName,

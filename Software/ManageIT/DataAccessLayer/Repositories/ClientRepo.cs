@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.Models;
-using EntitiesLayer.Entities;
+using EntitiLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;

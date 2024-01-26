@@ -46,11 +46,9 @@ namespace DataAccessLayer
             {
                 return 0;
             }
-
-        public void SaveChanges()
-        {
-            Context.SaveChanges();
         }
+
+       
         public virtual void Dispose()
         {
             Context.Dispose();

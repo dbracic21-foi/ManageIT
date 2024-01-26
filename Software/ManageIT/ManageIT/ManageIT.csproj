@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="SideActivities\AddNewWorker.xaml.cs">
       <DependentUpon>AddNewWorker.xaml</DependentUpon>
+			</Compile>
 
     <Compile Include="SideActivities\ClientAdd.xaml.cs">
       <DependentUpon>ClientAdd.xaml</DependentUpon>
@@ -114,6 +115,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SideActivities\AddNewWorker.xaml">
+			  <SubType>Designer</SubType>
+	  <Generator>MSBuild:Compile</Generator>
+			</Page>
     <Page Include="SideActivities\ClientAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

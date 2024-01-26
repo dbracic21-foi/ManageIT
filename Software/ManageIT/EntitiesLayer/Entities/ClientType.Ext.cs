@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntitiesLayer.Entities
+namespace EntitiLayer.Entities
 {
     public partial class ClientType
     {
