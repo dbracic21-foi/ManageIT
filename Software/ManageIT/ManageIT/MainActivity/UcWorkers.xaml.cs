@@ -67,18 +67,24 @@ namespace ManageIT.MainActivity
         {
             var allWorkers = services.GetWorkers();
             dgUsers.ItemsSource = allWorkers;
+            HideColumns();
+
+
+
+
+
+
+        }
+        private void HideColumns()
+        {
             dgUsers.Columns[3].Visibility = Visibility.Hidden;
-            dgUsers.Columns[7].Visibility = Visibility.Hidden;
+            dgUsers.Columns[6].Visibility = Visibility.Hidden;
             dgUsers.Columns[8].Visibility = Visibility.Hidden;
             dgUsers.Columns[9].Visibility = Visibility.Hidden;
             dgUsers.Columns[10].Visibility = Visibility.Hidden;
             dgUsers.Columns[11].Visibility = Visibility.Hidden;
             dgUsers.Columns[12].Visibility = Visibility.Hidden;
             dgUsers.Columns[13].Visibility = Visibility.Hidden;
-
-
-
-
         }
    
 

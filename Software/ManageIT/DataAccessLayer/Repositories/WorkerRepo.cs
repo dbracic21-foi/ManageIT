@@ -47,6 +47,8 @@ namespace DataAccessLayer.Repositories
                 UserName = entity.UserName,
                 Password = entity.Password,
                 Email = entity.Email,
+                Id_type = 2
+
                
             };
             Entities.Add(worker);
