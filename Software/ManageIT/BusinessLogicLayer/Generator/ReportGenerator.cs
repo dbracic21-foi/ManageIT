@@ -10,15 +10,18 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace BusinessLogicLayer.Generator
 {
     public class ReportGenerator : IDocument
     {
         public ReportModel reportNew { get;  }
-        public ReportGenerator(ReportModel reportModel)
+        public List<ReportView> reportViewList { get; }
+        public ReportGenerator(ReportModel reportModel, List<ReportView> reportViewListFetched)
         {
             reportNew = reportModel;
+            reportViewList = reportViewListFetched;
         }
         public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
 
@@ -89,7 +92,8 @@ namespace BusinessLogicLayer.Generator
             {
                 table.ColumnsDefinition(columns =>
                 {
-                    columns.ConstantColumn(25);
+                    columns.RelativeColumn();
+                    columns.RelativeColumn();
                     columns.RelativeColumn();
                     columns.RelativeColumn();
                     columns.RelativeColumn();
@@ -111,19 +115,16 @@ namespace BusinessLogicLayer.Generator
                 QuestPDF.Infrastructure.IContainer CellStyle(QuestPDF.Infrastructure.IContainer styleContainer) => styleContainer.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
 
 
-                foreach (var item in reportNew.workOrderReport)
+                foreach (var item in reportViewList)
                 {
-                    var index = reportNew.workOrderReport.IndexOf(item);
+                    var index = reportViewList.IndexOf(item);
 
                     table.Cell().Element(CellStyle).Text($"{index}");
-                    table.Cell().Element(CellStyle).Text(item.OrderDetail.WorkType.Name);
-                    table.Cell().Element(CellStyle).Text($"{item.Worker.FirstName} {item.Worker.LastName}");
-                    if(item.OrderDetail.Client.ID_type == 1)
-                    {
-                        table.Cell().Element(CellStyle).Text($"{item.OrderDetail.Client.FirstName} {item.OrderDetail.Client.LastName}");
-                    }else table.Cell().Element(CellStyle).Text($"{item.OrderDetail.Client.CompanyName}");
-                    table.Cell().Element(CellStyle).Text($"{item.OrderDetail.Client.Client_Address}");
-                    table.Cell().Element(CellStyle).Text($"{item.DateCreated}");
+                    table.Cell().Element(CellStyle).Text($"{item.WorkType}");
+                    table.Cell().Element(CellStyle).Text($"{item.Worker}");
+                    table.Cell().Element(CellStyle).Text($"{item.Client}");
+                    table.Cell().Element(CellStyle).Text($"{item.Address}");
+                    table.Cell().Element(CellStyle).Text($"{item.Date}");
                 }
             });
         }
@@ -132,7 +133,7 @@ namespace BusinessLogicLayer.Generator
         {
             return new DocumentSettings
             {
-                ContentDirection = ContentDirection.LeftToRight
+                ContentDirection = QuestPDF.Infrastructure.ContentDirection.LeftToRight
             };
         }
     }
