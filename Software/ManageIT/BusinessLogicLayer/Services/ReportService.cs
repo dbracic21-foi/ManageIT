@@ -18,7 +18,7 @@ namespace BusinessLogicLayer.Services
         {
             reportNew = new ReportModel();
         }
-        public void CatchReportData(DateTime startDate, DateTime endDate, Worker creatorWorker, int ID_report)
+        public ReportModel CatchReportData(DateTime startDate, DateTime endDate, Worker creatorWorker, int ID_report)
         {
             using (var reportRepo = new ReportRepo())
             {
@@ -29,9 +29,9 @@ namespace BusinessLogicLayer.Services
                 reportNew.finishDate = endDate;
                 reportNew.creatorWorker = creatorWorker;
                 reportNew.workOrderReport = workOrdersByDate;
+
+                return reportNew;
             }  
         }
-
-        public virtual void PDFGenerator() { }
     }
 }

@@ -3,38 +3,138 @@ using DataAccessLayer.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
-using QuestPDF.Previewer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Generator
 {
-    public class ReportGenerator: ReportService
+    public class ReportGenerator : IDocument
     {
-        public override void PDFGenerator()
+        public ReportModel reportNew { get;  }
+        public ReportGenerator(ReportModel reportModel)
         {
-            Document.Create(container =>
-            {
-                container.Page(page =>
-                {
-                    page.Size(PageSizes.A4);
-                    page.MarginTop(1, Unit.Inch);
-                    page.MarginBottom(1, Unit.Inch);
-                    page.MarginLeft(0.75f, Unit.Inch);
-                    page.MarginRight(0.75f, Unit.Inch);
-                    page.DefaultTextStyle(x => x.FontSize(12).FontFamily(Fonts.Arial));
-
-                    page.Header().Text($"Report number: {reportNew.ID_Report}\n").ExtraBold().FontSize(24);
-                    /*page.Header().Text($"From: {reportNew.startDate}\t To: {reportNew.finishDate}\n");
-                    page.Header().Text($"Creator: {reportNew.creatorWorker.FirstName} {reportNew.creatorWorker.LastName}\n");*/
-
-                });
-            }).GeneratePdf("C:\\Users\\mdesa\\Documents\\Test\\test.pdf");
+            reportNew = reportModel;
         }
-         
+        public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
+
+        public void Compose(IDocumentContainer container)
+        {
+            container
+                .Page(page =>
+                {
+                    page.Margin(50);
+
+                    page.Header().Element(ComposeHeader);
+                    page.Content().Element(ComposeContent);
+
+                    page.Footer().AlignCenter().Text(text =>
+                    {
+                        text.CurrentPageNumber();
+                        text.Span(" / ");
+                        text.TotalPages();
+                    });
+                });
+        }
+
+        void ComposeHeader(QuestPDF.Infrastructure.IContainer container)
+        {
+            container.Row(row =>
+            {
+                row.RelativeItem().Column(column =>
+                {
+                    column
+                        .Item().Text($"Report #{reportNew.ID_Report}")
+                        .FontSize(20).SemiBold().FontColor(Colors.Blue.Medium);
+
+                    column.Item().Text(text =>
+                    {
+                        text.Span("First date: ").SemiBold();
+                        text.Span($"{reportNew.startDate:d}");
+                    });
+
+                    column.Item().Text(text =>
+                    {
+                        text.Span("Last date: ").SemiBold();
+                        text.Span($"{reportNew.finishDate:d}");
+                    });
+
+                    column.Item().Text(text =>
+                    {
+                        text.Span("Creator: ");
+                        text.Span($"{reportNew.creatorWorker.FirstName} {reportNew.creatorWorker.LastName}").Italic();
+                    });
+                });
+            });
+        }
+
+        void ComposeContent(QuestPDF.Infrastructure.IContainer container)
+        {
+            container.PaddingVertical(40).Column(column =>
+            {
+                column.Spacing(20);
+                column.Item().Element(ComposeTable);
+            });
+        }
+
+        void ComposeTable(QuestPDF.Infrastructure.IContainer container)
+        {
+            var headerStyle = TextStyle.Default.SemiBold();
+
+            container.Table(table =>
+            {
+                table.ColumnsDefinition(columns =>
+                {
+                    columns.ConstantColumn(25);
+                    columns.RelativeColumn();
+                    columns.RelativeColumn();
+                    columns.RelativeColumn();
+                    columns.RelativeColumn();
+                });
+
+                table.Header(header =>
+                {
+                    header.Cell().Text("#");
+                    header.Cell().Text("Work type").Style(headerStyle);
+                    header.Cell().Text("Worker").Style(headerStyle);
+                    header.Cell().Text("Client").Style(headerStyle);
+                    header.Cell().Text("Address").Style(headerStyle);
+                    header.Cell().Text("Date").Style(headerStyle);
+
+                    header.Cell().ColumnSpan(6).PaddingTop(5).BorderBottom(1).BorderColor(Colors.Black);
+                });
+
+                QuestPDF.Infrastructure.IContainer CellStyle(QuestPDF.Infrastructure.IContainer styleContainer) => styleContainer.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
+
+
+                foreach (var item in reportNew.workOrderReport)
+                {
+                    var index = reportNew.workOrderReport.IndexOf(item);
+
+                    table.Cell().Element(CellStyle).Text($"{index}");
+                    table.Cell().Element(CellStyle).Text(item.OrderDetail.WorkType.Name);
+                    table.Cell().Element(CellStyle).Text($"{item.Worker.FirstName} {item.Worker.LastName}");
+                    if(item.OrderDetail.Client.ID_type == 1)
+                    {
+                        table.Cell().Element(CellStyle).Text($"{item.OrderDetail.Client.FirstName} {item.OrderDetail.Client.LastName}");
+                    }else table.Cell().Element(CellStyle).Text($"{item.OrderDetail.Client.CompanyName}");
+                    table.Cell().Element(CellStyle).Text($"{item.OrderDetail.Client.Client_Address}");
+                    table.Cell().Element(CellStyle).Text($"{item.DateCreated}");
+                }
+            });
+        }
+
+        public DocumentSettings GetSettings()
+        {
+            return new DocumentSettings
+            {
+                ContentDirection = ContentDirection.LeftToRight
+            };
+        }
     }
 }
+

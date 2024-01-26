@@ -1,6 +1,8 @@
 ﻿using BusinessLogicLayer.Generator;
 using BusinessLogicLayer.Services;
+using DataAccessLayer.Models;
 using EntitiesLayer.Entities;
+using QuestPDF.Fluent;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,6 @@ namespace ManageIT.MainActivity
     public partial class UcReports : UserControl
     {
         Worker currentWorker = new Worker();
-        ReportService reportService = new ReportGenerator();
         public UcReports(Worker worker)
         {
             currentWorker = worker;
@@ -35,8 +36,12 @@ namespace ManageIT.MainActivity
         {
             DateTime fromDate = (DateTime)dtpStartDate.SelectedDate;
             DateTime endDate = (DateTime)dtpEndDate.SelectedDate;
-            reportService.CatchReportData(fromDate, endDate, currentWorker, 1);
-            reportService.PDFGenerator();
+            var reportService = new ReportService();
+            ReportModel reportModel = new ReportModel();
+            reportModel = reportService.CatchReportData(fromDate, endDate, currentWorker, 1);
+
+            var report = new ReportGenerator(reportModel);
+            report.GeneratePdf("C:\\Users\\mdesa\\Documents\\Test\\test.pdf");
         }
     }
 }
