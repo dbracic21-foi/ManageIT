@@ -42,12 +42,13 @@ namespace DataAccessLayer.Repositories
         {
             var worker = new Worker
             {
-                //ID_worker = entity.ID_worker,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 UserName = entity.UserName,
                 Password = entity.Password,
                 Email = entity.Email,
+                Id_type = 2
+
                
             };
             Entities.Add(worker);
