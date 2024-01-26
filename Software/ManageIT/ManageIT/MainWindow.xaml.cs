@@ -21,7 +21,7 @@ namespace ManageIT {
     public partial class MainWindow : Window {
 
         public bool IsAdmin { get; private set; }
-
+        public Worker currentWorker { get; set; }
        
         public MainWindow()
         {
@@ -30,6 +30,7 @@ namespace ManageIT {
         }
         public MainWindow(Worker worker) : this()
         {
+            currentWorker = worker;
             if (worker.Id_type == 1)
             {
                 IsAdmin = true;
@@ -69,12 +70,17 @@ namespace ManageIT {
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
         private void btnWorkers_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            contentPanel.Content = new MainActivity.UcReports(currentWorker);
         }
     }
 }
