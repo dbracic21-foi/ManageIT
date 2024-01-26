@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-      
+
 
         <DataGrid x:Name="dgUsers" AutoGenerateColumns="True" ItemsSource="{Binding Users}" 
                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="dgUsers_SelectionChanged" 
@@ -25,7 +25,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Grid.Row="2">
             <Button Content="Add New User" Width="120" Height="25" Margin="0,0,10,0" Click="btnAddNewUser_Click"/>
-            <Button Content="Delete a User" Width="120" Height="25" Click="btnDeleteUser_Click"/> 
+            <Button Content="Delete a User" Width="120" Height="25" Click="btnDeleteUser_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
