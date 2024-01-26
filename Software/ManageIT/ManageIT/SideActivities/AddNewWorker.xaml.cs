@@ -47,7 +47,7 @@ namespace ManageIT.SideActivities
                     MessageBox.Show("Worker was not added!");
                 }
 
-                Close();
+                this.Close();
             }
             else
             {

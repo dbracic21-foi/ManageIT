@@ -33,8 +33,9 @@ namespace ManageIT.MainActivity
         {
           AddNewWorker addNewWorker = new AddNewWorker();
             addNewWorker.Show();
-            GetAllWorkers();
-            ShowAllWorkers();
+           var allworkers = services.GetWorkers();
+            dgUsers.ItemsSource = null;
+            dgUsers.ItemsSource = allworkers;
            
         }
 
@@ -48,7 +49,6 @@ namespace ManageIT.MainActivity
                 {
                     MessageBox.Show("Application failed to remove selected worker!");
                 }
-                GetAllWorkers();
                 ShowAllWorkers();
 
             }
@@ -80,10 +80,7 @@ namespace ManageIT.MainActivity
 
 
         }
-        private void GetAllWorkers()
-        {
-            var allWorkers = services.GetWorkers();
-        }
+   
 
         private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
