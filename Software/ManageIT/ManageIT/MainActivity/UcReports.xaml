@@ -14,10 +14,32 @@
             <DatePicker x:Name="dtpEndDate" Width="150" Margin="5"/>
             <Button x:Name="btnGenerateReport" Content="Generate report" Width="100" Height="30" Margin="5" Click="btnGenerateReport_Click"/>
         </StackPanel>
-        <ItemsControl
-            Grid.Row="1"
-            Margin="0,20,0,0"
-            DockPanel.Dock="Bottom">
+        <ItemsControl Grid.Row="1" Margin="0,20,0,0" DockPanel.Dock="Bottom" ItemsSource="{Binding reportList}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="LightGray" BorderThickness="1" Margin="5" Padding="10" CornerRadius="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding}" VerticalAlignment="Center"/>
+
+                            <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button x:Name="btnDeleteReport"  Click="btnDeleteReport_Click" Tag="{Binding}" Content="Delete" Margin="5" Padding="10" BorderThickness="0" Background="Tomato" Foreground="White" />
+                                <Button x:Name="btnOpenReport" Click="btnOpenReport_Click" Tag="{Binding}" Content="Open" Margin="5" Padding="10" BorderThickness="0" Background="ForestGreen" Foreground="White"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
         </ItemsControl>
+
     </DockPanel>
 </UserControl>

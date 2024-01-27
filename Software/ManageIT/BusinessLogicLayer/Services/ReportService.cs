@@ -4,6 +4,8 @@ using DataAccessLayer.Repositories;
 using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,6 @@ namespace BusinessLogicLayer.Services
     public class ReportService
     {
         public ReportModel reportNew { get; set; }
-
         public ReportService()
         {
             reportNew = new ReportModel();
@@ -65,6 +66,73 @@ namespace BusinessLogicLayer.Services
                 reportNew.workOrderReport = workOrdersByDate;
 
                 return reportNew;
+            }
+        }
+
+        public List<string> GetAllReports()
+        {
+            if (Directory.Exists("../../../BusinessLogicLayer/Reports"))
+            {
+                string[] fileNames = Directory.GetFiles("../../../BusinessLogicLayer/Reports");
+
+                // Create a list to store the file names
+                List<string> fileList = new List<string>();
+                foreach (string fileName in fileNames)
+                {
+                    fileList.Add(Path.GetFileName(fileName));
+                }
+
+                Console.WriteLine("List of file names:");
+                return fileList;
+            }
+            else
+            {
+                Console.WriteLine("The folder does not exist.");
+                return null;
+            } 
+        }
+
+        public bool deleteReport(string reportName)
+        {
+            string filePath = Path.Combine("../../../BusinessLogicLayer/Reports", reportName);
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    File.Delete(filePath);
+                    Console.WriteLine($"Report '{reportName}' deleted successfully.");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error deleting report '{reportName}': {ex.Message}");
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Report '{reportName}' does not exist.");
+                return false;
+            }
+        }
+
+        public void OpenReport(string reportName)
+        {
+            string filePath = Path.Combine("../../../BusinessLogicLayer/Reports", reportName);
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    Process.Start(filePath);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error opening report '{reportName}': {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Report '{reportName}' does not exist.");
             }
         }
     }
