@@ -30,12 +30,20 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
+      
         public IQueryable<int> GetNumberOfProducts(Worker worker)
         {
             var query = from w in Entities
                         where w.ID_worker == worker.ID_worker
                         select w.Workers.Count;
 
+            return query;
+        }
+        public IQueryable<Worker> GetWorkerByID(int id)
+        {
+            var query = from w in Entities
+                        where w.ID_worker == id
+                        select w;
             return query;
         }
         public override int Add(Worker entity, bool saveChanges = true)
@@ -62,6 +70,29 @@ namespace DataAccessLayer.Repositories
                 return 0;
             }
         }
+
+        public override int Update(Worker entity, bool saveChanges = true)
+        {
+            var worker = Entities.SingleOrDefault(w => w.ID_worker == entity.ID_worker);
+            worker.FirstName = entity.FirstName;
+            worker.LastName = entity.LastName;
+            worker.UserName = entity.UserName;
+            worker.Password = entity.Password;
+            worker.Email = entity.Email;
+            worker.Gender = entity.Gender;
+
+            if (saveChanges)
+            {
+                return SaveChanges();
+            }
+            else
+            {
+                return 0;
+            }
+                
+
+        }
+
 
 
 

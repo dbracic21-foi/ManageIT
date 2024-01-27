@@ -93,5 +93,20 @@ namespace ManageIT.MainActivity
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgUsers.SelectedItem != null)
+            {
+                Worker selectedWorker = (Worker)dgUsers.SelectedItem;
+                int workerIdToUpdate = selectedWorker.ID_worker;
+
+               UpdateWorker updateWorker = new UpdateWorker(workerIdToUpdate);
+                updateWorker.Show();
+            }
+            else MessageBox.Show("You have to select a worker first!");
+           
+        }
+      
     }
 }

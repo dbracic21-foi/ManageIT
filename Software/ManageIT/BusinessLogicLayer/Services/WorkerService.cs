@@ -33,6 +33,15 @@ namespace BusinessLogicLayer.Services
                 return workerRepo.GetWorkers().ToList();
             }
         }
+        public Worker GetWorkersByID(int id)
+        {
+            using (var workerRepo = new WorkerRepo())
+            {
+                Worker worker = workerRepo.GetWorkerByID(id).FirstOrDefault();
+                return worker;
+            }
+        }
+       
         public bool RemoveWorker(Worker worker)
         {
             bool isSuccessful = false;
@@ -74,7 +83,17 @@ namespace BusinessLogicLayer.Services
                 isSuccessful = affectedRows > 0;
             }
             return isSuccessful;
-        }   
+        }
+        public bool UpdateWorker(Worker worker)
+        {
+            bool isSuccessful = false;
+            using (var workerRepo = new WorkerRepo())
+            {
+                int affectedRows = workerRepo.Update(worker);
+                isSuccessful = affectedRows > 0;
+            }
+            return isSuccessful;
+        }
 
      
 

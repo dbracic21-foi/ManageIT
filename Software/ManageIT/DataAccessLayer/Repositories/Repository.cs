@@ -53,6 +53,18 @@ namespace DataAccessLayer
                 return 0;
             }
         }
+        public virtual int Update(T entity, bool saveChanges = true)
+        {
+            Entities.Attach(entity);
+            Context.Entry(entity).State = EntityState.Modified;
+            if (saveChanges)
+            {
+                return SaveChanges();
+            } else
+            {
+                return 0;
+            }
+        }
 
         public virtual int SaveChanges() {
             return Context.SaveChanges();
