@@ -22,6 +22,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="1" Grid.Column="0" Content="Client:"/>
@@ -31,7 +32,8 @@
         <Label Grid.Row="5" Grid.Column="0" Content="Duration:"/>
         <Label Grid.Row="6" Grid.Column="0" Content="Worker:"/>
         <Label Grid.Row="7" Grid.Column="0" Content="Work type:"/>
-        
+        <Label Grid.Row="8" Grid.Column="0" Content="Email:"/>
+
 
 
         <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cmbClient" Margin="0,0,0,5" SelectionChanged="cmbClient_SelectionChanged"/>
@@ -39,8 +41,9 @@
         <DatePicker SelectedDateFormat="Long" Grid.Row="3" Grid.Column="1" x:Name="dateWorkOrder" Margin="0,0,0,5"/>
         <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtStartTime" Margin="0,0,0,5" Text="10:00:00"/>
         <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtTime" Margin="0,0,0,5" Text="02:00:00"/>
-        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="cmbWorker" Margin="0,0,0,5"/>
+        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="cmbWorker" Margin="0,0,0,5" SelectionChanged="cmbWorker_SelectionChanged"/>
         <ComboBox Grid.Row="7" Grid.Column="1" x:Name="cmbWorkType" Margin="0,0,0,5"/>
+        <TextBox Grid.Row="8" Grid.Column="1" x:Name="txtEmail" Margin="0,0,0,5"/>
 
         <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
             <Button x:Name="btnAdd" Content="Add" Margin="5" Width="120" Padding="10" Click="btnAdd_Click"/>

@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services {
     public class WorkOrderService {
+        private EmailService emailService = new EmailService();
         public bool AddWorkOrder(WorkOrder workOrder) {
             bool isSuccessful = false;
             using(var repo = new WorkOrderRepository()) {
                 int affectedRows = repo.Add(workOrder);
                 isSuccessful = affectedRows > 0;
+                SendNewWorkOrderEmail(workOrder);
+
+              
             }
             return isSuccessful;
         }
@@ -22,6 +26,51 @@ namespace BusinessLogicLayer.Services {
                 var workOrders = repo.GetAll().ToList();
                 return workOrders;
             }
+        }  private async void SendNewWorkOrderEmail(WorkOrder workOrder)
+        {
+            string toEmail = workOrder.Worker.Email;
+            string subject = "Novi radni nalog ! ";
+            string ime = workOrder.Worker.FirstName;
+            Console.WriteLine(ime);
+            string body = $"<br><br><strong>Poštovani {toEmail}</strong>,<br><br><strong>Novi radni nalog vam je dodijeljen</strong>";
+
+            if (workOrder.OrderDetail != null)
+            {
+                if (workOrder.OrderDetail.Client != null)
+                {
+                    body += $"<br><strong> Za klijenta: {workOrder.OrderDetail.Client.CompanyName}</strong>";
+                }
+
+                body += $".<br><br><strong>Detalji:</strong><br><strong>Vrijeme trajanja :</strong> {workOrder.OrderDetail.Duration}<br>";
+
+                if (workOrder.OrderDetail.WorkType != null)
+                {
+                    body += $" <br><strong>Tip čišćenja :</strong> {workOrder.OrderDetail.WorkType.Name}";
+                }
+
+                body += $"<br><strong>Datum:</strong> {workOrder.DateCreated}<br>";
+
+                if (!string.IsNullOrEmpty(workOrder.OrderDetail.Location))
+                {
+                    body += $"<br><strong>Na Lokaciji:</strong> {workOrder.OrderDetail.Location}<br>";
+                }
+                else
+                {
+                    body += "<br>";
+                }
+            }
+            else
+            {
+                body += ".<br><br><strong>Detalji nisu dostupni.</strong><br>";
+            }
+
+            body += "<br><strong>Srdačan pozdrav,<br>ManageIT</strong>";
+
+
+
+            Console.WriteLine($"Sending email to {toEmail}");
+
+           await emailService.SendEmail(toEmail, subject, body,true);
         }
 
         public bool RemoveWorkOrder(WorkOrder workOrder) {
@@ -40,4 +89,5 @@ namespace BusinessLogicLayer.Services {
             }
         }
     }
+      
 }
