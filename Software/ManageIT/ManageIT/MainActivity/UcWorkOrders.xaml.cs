@@ -76,6 +76,15 @@ namespace ManageIT.MainActivity {
             var workOrders = service.GetWorkOrders();
             dgWorkOrders.ItemsSource = workOrders;
             HideColumns();
+            DisplayNames();
+        }
+
+        private void DisplayNames() {
+            dgWorkOrders.Columns[0].Header = "ID of work order";
+            dgWorkOrders.Columns[1].Header = "Finished work order";
+            dgWorkOrders.Columns[2].Header = "Date of creation";
+            dgWorkOrders.Columns[4].Header = "ID of order detail related to the work order";
+            dgWorkOrders.Columns[7].Header = "Work order created by";
         }
 
         private void HideColumns() {
@@ -87,5 +96,6 @@ namespace ManageIT.MainActivity {
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
             LoadWorkOrders();
         }
+
     }
 }
