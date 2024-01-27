@@ -77,6 +77,9 @@ namespace ManageIT.SideActivities {
                 ID_Worker = id_worker,
                 DateCreated = DateTime.Now,
                 IsFinished = false,
+                Worker = new Worker {
+                    Email = txtEmail.Text,
+                }
             };
             var workOrderService = new WorkOrderService();
 
@@ -86,45 +89,7 @@ namespace ManageIT.SideActivities {
             } else {
                 MessageBox.Show("Please fill in all the fields!");
             }
-        }
-
-          
-                var orderDetail = new OrderDetail {
-                    Client = cmbClient.SelectedItem as Client,
-                    Worker = cmbWorker.SelectedItem as Worker,
-                    Location = txtLocation.Text,
-                    Date = CombineDateAndTime(dateWorkOrder.SelectedDate ?? DateTime.Now, TimeSpan.Parse(txtStartTime.Text)),
-                    WorkType = cmbWorkType.SelectedItem as WorkType,
-                    Duration = TimeSpan.Parse(txtTime.Text),
-
-                };
-
-
-                var orderDetailService = new OrderDetailService();
-                orderDetailService.AddOrderDetail(orderDetail);
-
-
-                var workOrder = new WorkOrder
-                {
-
-                    OrderDetail = orderDetail,
-                    ID_Worker = id_worker,
-                    DateCreated = DateTime.Now,
-                    IsFinished = false,
-                    Worker = new Worker
-                    {
-                        Email = txtEmail.Text,
-                    }
-                };
-                
-                     
-    
-
-            var workOrderService = new WorkOrderService();
-                workOrderService.AddWorkOrder(workOrder);
-            }
-        
-
+        }   
 
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
             Close();
@@ -152,3 +117,6 @@ namespace ManageIT.SideActivities {
         }
     }
 }
+
+
+

@@ -27,8 +27,6 @@ namespace DataAccessLayer.Repositories {
             workOrder.DateCreated = entity.DateCreated;
 
             workOrder.Id_Order_Details = orderDetail.Id_Order_Details;
-
-            workOrder.Id_Order_Details = orderDetail1.Id_Order_Details;
             workOrder.Worker.Email = worker.Email;
 
 
