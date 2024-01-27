@@ -19,17 +19,18 @@ namespace ManageIT.SideActivities
     /// <summary>
     /// Interaction logic for UpdateWorker.xaml
     /// </summary>
+    ///<remarks>Darijo Bračić </remarks>
     public partial class UpdateWorker : Window
     {
         WorkerService workerService = new WorkerService();
         public int selectedWorkerId { get; set; }
+        ///<remarks>Darijo Bračić </remarks>
         public UpdateWorker(int SelectWorkerID)
         {
             InitializeComponent();
             selectedWorkerId = SelectWorkerID;
-            MessageBox.Show(selectedWorkerId.ToString());
         }
-      
+        ///<remarks>Darijo Bračić </remarks>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             WorkerService workerService = new WorkerService();
@@ -42,7 +43,7 @@ namespace ManageIT.SideActivities
             passwordBox.Password = worker.Password;
 
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void btnAddWorker_Click(object sender, RoutedEventArgs e)
         {
             Worker updatedWorker = new Worker { 
@@ -58,7 +59,6 @@ namespace ManageIT.SideActivities
             if(workerService.UpdateWorker(updatedWorker))
             {
                 MessageBox.Show("Worker updated");
-                MessageBox.Show(updatedWorker.FirstName);
                 Close();
             }
             else
@@ -66,7 +66,7 @@ namespace ManageIT.SideActivities
                 MessageBox.Show("Worker not updated");
             }
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

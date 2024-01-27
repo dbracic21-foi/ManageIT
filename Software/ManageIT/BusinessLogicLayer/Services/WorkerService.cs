@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
+    ///<remarks>Darijo Bračić </remarks>
+
     public class WorkerService
     {
+        ///<remarks>Darijo Bračić </remarks>
         public List<Worker> GetWorkerByEmailAndPassword(string username, string password)
         {
             using (var workerRepo = new WorkerRepo())
@@ -17,6 +20,7 @@ namespace BusinessLogicLayer.Services
                 return workerRepo.GetWorkerByEmailAndPassword(username, password).ToList();
             }
         }
+        ///<remarks>Darijo Bračić </remarks>
         public Worker Authenticate(string username, string password)
         {
             using (var workerRepo = new WorkerRepo())
@@ -26,6 +30,7 @@ namespace BusinessLogicLayer.Services
                 return authenticatedWorker;
             }
         }
+                ///<remarks>Darijo Bračić </remarks>
         public List<Worker> GetWorkers()
         {
             using (var workerRepo = new WorkerRepo())
@@ -33,6 +38,7 @@ namespace BusinessLogicLayer.Services
                 return workerRepo.GetWorkers().ToList();
             }
         }
+        ///<remarks>Darijo Bračić </remarks>
         public Worker GetWorkersByID(int id)
         {
             using (var workerRepo = new WorkerRepo())
@@ -41,7 +47,8 @@ namespace BusinessLogicLayer.Services
                 return worker;
             }
         }
-       
+        ///<remarks>Darijo Bračić </remarks>
+
         public bool RemoveWorker(Worker worker)
         {
             bool isSuccessful = false;
@@ -57,6 +64,7 @@ namespace BusinessLogicLayer.Services
             return isSuccessful;
         }
 
+        ///<remarks>Darijo Bračić </remarks>
 
         private bool CheckIfWorkerCanBeRemoved(Worker worker)
         {
@@ -74,6 +82,7 @@ namespace BusinessLogicLayer.Services
                 }
             }
         }
+        ///<remarks>Darijo Bračić </remarks>
         public bool AddWorker(Worker worker)
         {
             bool isSuccessful = false;
@@ -84,6 +93,7 @@ namespace BusinessLogicLayer.Services
             }
             return isSuccessful;
         }
+        ///<remarks>Darijo Bračić </remarks>
         public bool UpdateWorker(Worker worker)
         {
             bool isSuccessful = false;

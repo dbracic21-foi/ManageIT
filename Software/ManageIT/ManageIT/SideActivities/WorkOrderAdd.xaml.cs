@@ -42,7 +42,7 @@ namespace ManageIT.SideActivities {
             var clients = clientService.GetClients();
             cmbClient.ItemsSource = clients;
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
           
                 var orderDetail = new OrderDetail {
@@ -96,7 +96,7 @@ namespace ManageIT.SideActivities {
         private DateTime CombineDateAndTime(DateTime date, TimeSpan time) {
             return date.Date + time;
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void cmbWorker_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedWorker = cmbWorker.SelectedItem as Worker;

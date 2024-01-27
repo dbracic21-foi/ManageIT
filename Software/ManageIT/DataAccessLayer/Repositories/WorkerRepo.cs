@@ -8,13 +8,15 @@ using DataAccessLayer;
 
 namespace DataAccessLayer.Repositories
 {
+    ///<remarks>Darijo Bračić </remarks>
     public class WorkerRepo : Repository<Worker>
     {
+        ///<remarks>Darijo Bračić </remarks>
         public WorkerRepo() : base(new ManageIT())
         {
 
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         public IQueryable<Worker> GetWorkerByEmailAndPassword(string username, string password)
         {
             var query = from w in Entities
@@ -23,6 +25,7 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
+        ///<remarks>Darijo Bračić </remarks>
         public IQueryable<Worker> GetWorkers()
         {
             var query = from w in Entities
@@ -30,7 +33,7 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         public IQueryable<int> GetNumberOfProducts(Worker worker)
         {
             var query = from w in Entities
@@ -39,6 +42,7 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
+        ///<remarks>Darijo Bračić </remarks>
         public IQueryable<Worker> GetWorkerByID(int id)
         {
             var query = from w in Entities
@@ -46,6 +50,7 @@ namespace DataAccessLayer.Repositories
                         select w;
             return query;
         }
+        ///<remarks>Darijo Bračić </remarks>
         public override int Add(Worker entity, bool saveChanges = true)
         {
             var worker = new Worker
@@ -70,7 +75,7 @@ namespace DataAccessLayer.Repositories
                 return 0;
             }
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         public override int Update(Worker entity, bool saveChanges = true)
         {
             var worker = Entities.SingleOrDefault(w => w.ID_worker == entity.ID_worker);
