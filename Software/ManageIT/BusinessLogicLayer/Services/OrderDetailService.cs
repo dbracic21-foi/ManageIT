@@ -16,5 +16,21 @@ namespace BusinessLogicLayer.Services {
             }
             return isSuccessful;
         }
+
+        public OrderDetail GetOrderDetail(int id) {
+            using (var repo = new OrderDetailsRepository()) {
+                var orderDetail = repo.GetOrderDetailById(id);
+                return orderDetail;
+            }
+        }
+
+        public bool UpdateOrderDetail(OrderDetail orderDetail) {
+            bool isSuccessful = false;
+            using (var repo = new OrderDetailsRepository()) {
+                int affectedRows = repo.Update(orderDetail);
+                isSuccessful = affectedRows > 0;
+            }
+            return isSuccessful;
+        }
     }
 }
