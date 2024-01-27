@@ -36,6 +36,7 @@ namespace ManageIT.MainActivity
            var allworkers = services.GetWorkers();
             dgUsers.ItemsSource = null;
             dgUsers.ItemsSource = allworkers;
+            HideColumns();
            
         }
 

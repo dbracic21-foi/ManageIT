@@ -47,6 +47,7 @@ namespace DataAccessLayer.Repositories
                 UserName = entity.UserName,
                 Password = entity.Password,
                 Email = entity.Email,
+                Gender = entity.Gender,
                 Id_type = 2
 
                
