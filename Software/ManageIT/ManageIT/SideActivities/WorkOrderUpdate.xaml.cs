@@ -30,6 +30,11 @@ namespace ManageIT.SideActivities {
             txtStartTime.Text = orderDetail.Date.ToString();
             txtTime.Text = orderDetail.Duration.ToString();
             txtLocation.IsEnabled = false;
+            txtStartTime.IsEnabled = false;
+            txtTime.IsEnabled = false;
+            cmbClient.IsEnabled = false;
+            cmbWorker.IsEnabled = false;
+            cmbWorkType.IsEnabled = false;
 
             LoadClients();
             SelectClient(orderDetail.ID_Client);
@@ -85,23 +90,6 @@ namespace ManageIT.SideActivities {
             var clientService = new ClientService();
             var clients = clientService.GetClients();
             cmbClient.ItemsSource = clients;
-        }
-
-        private void btnSaveChanges_Click(object sender, RoutedEventArgs e) {
-            var client = cmbClient.SelectedItem as Client;
-            var worker = cmbWorker.SelectedItem as Worker;
-            var workType = cmbWorkType.SelectedItem as WorkType;
-
-            orderDetail.Client = client;
-            orderDetail.WorkType = workType;
-            orderDetail.Worker = worker;
-            orderDetail.Location = txtLocation.Text;
-            orderDetail.Duration = TimeSpan.Parse(txtTime.Text);
-            orderDetail.Date = CombineDateAndTime(dateWorkOrder.SelectedDate ?? DateTime.Now, TimeSpan.Parse(txtStartTime.Text));
-
-            var detailService = new OrderDetailService();
-            detailService.UpdateOrderDetail(orderDetail);
-            Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
