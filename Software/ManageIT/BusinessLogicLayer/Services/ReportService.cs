@@ -20,17 +20,24 @@ namespace BusinessLogicLayer.Services
         {
             reportNew = new ReportModel();
         }
-        public List<ReportView> DefineListItem(DateTime startDate, DateTime endDate, Worker creatorWorker, int ID_report)
+        public List<ReportView> DefineListItem(DateTime startDate, DateTime endDate, Worker creatorWorker, int ID_report, int ID_Worker)
         {
             using (var reportRepo = new ReportRepo())
             {
-                List<WorkOrder> workOrdersByDate = new List<WorkOrder>();
-                workOrdersByDate = reportRepo.GetWorkOrderByDate(startDate, endDate).ToList();
+                List<WorkOrder> workOrders = new List<WorkOrder>();
+                if (ID_Worker == 0)
+                {
+                    workOrders = reportRepo.GetWorkOrderByDate(startDate, endDate).ToList();
+                }
+                else
+                {
+                    workOrders = reportRepo.GetWorkOrdersByDateAndWorker(startDate, endDate, ID_Worker).ToList();
+                }
                 reportNew.ID_Report = ID_report;
                 reportNew.startDate = startDate;
                 reportNew.finishDate = endDate;
                 reportNew.creatorWorker = creatorWorker;
-                reportNew.workOrderReport = workOrdersByDate;
+                reportNew.workOrderReport = workOrders;
 
                 List<ReportView> reportViewList = new List<ReportView>();
 
@@ -43,7 +50,7 @@ namespace BusinessLogicLayer.Services
                         reportLine.Client=$"{item.OrderDetail.Client.FirstName} {item.OrderDetail.Client.LastName}";
                     }
                     else reportLine.Client = $"{item.OrderDetail.Client.CompanyName}";
-                    reportLine.Worker = $"{item.Worker.FirstName} {item.Worker.LastName}";
+                    reportLine.Worker = $"{item.OrderDetail.Worker.FirstName} {item.OrderDetail.Worker.LastName}";
                     reportLine.Address = $"{item.OrderDetail.Client.Client_Address}";
                     reportLine.Date = $"{item.DateCreated}";
                     reportViewList.Add(reportLine);
@@ -53,17 +60,23 @@ namespace BusinessLogicLayer.Services
             }  
         }
 
-        public ReportModel FillDataToModel(DateTime startDate, DateTime endDate, Worker creatorWorker, int ID_report)
+        public ReportModel FillDataToModel(DateTime startDate, DateTime endDate, Worker creatorWorker, int ID_report, int ID_worker)
         {
             using (var reportRepo = new ReportRepo())
             {
-                List<WorkOrder> workOrdersByDate = new List<WorkOrder>();
-                workOrdersByDate = reportRepo.GetWorkOrderByDate(startDate, endDate).ToList();
+                List<WorkOrder> workOrders = new List<WorkOrder>();
+                if(ID_worker == 0)
+                {
+                    workOrders = reportRepo.GetWorkOrderByDate(startDate, endDate).ToList();
+                }else
+                {
+                    workOrders = reportRepo.GetWorkOrdersByDateAndWorker(startDate, endDate, ID_worker).ToList();
+                }
                 reportNew.ID_Report = ID_report;
                 reportNew.startDate = startDate;
                 reportNew.finishDate = endDate;
                 reportNew.creatorWorker = creatorWorker;
-                reportNew.workOrderReport = workOrdersByDate;
+                reportNew.workOrderReport = workOrders;
 
                 return reportNew;
             }

@@ -48,6 +48,7 @@
     <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\Receipt.cs" />
     <Compile Include="Entities\Worker.cs" />
+    <Compile Include="Entities\Worker.Ext.cs" />
     <Compile Include="Entities\WorkerType.cs" />
     <Compile Include="Entities\WorkOrder.cs" />
     <Compile Include="Entities\WorkType.cs" />

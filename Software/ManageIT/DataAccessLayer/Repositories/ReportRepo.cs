@@ -23,5 +23,16 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
+
+        public IQueryable<WorkOrder> GetWorkOrdersByDateAndWorker(DateTime startDate, DateTime finishDate, int id)
+        {
+            var query = from wo in Entities
+                        where wo.OrderDetail.ID_Worker == id &&
+                              wo.DateCreated >= startDate && wo.DateCreated <= finishDate
+                        select wo;
+
+            return query;
+
+        }
     }
 }

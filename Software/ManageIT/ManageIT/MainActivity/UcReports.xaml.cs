@@ -21,6 +21,7 @@ namespace ManageIT.MainActivity
         public List<string> reportList { get; set; }
         Worker currentWorker = new Worker();
         ReportService reportService = new ReportService();
+        WorkerService workerService = new WorkerService();
         public UcReports(Worker worker)
         {
             reportList = reportService.GetAllReports();
@@ -28,21 +29,30 @@ namespace ManageIT.MainActivity
 
             DataContext = this;
             InitializeComponent();
+            LoadWorkers();
         }
 
         private void btnGenerateReport_Click(object sender, RoutedEventArgs e)
         {
+            int ID_Worker = 0;
+            Worker selectedWorker = cmbWorkers.SelectedItem as Worker;
+            if(selectedWorker != null)
+            {
+                ID_Worker = selectedWorker.ID_worker;
+            }
             DateTime fromDate = (DateTime)dtpStartDate.SelectedDate;
             DateTime endDate = (DateTime)dtpEndDate.SelectedDate;
             List<ReportView> reportViewList = new List<ReportView>();
             ReportModel reportModel = new ReportModel();
-            reportViewList = reportService.DefineListItem(fromDate, endDate, currentWorker, 1);
-            reportModel = reportService.FillDataToModel(fromDate, endDate, currentWorker, 1);
+            reportViewList = reportService.DefineListItem(fromDate, endDate, currentWorker, 1, ID_Worker);
+            reportModel = reportService.FillDataToModel(fromDate, endDate, currentWorker, 1, ID_Worker);
 
             var report = new ReportGenerator(reportModel, reportViewList);
             string formattedStartDate = fromDate.ToString("d.M.yyyy");
             string formattedFinishDate = endDate.ToString("d.M.yyyy");
-            var fileName = $"Report_{formattedStartDate}_{formattedFinishDate}.pdf";
+            string date = DateTime.Now.ToString("d.M.yyyy");
+            string time = DateTime.Now.ToString("HH.mm");
+            var fileName = $"Report_IDWorker-{ID_Worker}_{date}_{time}_{formattedStartDate}_{formattedFinishDate}.pdf";
             string filePath = Path.Combine("../../../BusinessLogicLayer/Reports", fileName);
             report.GeneratePdf(filePath);;
         }
@@ -64,6 +74,12 @@ namespace ManageIT.MainActivity
                 MessageBox.Show("Succesfully deleted report!");
             }
             else MessageBox.Show("There are some problems. Plesae contact the IT support.");
+        }
+
+        private void LoadWorkers()
+        {
+            var workersForReport = workerService.GetAllWorkers();
+            cmbWorkers.ItemsSource = workersForReport;
         }
     }
 }
