@@ -51,7 +51,11 @@ namespace ManageIT.SideActivities {
                 Date = CombineDateAndTime(dateWorkOrder.SelectedDate ?? DateTime.Now, TimeSpan.Parse(txtStartTime.Text)),
                 WorkType = cmbWorkType.SelectedItem as WorkType,
                 Duration = TimeSpan.Parse(txtTime.Text),
+
             };
+            EmailService emailService = new EmailService();
+            emailService.SendEmail(orderDetail.Worker.Email, "New Work Order", "You have a new work order");
+            MessageBox.Show("Email sent to worker",orderDetail.Worker.Email);
 
             var orderDetailService = new OrderDetailService();
             orderDetailService.AddOrderDetail(orderDetail);
@@ -61,7 +65,13 @@ namespace ManageIT.SideActivities {
                 ID_Worker = id_worker,
                 DateCreated = DateTime.Now,
                 IsFinished = false,
+                Worker = new Worker
+                {
+                    Email = txtEmail.Text
+                }
             };
+
+
             var workOrderService = new WorkOrderService();
             workOrderService.AddWorkOrder(workOrder);
         }
