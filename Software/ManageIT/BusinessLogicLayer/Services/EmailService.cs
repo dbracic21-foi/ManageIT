@@ -10,7 +10,7 @@ namespace BusinessLogicLayer.Services
 {
     public class EmailService
     {
-        public async Task  SendEmail(string to, string subject, string body)
+        public async Task  SendEmail(string to, string subject, string body, bool IsBodyHTML)
         {
             try
             {
@@ -30,6 +30,7 @@ namespace BusinessLogicLayer.Services
                     mailMessage.To.Add(to);
                     mailMessage.Subject = subject;
                     mailMessage.Body = body;
+                    mailMessage.IsBodyHtml = true;
 
                     client.SendCompleted += (sender, e) => {
                         if (e.Cancelled)

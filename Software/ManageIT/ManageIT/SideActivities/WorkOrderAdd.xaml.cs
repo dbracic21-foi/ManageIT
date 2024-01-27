@@ -44,37 +44,42 @@ namespace ManageIT.SideActivities {
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
-            var orderDetail = new OrderDetail {
-                Client = cmbClient.SelectedItem as Client,
-                Worker = cmbWorker.SelectedItem as Worker,
-                Location = txtLocation.Text,
-                Date = CombineDateAndTime(dateWorkOrder.SelectedDate ?? DateTime.Now, TimeSpan.Parse(txtStartTime.Text)),
-                WorkType = cmbWorkType.SelectedItem as WorkType,
-                Duration = TimeSpan.Parse(txtTime.Text),
+          
+                var orderDetail = new OrderDetail {
+                    Client = cmbClient.SelectedItem as Client,
+                    Worker = cmbWorker.SelectedItem as Worker,
+                    Location = txtLocation.Text,
+                    Date = CombineDateAndTime(dateWorkOrder.SelectedDate ?? DateTime.Now, TimeSpan.Parse(txtStartTime.Text)),
+                    WorkType = cmbWorkType.SelectedItem as WorkType,
+                    Duration = TimeSpan.Parse(txtTime.Text),
 
-            };
-            EmailService emailService = new EmailService();
-            emailService.SendEmail(orderDetail.Worker.Email, "New Work Order", "You have a new work order");
-            MessageBox.Show("Email sent to worker",orderDetail.Worker.Email);
+                };
 
-            var orderDetailService = new OrderDetailService();
-            orderDetailService.AddOrderDetail(orderDetail);
 
-            var workOrder = new WorkOrder {
-                OrderDetail = orderDetail,
-                ID_Worker = id_worker,
-                DateCreated = DateTime.Now,
-                IsFinished = false,
-                Worker = new Worker
+                var orderDetailService = new OrderDetailService();
+                orderDetailService.AddOrderDetail(orderDetail);
+
+
+                var workOrder = new WorkOrder
                 {
-                    Email = txtEmail.Text
-                }
-            };
 
+                    OrderDetail = orderDetail,
+                    ID_Worker = id_worker,
+                    DateCreated = DateTime.Now,
+                    IsFinished = false,
+                    Worker = new Worker
+                    {
+                        Email = txtEmail.Text,
+                    }
+                };
+                
+                     
+    
 
             var workOrderService = new WorkOrderService();
-            workOrderService.AddWorkOrder(workOrder);
-        }
+                workOrderService.AddWorkOrder(workOrder);
+            }
+        
 
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
             Console.WriteLine(CombineDateAndTime(dateWorkOrder.SelectedDate ?? DateTime.Now, TimeSpan.Parse(txtStartTime.Text)));
@@ -90,6 +95,15 @@ namespace ManageIT.SideActivities {
 
         private DateTime CombineDateAndTime(DateTime date, TimeSpan time) {
             return date.Date + time;
+        }
+
+        private void cmbWorker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedWorker = cmbWorker.SelectedItem as Worker;
+            if (selectedWorker != null)
+            {
+                txtEmail.Text = selectedWorker.Email;
+            }
         }
     }
 }

@@ -30,10 +30,47 @@ namespace BusinessLogicLayer.Services {
         {
             string toEmail = workOrder.Worker.Email;
             string subject = "Novi radni nalog ! ";
-            string body = $"Poštovani {workOrder.Worker.FirstName},\n\nNovi radni nalog vam je dodijeljen.\n\nDetalji:\nNalog ID: {workOrder.ID_Worker}\nDatum: {workOrder.DateCreated} \n\n Na lokaciji : {workOrder.OrderDetail.Location} \n\nSrdačan pozdrav,\nManageIT";
+            string ime = workOrder.Worker.FirstName;
+            Console.WriteLine(ime);
+            string body = $"<br><br><strong>Poštovani {toEmail}</strong>,<br><br><strong>Novi radni nalog vam je dodijeljen</strong>";
+
+            if (workOrder.OrderDetail != null)
+            {
+                if (workOrder.OrderDetail.Client != null)
+                {
+                    body += $"<br><strong> Za klijenta: {workOrder.OrderDetail.Client.CompanyName}</strong>";
+                }
+
+                body += $".<br><br><strong>Detalji:</strong><br><strong>Vrijeme trajanja :</strong> {workOrder.OrderDetail.Duration}<br>";
+
+                if (workOrder.OrderDetail.WorkType != null)
+                {
+                    body += $" <br><strong>Tip čišćenja :</strong> {workOrder.OrderDetail.WorkType.Name}";
+                }
+
+                body += $"<br><strong>Datum:</strong> {workOrder.DateCreated}<br>";
+
+                if (!string.IsNullOrEmpty(workOrder.OrderDetail.Location))
+                {
+                    body += $"<br><strong>Na Lokaciji:</strong> {workOrder.OrderDetail.Location}<br>";
+                }
+                else
+                {
+                    body += "<br>";
+                }
+            }
+            else
+            {
+                body += ".<br><br><strong>Detalji nisu dostupni.</strong><br>";
+            }
+
+            body += "<br><strong>Srdačan pozdrav,<br>ManageIT</strong>";
+
+
+
             Console.WriteLine($"Sending email to {toEmail}");
 
-           await emailService.SendEmail(toEmail, subject, body);
+           await emailService.SendEmail(toEmail, subject, body,true);
         }
     }
       

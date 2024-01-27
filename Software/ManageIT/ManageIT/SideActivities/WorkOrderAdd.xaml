@@ -41,7 +41,7 @@
         <DatePicker SelectedDateFormat="Long" Grid.Row="3" Grid.Column="1" x:Name="dateWorkOrder" Margin="0,0,0,5"/>
         <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtStartTime" Margin="0,0,0,5" Text="10:00:00"/>
         <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtTime" Margin="0,0,0,5" Text="02:00:00"/>
-        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="cmbWorker" Margin="0,0,0,5"/>
+        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="cmbWorker" Margin="0,0,0,5" SelectionChanged="cmbWorker_SelectionChanged"/>
         <ComboBox Grid.Row="7" Grid.Column="1" x:Name="cmbWorkType" Margin="0,0,0,5"/>
         <TextBox Grid.Row="8" Grid.Column="1" x:Name="txtEmail" Margin="0,0,0,5"/>
 
