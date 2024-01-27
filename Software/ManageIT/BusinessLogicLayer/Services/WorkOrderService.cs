@@ -33,5 +33,11 @@ namespace BusinessLogicLayer.Services {
             }
             return isSuccessful;
         }
+
+        public List<WorkOrder> GetWorkOrdersByName(string phrase) {
+            using (var repo = new WorkOrderRepository()) {
+                return repo.GetWorkOrderByName(phrase).ToList();
+            }
+        }
     }
 }

@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ManageIT.MainActivity"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <DockPanel>
         <Label Content="WORK ORDERS" Background="{StaticResource DodgerBlueColorBrush}" FontWeight="Bold" HorizontalContentAlignment="Center" DockPanel.Dock="Top" />
         <StackPanel x:Name="searchPanelWorkOrder" DockPanel.Dock="Top" Height="40" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Label Content="Search by name:" Height="25"></Label>
+            <Label Content="Search by name or last name:" Height="25"></Label>
             <TextBox x:Name="txtSearchWorkOrders" Height="25" Width="100" Margin="0,0,5,0"></TextBox>
             <Button x:Name="btnSearchWorkOrders" Content="Search" Height="25" Width="60" Margin="0,0,5,0" Click="btnSearchWorkOrders_Click"></Button>
             <Button x:Name="btnClearWorkOrders" Content="Clear" Height="25" Width="60" Margin="0,0,5,0" Click="btnClearWorkOrders_Click"></Button>

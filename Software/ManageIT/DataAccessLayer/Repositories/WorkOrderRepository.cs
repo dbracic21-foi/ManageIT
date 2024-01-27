@@ -35,6 +35,17 @@ namespace DataAccessLayer.Repositories {
             }
         }
 
-        
+        public override IQueryable<WorkOrder> GetAll() {
+            var query = from p in Entities.Include("Worker")
+                        select p;
+            return query;
+        }
+
+        public IQueryable<WorkOrder> GetWorkOrderByName(string phrase) {
+            var query = from p in Entities.Include("Worker")
+                        where p.Worker.FirstName.ToLower().Contains(phrase.ToLower()) || p.Worker.LastName.ToLower().Contains(phrase.ToLower())
+                        select p;
+            return query;
+        }
     }
 }

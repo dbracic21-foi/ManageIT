@@ -27,17 +27,19 @@ namespace ManageIT.MainActivity {
         public UcWorkOrders(int id_worker) {
             ID_Worker = id_worker;
             InitializeComponent();
-            LoadWorkOrders();
         }
 
         
 
         private void btnSearchWorkOrders_Click(object sender, RoutedEventArgs e) {
-
+            string phrase = txtSearchWorkOrders.Text;
+            var workOrders = service.GetWorkOrdersByName(phrase);
+            dgWorkOrders.ItemsSource = workOrders;
         }
 
         private void btnClearWorkOrders_Click(object sender, RoutedEventArgs e) {
-
+            txtSearchWorkOrders.Clear();
+            LoadWorkOrders();
         }
 
         private void btnAddWorkOrder_Click(object sender, RoutedEventArgs e) {
@@ -47,11 +49,13 @@ namespace ManageIT.MainActivity {
 
         private void btnUpdateWorkOrder_Click(object sender, RoutedEventArgs e) {
             var selectedWorkOrder = GetSelectedWorkOrder() as WorkOrder;
+            if(selectedWorkOrder != null) { 
             var selectedOrderDetail = selectedWorkOrder.Id_Order_Details;
             var orderDetail = OrderDetailService.GetOrderDetail(selectedOrderDetail) as OrderDetail;
             if(selectedWorkOrder != null) {
                 WorkOrderUpdate mainWindow = new WorkOrderUpdate(orderDetail as OrderDetail);
                 mainWindow.Show();
+            }
             }
         }
 
@@ -71,6 +75,17 @@ namespace ManageIT.MainActivity {
             WorkOrderService service = new WorkOrderService();
             var workOrders = service.GetWorkOrders();
             dgWorkOrders.ItemsSource = workOrders;
+            HideColumns();
+        }
+
+        private void HideColumns() {
+            dgWorkOrders.Columns[5].Visibility = Visibility.Hidden;
+            dgWorkOrders.Columns[6].Visibility = Visibility.Hidden;
+            dgWorkOrders.Columns[3].Visibility = Visibility.Hidden;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e) {
+            LoadWorkOrders();
         }
     }
 }
