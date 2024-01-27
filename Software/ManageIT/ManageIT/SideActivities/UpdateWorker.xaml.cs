@@ -21,6 +21,7 @@ namespace ManageIT.SideActivities
     /// </summary>
     public partial class UpdateWorker : Window
     {
+        WorkerService workerService = new WorkerService();
         public int selectedWorkerId { get; set; }
         public UpdateWorker(int SelectWorkerID)
         {
@@ -47,18 +48,18 @@ namespace ManageIT.SideActivities
             Worker updatedWorker = new Worker { 
                 FirstName = txtFirstName.Text,
                 LastName = txtLastName.Text,
-                Email = txtEmail.Text.ToString(),
+                Email = txtEmail.Text,
                 Gender = txtGender.Text,
                 UserName = txtUsername.Text,
-                Password = passwordBox.Password
+                Password = passwordBox.Password,
             
             
             };
-            WorkerService workerService = new WorkerService();
             if(workerService.UpdateWorker(updatedWorker))
             {
                 MessageBox.Show("Worker updated");
-                this.Close();
+                MessageBox.Show(updatedWorker.FirstName);
+                Close();
             }
             else
             {

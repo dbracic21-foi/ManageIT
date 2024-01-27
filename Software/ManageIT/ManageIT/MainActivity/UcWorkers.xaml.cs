@@ -103,8 +103,11 @@ namespace ManageIT.MainActivity
 
                UpdateWorker updateWorker = new UpdateWorker(workerIdToUpdate);
                 updateWorker.Show();
+                ShowAllWorkers();
+                HideColumns();
             }
             else MessageBox.Show("You have to select a worker first!");
+
            
         }
       

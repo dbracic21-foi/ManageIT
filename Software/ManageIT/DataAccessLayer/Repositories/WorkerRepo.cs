@@ -14,7 +14,7 @@ namespace DataAccessLayer.Repositories
         {
 
         }
-        
+
         public IQueryable<Worker> GetWorkerByEmailAndPassword(string username, string password)
         {
             var query = from w in Entities
@@ -30,7 +30,7 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
-      
+
         public IQueryable<int> GetNumberOfProducts(Worker worker)
         {
             var query = from w in Entities
@@ -58,7 +58,7 @@ namespace DataAccessLayer.Repositories
                 Gender = entity.Gender,
                 Id_type = 2
 
-               
+
             };
             Entities.Add(worker);
             if (saveChanges)
@@ -74,27 +74,29 @@ namespace DataAccessLayer.Repositories
         public override int Update(Worker entity, bool saveChanges = true)
         {
             var worker = Entities.SingleOrDefault(w => w.ID_worker == entity.ID_worker);
-            worker.FirstName = entity.FirstName;
-            worker.LastName = entity.LastName;
-            worker.UserName = entity.UserName;
-            worker.Password = entity.Password;
-            worker.Email = entity.Email;
-            worker.Gender = entity.Gender;
 
-            if (saveChanges)
+            if (worker != null)
             {
-                return SaveChanges();
-            }
-            else
-            {
-                return 0;
-            }
-                
+                worker.FirstName = entity.FirstName;
+                worker.LastName = entity.LastName;
+                worker.UserName = entity.UserName;
+                worker.Email = entity.Email;
+                worker.Gender = entity.Gender;
+                worker.Password = entity.Password;
 
+                if (saveChanges)
+                {
+                    return SaveChanges();
+                }
+            }
+
+            return 0;
         }
+
 
 
 
 
     }
 }
+

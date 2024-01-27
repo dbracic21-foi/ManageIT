@@ -55,16 +55,24 @@ namespace DataAccessLayer
         }
         public virtual int Update(T entity, bool saveChanges = true)
         {
-            Entities.Attach(entity);
+            // Attach the entity if it's not already attached
+            if (Context.Entry(entity).State == EntityState.Detached)
+            {
+                Context.Set<T>().Attach(entity);
+            }
+
             Context.Entry(entity).State = EntityState.Modified;
+
             if (saveChanges)
             {
                 return SaveChanges();
-            } else
+            }
+            else
             {
                 return 0;
             }
         }
+
 
         public virtual int SaveChanges() {
             return Context.SaveChanges();
