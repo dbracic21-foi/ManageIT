@@ -92,7 +92,6 @@ namespace BusinessLogicLayer.Generator
 
             container.Table(table =>
             {
-                table.
                 table.ColumnsDefinition(columns =>
                 {
                     columns.RelativeColumn(5);

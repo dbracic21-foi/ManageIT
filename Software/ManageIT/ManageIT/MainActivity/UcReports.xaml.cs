@@ -21,12 +21,14 @@ namespace ManageIT.MainActivity
     /// </summary>
     public partial class UcReports : UserControl
     {
+        private int ID_Worker { get; set; }
         public ObservableCollection<string> ReportList { get; set; }
         Worker currentWorker = new Worker();
         ReportService reportService = new ReportService();
         WorkerService workerService = new WorkerService();
         public UcReports(Worker worker)
         {
+            ID_Worker = 0;
             DataContext = this;
             ReportList = new ObservableCollection<string>(reportService.GetAllReports());
             currentWorker = worker;
@@ -42,7 +44,6 @@ namespace ManageIT.MainActivity
         }
         private void btnGenerateReport_Click(object sender, RoutedEventArgs e)
         {
-            int ID_Worker = 0;
             Worker selectedWorker = cmbWorkers.SelectedItem as Worker;
             if(selectedWorker != null)
             {
@@ -109,6 +110,7 @@ namespace ManageIT.MainActivity
         {
             cmbWorkers.IsEnabled = false;
             cmbWorkers.Background = System.Windows.Media.Brushes.Gray;
+            ID_Worker = 0;
         }
 
         private void chkSelectAll_Unchecked(object sender, RoutedEventArgs e)
