@@ -1,4 +1,5 @@
-﻿using EntitiesLayer.Entities;
+﻿using BusinessLogicLayer.Services;
+using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
@@ -31,10 +32,37 @@ namespace ManageIT.MainActivity {
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
-            displayDays();
+            displayDays(givenWorker);
+            HideComboBox();
+            LoadWorkers();
+            SelectWorker(givenWorker.ID_worker);
         }
 
-        private void displayDays() {
+        private void HideComboBox() {
+            if(givenWorker.Id_type == 1) {
+                cmbWorker.Visibility = Visibility.Visible;
+            } else {
+                cmbWorker.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void SelectWorker(int? iD_Worker) {
+            for (int i = 0; i < cmbWorker.Items.Count; i++) {
+                Worker c = cmbWorker.Items[i] as Worker;
+                if (c.ID_worker == iD_Worker) {
+                    cmbWorker.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void LoadWorkers() {
+            var workerService = new WorkerService();
+            var workers = workerService.GetWorkers();
+            cmbWorker.ItemsSource = workers;
+        }
+
+        private void displayDays(Worker worker) {
             DateTime now = DateTime.Now;
             month = now.Month;
             year = now.Year;
@@ -61,7 +89,7 @@ namespace ManageIT.MainActivity {
 
             }
             for(int i = 1; i <= days; i++) {
-                UcDay ucDays = new UcDay(givenWorker, year, month);
+                UcDay ucDays = new UcDay(worker, year, month);
                 ucDays.days(i);
 
                 int row = (daysOfTheWeek + i - 2) / 7 + 2;  // Adjusted row calculation
@@ -79,6 +107,8 @@ namespace ManageIT.MainActivity {
             foreach (var child in gridPanel.Children.OfType<UcEmptyDay>().ToList()) {
                 gridPanel.Children.Remove(child);
             }
+
+            var selectedWorker = cmbWorker.SelectedItem as Worker;
 
             month++;
             if (month == 13) {
@@ -108,7 +138,7 @@ namespace ManageIT.MainActivity {
 
             }
             for (int i = 1; i <= days; i++) {
-                UcDay ucDays = new UcDay(givenWorker, year, month);
+                UcDay ucDays = new UcDay(selectedWorker, year, month);
                 ucDays.days(i);
 
                 int row = (daysOfTheWeek + i - 2) / 7 + 2;  // Adjusted row calculation
@@ -120,6 +150,11 @@ namespace ManageIT.MainActivity {
             }
         }
 
+        private void cmbWorker_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var selectedWorker = cmbWorker.SelectedItem as Worker;
+            displayDays(selectedWorker);
+        }
+
         private void btnPrevious_Click(object sender, RoutedEventArgs e) {
             foreach (var child in gridPanel.Children.OfType<UcDay>().ToList()) {
                 gridPanel.Children.Remove(child);
@@ -127,6 +162,8 @@ namespace ManageIT.MainActivity {
             foreach (var child in gridPanel.Children.OfType<UcEmptyDay>().ToList()) {
                 gridPanel.Children.Remove(child);
             }
+
+            var selectedWorker = cmbWorker.SelectedItem as Worker;
 
             month--;
             if (month == 0) {
@@ -156,7 +193,7 @@ namespace ManageIT.MainActivity {
 
             }
             for (int i = 1; i <= days; i++) {
-                UcDay ucDays = new UcDay(givenWorker, year, month);
+                UcDay ucDays = new UcDay(selectedWorker, year, month);
                 ucDays.days(i);
 
                 int row = (daysOfTheWeek + i - 2) / 7 + 2;  // Adjusted row calculation

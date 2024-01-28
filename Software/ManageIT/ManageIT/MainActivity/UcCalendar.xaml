@@ -39,5 +39,6 @@
         </WrapPanel>
         <Button x:Name="btnNext" Grid.Column="6" Content="Next" HorizontalAlignment="Center" Width="60" Grid.Row="7" VerticalAlignment="Center" Click="btnNext_Click"/>
         <Button x:Name="btnPrevious" Grid.Column="5" Content="Previous" HorizontalAlignment="Center" Width="60" Grid.Row="7" VerticalAlignment="Center" Click="btnPrevious_Click"/>
+        <ComboBox x:Name="cmbWorker" Grid.Column="4" Grid.Row="7" Width="100" Height="20" SelectionChanged="cmbWorker_SelectionChanged"></ComboBox>
     </Grid>
 </UserControl>

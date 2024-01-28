@@ -100,9 +100,7 @@ namespace BusinessLogicLayer.Services
                 clientRepo.AddClient(client);
                 return true;
             }
-        {}
         }
-
     }
 }
 

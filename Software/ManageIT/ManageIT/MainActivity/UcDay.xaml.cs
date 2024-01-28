@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Services;
 using EntitiesLayer.Entities;
+using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -73,7 +74,14 @@ namespace ManageIT.MainActivity {
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e) {
+            DateTime dateToCheck = new DateTime(year, month, day);
+            var orderDetails = service.GetOrderDetailsForWorkerAndDate(givenWorker.ID_worker, dateToCheck);
 
+            if (orderDetails.Any()) {
+                var selectedOrderDetail = orderDetails.First();
+                WorkOrderUpdate orderDetailDetails = new WorkOrderUpdate(selectedOrderDetail);
+                orderDetailDetails.Show();
+            }
         }
     }
 }
