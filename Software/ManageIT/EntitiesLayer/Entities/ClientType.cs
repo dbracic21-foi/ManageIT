@@ -1,5 +1,4 @@
-namespace  EntitiesLayer.Entities
-
+namespace EntitiesLayer.Entities
 {
     using System;
     using System.Collections.Generic;

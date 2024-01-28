@@ -15,7 +15,6 @@ namespace EntitiesLayer.Entities
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_client { get; set; }
 
         [StringLength(60)]

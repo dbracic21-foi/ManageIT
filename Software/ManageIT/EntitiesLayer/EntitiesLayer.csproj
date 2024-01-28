@@ -43,15 +43,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Client.ext.cs" />
     <Compile Include="Entities\ClientType.cs" />
     <Compile Include="Entities\ClientType.Ext.cs" />
     <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\Receipt.cs" />
     <Compile Include="Entities\Worker.cs" />
-    <Compile Include="Entities\Worker.Ext.cs" />
+    <Compile Include="Entities\Worker.ext.cs" />
     <Compile Include="Entities\WorkerType.cs" />
     <Compile Include="Entities\WorkOrder.cs" />
     <Compile Include="Entities\WorkType.cs" />
+    <Compile Include="Entities\WorkType.ext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

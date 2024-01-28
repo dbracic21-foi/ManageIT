@@ -58,8 +58,12 @@
     <Compile Include="Repositories\ClientRepo.cs" />
     <Compile Include="Repositories\ClientTypeRepo.cs" />
     <Compile Include="Repositories\ReportRepo.cs" />
+    <Compile Include="Repositories\OrderDetailsRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\WorkerRepo.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\WorkOrderRepository.cs" />
+    <Compile Include="Repositories\WorkTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
