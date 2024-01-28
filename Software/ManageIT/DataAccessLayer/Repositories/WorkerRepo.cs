@@ -82,6 +82,7 @@ namespace DataAccessLayer.Repositories
 
             if (worker != null)
             {
+                worker.ID_worker = entity.ID_worker;
                 worker.FirstName = entity.FirstName;
                 worker.LastName = entity.LastName;
                 worker.UserName = entity.UserName;

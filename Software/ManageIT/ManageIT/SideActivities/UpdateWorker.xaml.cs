@@ -47,12 +47,14 @@ namespace ManageIT.SideActivities
         private void btnAddWorker_Click(object sender, RoutedEventArgs e)
         {
             Worker updatedWorker = new Worker { 
+                ID_worker = selectedWorkerId,
                 FirstName = txtFirstName.Text,
                 LastName = txtLastName.Text,
                 Email = txtEmail.Text,
                 Gender = txtGender.Text,
                 UserName = txtUsername.Text,
                 Password = passwordBox.Password,
+                
             
             
             };
