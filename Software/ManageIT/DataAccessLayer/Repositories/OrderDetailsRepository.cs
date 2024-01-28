@@ -1,6 +1,7 @@
 ﻿using EntitiesLayer.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +57,12 @@ namespace DataAccessLayer.Repositories {
             } else {
                 return 0;
             }
+        }
+
+        public List<OrderDetail> GetOrderDetailsForWorkerAndDate(int workerId, DateTime date) {
+            return Context.OrderDetails
+                .Where(od => od.ID_Worker == workerId && od.Date == date.Date)
+                .ToList();
         }
     }
 }

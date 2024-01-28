@@ -11,12 +11,12 @@ namespace BusinessLogicLayer.Services {
         private EmailService emailService = new EmailService();
         public bool AddWorkOrder(WorkOrder workOrder) {
             bool isSuccessful = false;
-            using(var repo = new WorkOrderRepository()) {
+            using (var repo = new WorkOrderRepository()) {
                 int affectedRows = repo.Add(workOrder);
                 isSuccessful = affectedRows > 0;
                 SendNewWorkOrderEmail(workOrder);
 
-              
+
             }
             return isSuccessful;
         }
@@ -26,41 +26,33 @@ namespace BusinessLogicLayer.Services {
                 var workOrders = repo.GetAll().ToList();
                 return workOrders;
             }
-        }  private async void SendNewWorkOrderEmail(WorkOrder workOrder)
-        {
+        }
+        private async void SendNewWorkOrderEmail(WorkOrder workOrder) {
             string toEmail = workOrder.Worker.Email;
             string subject = "Novi radni nalog ! ";
             string ime = workOrder.Worker.FirstName;
             Console.WriteLine(ime);
             string body = $"<br><br><strong>Poštovani {toEmail}</strong>,<br><br><strong>Novi radni nalog vam je dodijeljen</strong>";
 
-            if (workOrder.OrderDetail != null)
-            {
-                if (workOrder.OrderDetail.Client != null)
-                {
+            if (workOrder.OrderDetail != null) {
+                if (workOrder.OrderDetail.Client != null) {
                     body += $"<br><strong> Za klijenta: {workOrder.OrderDetail.Client.CompanyName}</strong>";
                 }
 
                 body += $".<br><br><strong>Detalji:</strong><br><strong>Vrijeme trajanja :</strong> {workOrder.OrderDetail.Duration}<br>";
 
-                if (workOrder.OrderDetail.WorkType != null)
-                {
+                if (workOrder.OrderDetail.WorkType != null) {
                     body += $" <br><strong>Tip čišćenja :</strong> {workOrder.OrderDetail.WorkType.Name}";
                 }
 
                 body += $"<br><strong>Datum:</strong> {workOrder.DateCreated}<br>";
 
-                if (!string.IsNullOrEmpty(workOrder.OrderDetail.Location))
-                {
+                if (!string.IsNullOrEmpty(workOrder.OrderDetail.Location)) {
                     body += $"<br><strong>Na Lokaciji:</strong> {workOrder.OrderDetail.Location}<br>";
-                }
-                else
-                {
+                } else {
                     body += "<br>";
                 }
-            }
-            else
-            {
+            } else {
                 body += ".<br><br><strong>Detalji nisu dostupni.</strong><br>";
             }
 
@@ -70,7 +62,7 @@ namespace BusinessLogicLayer.Services {
 
             Console.WriteLine($"Sending email to {toEmail}");
 
-           await emailService.SendEmail(toEmail, subject, body,true);
+            await emailService.SendEmail(toEmail, subject, body, true);
         }
 
         public bool RemoveWorkOrder(WorkOrder workOrder) {
@@ -88,6 +80,23 @@ namespace BusinessLogicLayer.Services {
                 return repo.GetWorkOrderByName(phrase).ToList();
             }
         }
+
+        public void ConcludeWorkOrder(int workerId, DateTime date) {
+            using (var workOrderRepo = new WorkOrderRepository()) {
+                // Fetch the relevant WorkOrder
+                var workOrder = workOrderRepo
+                    .GetAll()
+                    .FirstOrDefault(w => w.ID_Worker == workerId && w.OrderDetail.Date == date);
+
+                if (workOrder != null) {
+                    // Update the IsFinished property
+                    workOrder.IsFinished = true;
+
+                    // Save changes to the database
+                    workOrderRepo.SaveChanges();
+                }
+            }
+        }
+
     }
-      
 }

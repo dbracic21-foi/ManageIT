@@ -62,7 +62,5 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-
-
     }
 }
