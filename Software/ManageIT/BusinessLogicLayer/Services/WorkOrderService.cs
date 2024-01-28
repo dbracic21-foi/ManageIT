@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services {
     public class WorkOrderService {
-        public Receipt receiptNew { get; set; }
         private EmailService emailService = new EmailService();
 
         public WorkOrderService() 
         {
-            receiptNew = new Receipt();
         }
         public bool AddWorkOrder(WorkOrder workOrder) {
             bool isSuccessful = false;
@@ -31,7 +29,7 @@ namespace BusinessLogicLayer.Services {
             {
                 Receipt receiptNew = new Receipt
                 {
-                    ID_receipt = workOrder.ID_Work_Order,
+                    ID_Work_Order = workOrder.ID_Work_Order,
                     ID_Worker = workOrder.ID_Worker,
                     OIB = 398516979,
                     Date = workOrder.DateCreated,
@@ -45,6 +43,7 @@ namespace BusinessLogicLayer.Services {
                 return receiptNew;
             }
         }
+
 
         public List<WorkOrder> GetWorkOrders() {
             using (var repo = new WorkOrderRepository()) {

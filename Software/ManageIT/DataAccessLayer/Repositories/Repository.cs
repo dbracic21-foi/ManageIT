@@ -57,25 +57,7 @@ namespace DataAccessLayer
 
         public virtual int SaveChanges()
         {
-            try
-            {
-                return Context.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var validationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        // Log or handle each validation error
-                        Console.WriteLine($"Entity: {validationErrors.Entry.Entity.GetType().Name}, Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
-                    }
-                }
-
-                // Handle the exception as needed
-                // For example, you might choose to rethrow the exception or return a specific error message.
-                throw; // Rethrow the exception to maintain the original exception behavior
-            }
+           return Context.SaveChanges();           
         }
 
     }

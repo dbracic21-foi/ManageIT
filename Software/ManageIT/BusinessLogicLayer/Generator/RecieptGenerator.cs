@@ -16,8 +16,10 @@ namespace BusinessLogicLayer.Generator
     {
         public Receipt receiptNew { get; set; }
         public WorkOrder workOrderForReceipt { get; set; }
-        public RecieptGenerator(Receipt receipt, WorkOrder workOrder) 
+        public bool isR1 { get; set; }
+        public RecieptGenerator(Receipt receipt, WorkOrder workOrder, bool R1) 
         {
+            isR1 = R1;
             receiptNew = receipt;
             workOrderForReceipt = workOrder;
         }
@@ -54,6 +56,16 @@ namespace BusinessLogicLayer.Generator
                     {
                         text.Span("Date of service: ");
                         text.Span($"{workOrderForReceipt.OrderDetail.Date:d}");
+                    });
+                    column.Item().Text(text =>
+                    {
+                        text.Span("Receipt type: ");
+                        if (isR1)
+                        {
+                            text.Span("R1");
+                        }
+                        else text.Span("Normal");
+                        
                     });
                 });
             });
@@ -96,7 +108,12 @@ namespace BusinessLogicLayer.Generator
                     table.Cell().Element(CellStyle).Text("1").Style(contentStyle);
                    
                     table.Cell().Element(CellStyle).Text($"{workOrderForReceipt.OrderDetail.WorkType.Name}").Style(contentStyle);
-                    table.Cell().Element(CellStyle).Text($"{workOrderForReceipt.OrderDetail.WorkType.Price}").Style(contentStyle);
+
+                if (isR1)
+                {
+                    decimal newPrice = workOrderForReceipt.OrderDetail.WorkType.Price * 0.75m;
+                    table.Cell().Element(CellStyle).Text($"{Math.Round(newPrice, 2)}").Style(contentStyle);
+                }else table.Cell().Element(CellStyle).Text($"{Math.Round(workOrderForReceipt.OrderDetail.WorkType.Price, 2)}").Style(contentStyle);
             });
         }
 
