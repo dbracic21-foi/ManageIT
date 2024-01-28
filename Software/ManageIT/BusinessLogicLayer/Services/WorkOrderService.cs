@@ -72,6 +72,22 @@ namespace BusinessLogicLayer.Services {
 
            await emailService.SendEmail(toEmail, subject, body,true);
         }
+
+        public bool RemoveWorkOrder(WorkOrder workOrder) {
+            bool isSuccessful = false;
+
+            using (var repo = new WorkOrderRepository()) {
+                int affectedRows = repo.Remove(workOrder);
+                isSuccessful = affectedRows > 0;
+            }
+            return isSuccessful;
+        }
+
+        public List<WorkOrder> GetWorkOrdersByName(string phrase) {
+            using (var repo = new WorkOrderRepository()) {
+                return repo.GetWorkOrderByName(phrase).ToList();
+            }
+        }
     }
       
 }

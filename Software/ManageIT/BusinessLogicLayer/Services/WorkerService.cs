@@ -31,6 +31,16 @@ namespace BusinessLogicLayer.Services
             }
         }
                 ///<remarks>Darijo Bračić </remarks>
+
+
+        public List<Worker> GetAllWorkers()
+        {
+            using (var workerRepo = new WorkerRepo())
+            {
+                return workerRepo.GetAll().ToList();
+            }
+        }   
+  
         public List<Worker> GetWorkers()
         {
             using (var workerRepo = new WorkerRepo())
@@ -107,5 +117,6 @@ namespace BusinessLogicLayer.Services
 
      
 
+        }   
     }
 }

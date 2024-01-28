@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using EntitiesLayer.Entities;
 using ManageIT.MainActivity;
 using ManageIT.SideActivities;
 
@@ -22,6 +23,7 @@ namespace ManageIT {
 
         public bool IsAdmin { get; private set; }
         public int ID_Worker { get; set; }
+        Worker currentWorker { get; set; }
 
        
         public MainWindow()
@@ -29,7 +31,7 @@ namespace ManageIT {
             InitializeComponent();
             InitializeUI();
         }
-        public MainWindow(int user_role, int id_worker) : this()
+        public MainWindow(int user_role, int id_worker, Worker worker) : this()
         {
             ID_Worker = id_worker;
             if (user_role == 1)
@@ -40,6 +42,8 @@ namespace ManageIT {
             {
                 IsAdmin = false;
             }
+            currentWorker = worker;
+            lblLoggedUser.Content = worker.UserName;
             InitializeUI();
         }
 
@@ -70,7 +74,7 @@ namespace ManageIT {
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
         private void btnWorkers_Click(object sender, RoutedEventArgs e)
@@ -80,6 +84,11 @@ namespace ManageIT {
 
         public static implicit operator MainWindow(WorkOrderAdd v) {
             throw new NotImplementedException();
+        }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            contentPanel.Content = new MainActivity.UcReports(currentWorker);
         }
     }
 }

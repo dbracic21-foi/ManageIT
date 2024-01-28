@@ -39,13 +39,13 @@ namespace ManageIT
         {
                 int roleid = (int)authenticatedWorker.Id_type;
                 int workerid = (int)authenticatedWorker.ID_worker;
-                MainWindow mainWindow = new MainWindow(roleid, workerid);
+                MainWindow mainWindow = new MainWindow(roleid, workerid, authenticatedWorker);
                 mainWindow.Show();
                 this.Close();
             }
         else
         {
-                lblErrorMessage.Content = "Neuspješna prijava. Provjerite korisničko ime i lozinku.";
+                lblErrorMessage.Content = "Login unsuccesful. Check your credentials.";
                 passwordBox.Password = "";
             }
         }

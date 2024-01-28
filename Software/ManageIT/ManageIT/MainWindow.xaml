@@ -13,6 +13,7 @@
             <Button x:Name="btnSchedule" Content="Work schedule" Height="25" Background="{StaticResource AliceBlueColorBrush}" BorderThickness="0" Click="btnSchedule_Click"/>
             <Button x:Name="btnWorkOrder" Content="Work orders" Height="25" Background="{StaticResource AliceBlueColorBrush}" BorderThickness="0" Click="btnWorkOrder_Click"/>
             <Button x:Name="btnClients" Content="Clients" Height="25" Background="{StaticResource AliceBlueColorBrush}" BorderThickness="0" Click="btnClients_Click"/>
+            <Button x:Name="btnReports" Content="Reports" Height="25" Background="{StaticResource AliceBlueColorBrush}" BorderThickness="0" Click="btnReports_Click"/>
             <Button x:Name="btnReciepts" Content="Reciepts" Height="25" Background="{StaticResource AliceBlueColorBrush}" BorderThickness="0" Click="btnReciepts_Click"/>
             <Button x:Name="btnWorkers" Content="Workers" Height="25" Background="{StaticResource AliceBlueColorBrush}" BorderThickness="0" Click="btnWorkers_Click"  Visibility="{Binding IsAdmin, RelativeSource={RelativeSource AncestorType=local:MainWindow}}"></Button>
             <Button x:Name="btnExit" Content="Exit" Height="25" Background="{StaticResource DodgerBlueColorBrush}" FontWeight="Bold" BorderThickness="0" Click="btnExit_Click"/>
