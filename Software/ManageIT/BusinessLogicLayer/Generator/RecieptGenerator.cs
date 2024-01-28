@@ -53,7 +53,7 @@ namespace BusinessLogicLayer.Generator
                     column.Item().Text(text =>
                     {
                         text.Span("Date of service: ");
-                        text.Span($"{workOrderForReceipt.OrderDetail.Date}");
+                        text.Span($"{workOrderForReceipt.OrderDetail.Date:d}");
                     });
                 });
             });
@@ -88,7 +88,7 @@ namespace BusinessLogicLayer.Generator
                     header.Cell().Text("Work type").Style(headerStyle);
                     header.Cell().Text("Price").Style(headerStyle);
 
-                    header.Cell().ColumnSpan(6).PaddingTop(5).BorderBottom(1).BorderColor(Colors.Black);
+                    header.Cell().ColumnSpan(3).PaddingTop(5).BorderBottom(1).BorderColor(Colors.Black);
                 });
 
                 QuestPDF.Infrastructure.IContainer CellStyle(QuestPDF.Infrastructure.IContainer styleContainer) => styleContainer.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
@@ -102,32 +102,33 @@ namespace BusinessLogicLayer.Generator
 
         void ComposeFooter(QuestPDF.Infrastructure.IContainer container)
         {
+            var contentStyle = TextStyle.Default.Size(10);
             container.Row(row =>
             {
                 row.RelativeItem().Column(column =>
                 {
                     column.Item().Text(text =>
                     {
-                        text.Span("Creator: ID ");
-                        text.Span($"{receiptNew.ID_Worker}");
+                        text.Span("Creator: ID ").Style(contentStyle);
+                        text.Span($"{receiptNew.ID_Worker}").Style(contentStyle);
                     });
 
                     column.Item().Text(text =>
                     {
-                        text.Span("Date of creation: ");
-                        text.Span($"{receiptNew.Date}");
+                        text.Span("Date of creation: ").Style(contentStyle);
+                        text.Span($"{receiptNew.Date}").Style(contentStyle);
                     });
 
                     column.Item().Text(text =>
                     {
-                        text.Span("Company OIB: ");
-                        text.Span($"{receiptNew.Date}");
+                        text.Span("Company OIB: ").Style(contentStyle);
+                        text.Span($"{receiptNew.OIB}").Style(contentStyle);
                     });
 
                     column.Item().Text(text =>
                     {
-                        text.Span("Additional information");
-                        text.Span($"{receiptNew.Additional_info}");
+                        text.Span("Additional information: ").Style(contentStyle);
+                        text.Span($"{receiptNew.Additional_info}").Style(contentStyle);
                     });
                 });
             });

@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClientRepo.cs" />
     <Compile Include="Repositories\ClientTypeRepo.cs" />
+    <Compile Include="Repositories\ReceiptRepository.cs" />
     <Compile Include="Repositories\ReportRepo.cs" />
     <Compile Include="Repositories\OrderDetailsRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
