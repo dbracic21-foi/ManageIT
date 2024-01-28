@@ -21,6 +21,7 @@ namespace ManageIT.MainActivity
     /// <summary>
     /// Interaction logic for UcWorkers.xaml
     /// </summary>
+    ///<remarks>Darijo Bračić </remarks>
     public partial class UcWorkers : UserControl
     {
         WorkerService services = new WorkerService();
@@ -28,7 +29,7 @@ namespace ManageIT.MainActivity
         {
             InitializeComponent();
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void btnAddNewUser_Click(object sender, RoutedEventArgs e)
         {
           AddNewWorker addNewWorker = new AddNewWorker();
@@ -36,8 +37,10 @@ namespace ManageIT.MainActivity
            var allworkers = services.GetWorkers();
             dgUsers.ItemsSource = null;
             dgUsers.ItemsSource = allworkers;
+            HideColumns();
            
         }
+        ///<remarks>Darijo Bračić </remarks>
 
         private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
         {
@@ -53,16 +56,20 @@ namespace ManageIT.MainActivity
 
             }
         }
+        ///<remarks>Darijo Bračić </remarks>
 
         private Worker GetSelectedWorker()
         {
            return dgUsers.SelectedItem as Worker;
         }
+        ///<remarks>Darijo Bračić </remarks>
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             ShowAllWorkers();
         }
+        ///<remarks>Darijo Bračić </remarks>
+
         private void ShowAllWorkers()
         {
             var allWorkers = services.GetWorkers();
@@ -75,6 +82,8 @@ namespace ManageIT.MainActivity
 
 
         }
+        ///<remarks>Darijo Bračić </remarks>
+
         private void HideColumns()
         {
             dgUsers.Columns[3].Visibility = Visibility.Hidden;
@@ -92,5 +101,24 @@ namespace ManageIT.MainActivity
         {
 
         }
+        ///<remarks>Darijo Bračić </remarks>
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgUsers.SelectedItem != null)
+            {
+                Worker selectedWorker = (Worker)dgUsers.SelectedItem;
+                int workerIdToUpdate = selectedWorker.ID_worker;
+
+               UpdateWorker updateWorker = new UpdateWorker(workerIdToUpdate);
+                updateWorker.Show();
+                ShowAllWorkers();
+                HideColumns();
+            }
+            else MessageBox.Show("You have to select a worker first!");
+
+           
+        }
+      
     }
 }

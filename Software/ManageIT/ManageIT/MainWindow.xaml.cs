@@ -23,6 +23,7 @@ namespace ManageIT {
 
         public bool IsAdmin { get; private set; }
         public int ID_Worker { get; set; }
+        Worker currentWorker { get; set; }
 
         Worker givenWorker;
        
@@ -43,6 +44,8 @@ namespace ManageIT {
             {
                 IsAdmin = false;
             }
+            currentWorker = worker;
+            lblLoggedUser.Content = worker.UserName;
             InitializeUI();
         }
 
@@ -58,7 +61,7 @@ namespace ManageIT {
 
         private void btnReciepts_Click(object sender, RoutedEventArgs e)
         {
-
+            contentPanel.Content = new MainActivity.UcReciepts();
         }
 
         private void btnClients_Click(object sender, RoutedEventArgs e)
@@ -68,12 +71,12 @@ namespace ManageIT {
 
         private void btnWorkOrder_Click(object sender, RoutedEventArgs e)
         {
-            contentPanel.Content = new MainActivity.UcWorkOrders(ID_Worker);
+            contentPanel.Content = new MainActivity.UcWorkOrders(ID_Worker, currentWorker);
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
         private void btnWorkers_Click(object sender, RoutedEventArgs e)
@@ -83,6 +86,11 @@ namespace ManageIT {
 
         public static implicit operator MainWindow(WorkOrderAdd v) {
             throw new NotImplementedException();
+        }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            contentPanel.Content = new MainActivity.UcReports(currentWorker);
         }
     }
 }

@@ -11,14 +11,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BusinessLogicLayer.Generator;
 using BusinessLogicLayer.Services;
 using EntitiesLayer.Entities;
+using QuestPDF.Fluent;
+using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using DataAccessLayer.Repositories;
 
 namespace ManageIT.SideActivities {
     public partial class WorkOrderAdd : Window {
         public int id_worker { get; set; }
-        public WorkOrderAdd(int ID_Worker) {
+        public Worker currentWorker { get; set; }
+        public int ID_Racun { get; set; }
+        public WorkOrderAdd(int ID_Worker, Worker worker) {
             id_worker = ID_Worker;
+            WorkOrderRepository woRepo = new WorkOrderRepository();
+            ID_Racun = woRepo.GetLastWorkOrderID();
+            currentWorker = worker;
             InitializeComponent();
             LoadClients();
             LoadWorkers();
@@ -44,7 +54,7 @@ namespace ManageIT.SideActivities {
             var clients = clientService.GetClients();
             cmbClient.ItemsSource = clients;
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
 
             if (cmbClient.SelectedItem == null) {
@@ -68,20 +78,25 @@ namespace ManageIT.SideActivities {
                 WorkType = cmbWorkType.SelectedItem as WorkType,
                 Duration = TimeSpan.Parse(txtTime.Text),
             };
-
             var orderDetailService = new OrderDetailService();
             orderDetailService.AddOrderDetail(orderDetail);
+
+            bool receiptType = false;
+
+            if(orderDetail.Client.ID_type == 2)
+            {
+                receiptType = true;
+            }
 
             var workOrder = new WorkOrder {
                 OrderDetail = orderDetail,
                 ID_Worker = id_worker,
                 DateCreated = DateTime.Now,
                 IsFinished = false,
-                Worker = new Worker {
-                    Email = txtEmail.Text,
-                }
+                Worker = currentWorker
             };
             var workOrderService = new WorkOrderService();
+            
 
             if (workOrderService.AddWorkOrder(workOrder)) {
                 MessageBox.Show("Succesfully added a work order!");
@@ -89,6 +104,16 @@ namespace ManageIT.SideActivities {
             } else {
                 MessageBox.Show("Please fill in all the fields!");
             }
+            ID_Racun++;
+            workOrder.ID_Work_Order = ID_Racun;
+
+            Receipt receiptAdd = new Receipt();
+            receiptAdd = workOrderService.AddReceipt(workOrder);
+
+            var receipt = new RecieptGenerator(receiptAdd, workOrder, receiptType);
+            var fileName = $"Receipt#{receiptAdd.ID_receipt}.pdf";
+            string filePath = System.IO.Path.Combine("../../../BusinessLogicLayer/Receipts", fileName);
+            receipt.GeneratePdf(filePath);
         }   
 
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
@@ -106,7 +131,7 @@ namespace ManageIT.SideActivities {
         private DateTime CombineDateAndTime(DateTime date, TimeSpan time) {
             return date.Date + time;
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void cmbWorker_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedWorker = cmbWorker.SelectedItem as Worker;

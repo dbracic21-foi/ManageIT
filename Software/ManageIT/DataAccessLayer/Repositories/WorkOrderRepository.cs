@@ -51,6 +51,7 @@ namespace DataAccessLayer.Repositories {
             return query;
         }
 
+
         public WorkOrder GetWorkOrderById(int workOrderId) {
             var query = from p in Entities
                         where p.ID_Work_Order == workOrderId
@@ -66,6 +67,15 @@ namespace DataAccessLayer.Repositories {
                     SaveChanges();
                 }
             }
+
+        public int GetLastWorkOrderID()
+        {
+            var query = from p in Entities
+                        orderby p.ID_Work_Order descending
+                        select p.ID_Work_Order;
+
+            return query.FirstOrDefault();
+
         }
     }
 }

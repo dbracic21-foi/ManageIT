@@ -22,9 +22,11 @@ namespace ManageIT.MainActivity {
     /// </summary>
     public partial class UcWorkOrders : UserControl {
         public int ID_Worker { get; set; }
+        public Worker currentWorker { get; set; }
         private WorkOrderService service = new WorkOrderService();
         private OrderDetailService OrderDetailService = new OrderDetailService();
-        public UcWorkOrders(int id_worker) {
+        public UcWorkOrders(int id_worker,  Worker worker) {
+            currentWorker = worker;
             ID_Worker = id_worker;
             InitializeComponent();
         }
@@ -43,7 +45,7 @@ namespace ManageIT.MainActivity {
         }
 
         private void btnAddWorkOrder_Click(object sender, RoutedEventArgs e) {
-            WorkOrderAdd mainWindow = new WorkOrderAdd(ID_Worker);
+            WorkOrderAdd mainWindow = new WorkOrderAdd(ID_Worker, currentWorker);
             mainWindow.Show();
         }
 
