@@ -193,6 +193,7 @@
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\ClientTypeService.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\ReceiptService.cs" />
     <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\OrderDetailService.cs" />
     <Compile Include="Services\WorkerService.cs" />

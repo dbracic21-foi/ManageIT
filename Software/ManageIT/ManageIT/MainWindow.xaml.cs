@@ -59,7 +59,7 @@ namespace ManageIT {
 
         private void btnReciepts_Click(object sender, RoutedEventArgs e)
         {
-
+            contentPanel.Content = new MainActivity.UcReciepts();
         }
 
         private void btnClients_Click(object sender, RoutedEventArgs e)
