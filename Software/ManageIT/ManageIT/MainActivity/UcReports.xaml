@@ -9,6 +9,10 @@
     <DockPanel>
         <Label Content="REPORTS" Background="{StaticResource DodgerBlueColorBrush}" FontWeight="Bold" HorizontalContentAlignment="Center" DockPanel.Dock="Top"></Label>
         <StackPanel Orientation="Horizontal" Margin="10" DockPanel.Dock="Top" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Report ID:" VerticalAlignment="Center"></Label>
+                <TextBox x:Name="txtReportID" VerticalAlignment="Center" Width="30"></TextBox>
+            </StackPanel>
             <CheckBox x:Name="chkSelectAll" Content="Select All" VerticalAlignment="Center" Checked="chkSelectAll_Checked" Unchecked="chkSelectAll_Unchecked"/>
             <ComboBox x:Name="cmbWorkers" Width="150" Margin="5"/>
             <StackPanel Orientation="Horizontal">

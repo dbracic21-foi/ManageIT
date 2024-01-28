@@ -58,10 +58,15 @@ namespace ManageIT.MainActivity
             }
             else if(fromDate < endDate)
             {
+                if (!int.TryParse(txtReportID.Text, out int ID_Report))
+                {
+                    MessageBox.Show("Report ID is invalid!");
+                    return;
+                }
                 List<ReportView> reportViewList = new List<ReportView>();
                 ReportModel reportModel = new ReportModel();
-                reportViewList = reportService.DefineListItem(fromDate, endDate, currentWorker, 1, ID_Worker);
-                reportModel = reportService.FillDataToModel(fromDate, endDate, currentWorker, 1, ID_Worker);
+                reportViewList = reportService.DefineListItem(fromDate, endDate, currentWorker, ID_Report, ID_Worker);
+                reportModel = reportService.FillDataToModel(fromDate, endDate, currentWorker, ID_Report, ID_Worker);
 
                 var report = new ReportGenerator(reportModel, reportViewList);
                 string formattedStartDate = fromDate.ToString("d.M.yyyy");
