@@ -52,7 +52,7 @@ namespace BusinessLogicLayer.Services
                     else reportLine.Client = $"{item.OrderDetail.Client.CompanyName}";
                     reportLine.Worker = $"{item.OrderDetail.Worker.FirstName} {item.OrderDetail.Worker.LastName}";
                     reportLine.Address = $"{item.OrderDetail.Client.Client_Address}";
-                    reportLine.Date = $"{item.DateCreated}";
+                    reportLine.Date = $"{item.DateCreated.ToString("MM/dd/yyyy")}";
                     reportViewList.Add(reportLine);
                 }
 

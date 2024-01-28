@@ -9,7 +9,10 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Runtime.InteropServices.ComTypes;
-
+using System.Collections.ObjectModel;
+using NuGet.Packaging;
+using Newtonsoft.Json.Bson;
+using System.Drawing;
 
 namespace ManageIT.MainActivity
 {
@@ -18,20 +21,25 @@ namespace ManageIT.MainActivity
     /// </summary>
     public partial class UcReports : UserControl
     {
-        public List<string> reportList { get; set; }
+        public ObservableCollection<string> ReportList { get; set; }
         Worker currentWorker = new Worker();
         ReportService reportService = new ReportService();
         WorkerService workerService = new WorkerService();
         public UcReports(Worker worker)
         {
-            reportList = reportService.GetAllReports();
-            currentWorker = worker;
-
             DataContext = this;
+            ReportList = new ObservableCollection<string>(reportService.GetAllReports());
+            currentWorker = worker;
             InitializeComponent();
             LoadWorkers();
         }
 
+        private void RefreshList()
+        {
+            DataContext = this;
+            ReportList.Clear(); 
+            ReportList.AddRange(reportService.GetAllReports());
+        }
         private void btnGenerateReport_Click(object sender, RoutedEventArgs e)
         {
             int ID_Worker = 0;
@@ -42,19 +50,33 @@ namespace ManageIT.MainActivity
             }
             DateTime fromDate = (DateTime)dtpStartDate.SelectedDate;
             DateTime endDate = (DateTime)dtpEndDate.SelectedDate;
-            List<ReportView> reportViewList = new List<ReportView>();
-            ReportModel reportModel = new ReportModel();
-            reportViewList = reportService.DefineListItem(fromDate, endDate, currentWorker, 1, ID_Worker);
-            reportModel = reportService.FillDataToModel(fromDate, endDate, currentWorker, 1, ID_Worker);
 
-            var report = new ReportGenerator(reportModel, reportViewList);
-            string formattedStartDate = fromDate.ToString("d.M.yyyy");
-            string formattedFinishDate = endDate.ToString("d.M.yyyy");
-            string date = DateTime.Now.ToString("d.M.yyyy");
-            string time = DateTime.Now.ToString("HH.mm");
-            var fileName = $"Report_IDWorker-{ID_Worker}_{date}_{time}_{formattedStartDate}_{formattedFinishDate}.pdf";
-            string filePath = Path.Combine("../../../BusinessLogicLayer/Reports", fileName);
-            report.GeneratePdf(filePath);;
+            if(dtpEndDate == null || dtpStartDate == null)
+            {
+                MessageBox.Show("You must select both dates to generate PDF.");
+            }
+            else if(fromDate < endDate)
+            {
+                List<ReportView> reportViewList = new List<ReportView>();
+                ReportModel reportModel = new ReportModel();
+                reportViewList = reportService.DefineListItem(fromDate, endDate, currentWorker, 1, ID_Worker);
+                reportModel = reportService.FillDataToModel(fromDate, endDate, currentWorker, 1, ID_Worker);
+
+                var report = new ReportGenerator(reportModel, reportViewList);
+                string formattedStartDate = fromDate.ToString("d.M.yyyy");
+                string formattedFinishDate = endDate.ToString("d.M.yyyy");
+                string date = DateTime.Now.ToString("d.M.yyyy");
+                string time = DateTime.Now.ToString("HH.mm");
+                var fileName = $"Report_IDWorker-{ID_Worker}_{date}_{time}_{formattedStartDate}_{formattedFinishDate}.pdf";
+                string filePath = Path.Combine("../../../BusinessLogicLayer/Reports", fileName);
+                report.GeneratePdf(filePath);
+                RefreshList();
+            }
+            else
+            {
+                MessageBox.Show("Your First day must be earlier than your Last day.");
+            }
+            
         }
 
         private void btnOpenReport_Click(object sender, RoutedEventArgs e)
@@ -74,12 +96,25 @@ namespace ManageIT.MainActivity
                 MessageBox.Show("Succesfully deleted report!");
             }
             else MessageBox.Show("There are some problems. Plesae contact the IT support.");
+            RefreshList();
         }
 
         private void LoadWorkers()
         {
             var workersForReport = workerService.GetAllWorkers();
             cmbWorkers.ItemsSource = workersForReport;
+        }
+
+        private void chkSelectAll_Checked(object sender, RoutedEventArgs e)
+        {
+            cmbWorkers.IsEnabled = false;
+            cmbWorkers.Background = System.Windows.Media.Brushes.Gray;
+        }
+
+        private void chkSelectAll_Unchecked(object sender, RoutedEventArgs e)
+        {
+            cmbWorkers.IsEnabled = true;
+            cmbWorkers.Background = System.Windows.Media.Brushes.White;
         }
     }
 }

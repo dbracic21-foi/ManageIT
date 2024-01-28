@@ -6,6 +6,7 @@ using QuestPDF.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -87,17 +88,19 @@ namespace BusinessLogicLayer.Generator
         void ComposeTable(QuestPDF.Infrastructure.IContainer container)
         {
             var headerStyle = TextStyle.Default.SemiBold();
+            var contentStyle = TextStyle.Default.Size(10);
 
             container.Table(table =>
             {
+                table.
                 table.ColumnsDefinition(columns =>
                 {
-                    columns.RelativeColumn();
-                    columns.RelativeColumn();
-                    columns.RelativeColumn();
-                    columns.RelativeColumn();
-                    columns.RelativeColumn();
-                    columns.RelativeColumn();
+                    columns.RelativeColumn(5);
+                    columns.RelativeColumn(25);
+                    columns.RelativeColumn(10);
+                    columns.RelativeColumn(15);
+                    columns.RelativeColumn(30);
+                    columns.RelativeColumn(15);
                 });
 
                 table.Header(header =>
@@ -119,12 +122,12 @@ namespace BusinessLogicLayer.Generator
                 {
                     var index = reportViewList.IndexOf(item);
 
-                    table.Cell().Element(CellStyle).Text($"{index}");
-                    table.Cell().Element(CellStyle).Text($"{item.WorkType}");
-                    table.Cell().Element(CellStyle).Text($"{item.Worker}");
-                    table.Cell().Element(CellStyle).Text($"{item.Client}");
-                    table.Cell().Element(CellStyle).Text($"{item.Address}");
-                    table.Cell().Element(CellStyle).Text($"{item.Date}");
+                    table.Cell().Element(CellStyle).Text($"{index}").Style(contentStyle);
+                    table.Cell().Element(CellStyle).Text($"{item.WorkType}").Style(contentStyle);
+                    table.Cell().Element(CellStyle).Text($"{item.Worker}").Style(contentStyle);
+                    table.Cell().Element(CellStyle).Text($"{item.Client}").Style(contentStyle);
+                    table.Cell().Element(CellStyle).Text($"{item.Address}").Style(contentStyle);
+                    table.Cell().Element(CellStyle).Text($"{item.Date}").Style(contentStyle);
                 }
             });
         }
