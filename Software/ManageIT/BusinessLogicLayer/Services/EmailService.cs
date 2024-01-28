@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
+    ///<remarks>Darijo Bračić </remarks>
     public class EmailService
     {
+        ///<remarks>Darijo Bračić </remarks>
         public async Task  SendEmail(string to, string subject, string body, bool IsBodyHTML)
         {
             try

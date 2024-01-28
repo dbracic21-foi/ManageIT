@@ -6,6 +6,9 @@ using EntitiesLayer.Entities;
 
 namespace DataAccessLayer
 {
+    ///<remarks>Darijo Bracic Ivan Juras Matej Desanic </remarks>
+
+
     public partial class ManageIT : DbContext
     {
         public ManageIT()

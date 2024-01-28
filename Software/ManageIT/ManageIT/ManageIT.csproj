@@ -127,6 +127,9 @@
     <Compile Include="SideActivities\ClientUpdate.xaml.cs">
       <DependentUpon>ClientUpdate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SideActivities\UpdateWorker.xaml.cs">
+      <DependentUpon>UpdateWorker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SideActivities\WorkOrderAdd.xaml.cs">
       <DependentUpon>WorkOrderAdd.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SideActivities\UpdateWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SideActivities\WorkOrderAdd.xaml">
+		 <SubType>Designer</SubType>
+	  <Generator>MSBuild:Compile</Generator>
+		</Page>
+
     <Page Include="SideActivities\WorkOrderAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
