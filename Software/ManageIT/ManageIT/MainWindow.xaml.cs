@@ -25,6 +25,7 @@ namespace ManageIT {
         public int ID_Worker { get; set; }
         Worker currentWorker { get; set; }
 
+        Worker givenWorker;
        
         public MainWindow()
         {
@@ -33,6 +34,7 @@ namespace ManageIT {
         }
         public MainWindow(int user_role, int id_worker, Worker worker) : this()
         {
+            givenWorker = worker;
             ID_Worker = id_worker;
             if (user_role == 1)
             {
@@ -54,7 +56,7 @@ namespace ManageIT {
 
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
-
+            contentPanel.Content = new MainActivity.UcCalendar(givenWorker);
         }
 
         private void btnReciepts_Click(object sender, RoutedEventArgs e)
