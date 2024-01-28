@@ -19,13 +19,14 @@ namespace ManageIT.SideActivities
     /// <summary>
     /// Interaction logic for AddNewWorker.xaml
     /// </summary>
+    ///<remarks>Darijo Bračić </remarks>
     public partial class AddNewWorker : Window
     {
         public AddNewWorker()
         {
           InitializeComponent();
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void btnAddWorker_Click(object sender, RoutedEventArgs e)
         {
             var worker = new Worker

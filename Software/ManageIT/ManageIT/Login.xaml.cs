@@ -20,14 +20,16 @@ namespace ManageIT
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
+    ///<remarks>Darijo Bračić </remarks>
     public partial class Login : Window
     {
         WorkerService WorkerService = new WorkerService();
+        ///<remarks>Darijo Bračić </remarks>
         public Login()
         {
             InitializeComponent();
         }
-
+        ///<remarks>Darijo Bračić </remarks>
         private void Button_Click(object sender, RoutedEventArgs e)
         {        
             string username = txtUsername.Text;

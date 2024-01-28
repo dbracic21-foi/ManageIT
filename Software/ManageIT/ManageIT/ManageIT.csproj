@@ -112,6 +112,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+
     <Compile Include="MainActivity\UcReports.xaml.cs">
       <DependentUpon>UcReports.xaml</DependentUpon>
     </Compile>
@@ -123,6 +124,9 @@
     </Compile>
     <Compile Include="SideActivities\ClientUpdate.xaml.cs">
       <DependentUpon>ClientUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SideActivities\UpdateWorker.xaml.cs">
+      <DependentUpon>UpdateWorker.xaml</DependentUpon>
     </Compile>
     <Compile Include="SideActivities\WorkOrderAdd.xaml.cs">
       <DependentUpon>WorkOrderAdd.xaml</DependentUpon>
@@ -190,6 +194,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SideActivities\UpdateWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SideActivities\WorkOrderAdd.xaml">
+
     <Page Include="SideActivities\WorkOrderAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
