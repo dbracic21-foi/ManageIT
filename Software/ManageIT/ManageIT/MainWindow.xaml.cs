@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using EntitiesLayer.Entities;
 using ManageIT.MainActivity;
 using ManageIT.SideActivities;
 
@@ -40,6 +41,7 @@ namespace ManageIT {
             {
                 IsAdmin = false;
             }
+            lblLoggedUser.Content = worker.UserName;
             InitializeUI();
         }
 
@@ -70,7 +72,7 @@ namespace ManageIT {
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
         private void btnWorkers_Click(object sender, RoutedEventArgs e)
@@ -80,6 +82,11 @@ namespace ManageIT {
 
         public static implicit operator MainWindow(WorkOrderAdd v) {
             throw new NotImplementedException();
+        }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            contentPanel.Content = new MainActivity.UcReports(currentWorker);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace ManageIT
             }
         else
         {
-                lblErrorMessage.Content = "Neuspješna prijava. Provjerite korisničko ime i lozinku.";
+                lblErrorMessage.Content = "Login unsuccesful. Check your credentials.";
                 passwordBox.Password = "";
             }
         }
