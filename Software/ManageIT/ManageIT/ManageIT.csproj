@@ -114,6 +114,7 @@
     </ApplicationDefinition>
     <Compile Include="MainActivity\UcReports.xaml.cs">
       <DependentUpon>UcReports.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SideActivities\AddNewWorker.xaml.cs">
       <DependentUpon>AddNewWorker.xaml</DependentUpon>
     </Compile>
