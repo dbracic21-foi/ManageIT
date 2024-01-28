@@ -9,17 +9,41 @@ using System.Threading.Tasks;
 namespace BusinessLogicLayer.Services {
     public class WorkOrderService {
         private EmailService emailService = new EmailService();
+
+        public WorkOrderService() 
+        {
+        }
         public bool AddWorkOrder(WorkOrder workOrder) {
             bool isSuccessful = false;
             using(var repo = new WorkOrderRepository()) {
                 int affectedRows = repo.Add(workOrder);
                 isSuccessful = affectedRows > 0;
-                SendNewWorkOrderEmail(workOrder);
-
-              
+                SendNewWorkOrderEmail(workOrder);             
             }
             return isSuccessful;
         }
+
+        public Receipt AddReceipt(WorkOrder workOrder)
+        {
+            using (var repo = new ReceiptRepository())
+            {
+                Receipt receiptNew = new Receipt
+                {
+                    ID_Work_Order = workOrder.ID_Work_Order,
+                    ID_Worker = workOrder.ID_Worker,
+                    OIB = 398516979,
+                    Date = workOrder.DateCreated,
+                    Worker = workOrder.Worker,
+                    Canceled = 0,
+                    Additional_info = "",
+                    WorkOrder = workOrder
+                };
+
+                repo.Add(receiptNew);
+                return receiptNew;
+            }
+        }
+
 
         public List<WorkOrder> GetWorkOrders() {
             using (var repo = new WorkOrderRepository()) {
@@ -86,6 +110,14 @@ namespace BusinessLogicLayer.Services {
         public List<WorkOrder> GetWorkOrdersByName(string phrase) {
             using (var repo = new WorkOrderRepository()) {
                 return repo.GetWorkOrderByName(phrase).ToList();
+            }
+        }
+
+        public int GetWorkOrderId()
+        {
+            using(var repo = new WorkOrderRepository())
+            {
+                return repo.GetLastWorkOrderID();
             }
         }
     }

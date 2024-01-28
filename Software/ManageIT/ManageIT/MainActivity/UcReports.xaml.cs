@@ -8,11 +8,9 @@ using System.IO;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Runtime.InteropServices.ComTypes;
 using System.Collections.ObjectModel;
 using NuGet.Packaging;
-using Newtonsoft.Json.Bson;
-using System.Drawing;
+
 
 namespace ManageIT.MainActivity
 {

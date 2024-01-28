@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,11 +76,11 @@ namespace DataAccessLayer
                 return 0;
             }
         }
-
-        ///<remarks>Darijo Bračić </remarks>
         public virtual int SaveChanges() {
             return Context.SaveChanges();
+
         }
+
     }
 }
 

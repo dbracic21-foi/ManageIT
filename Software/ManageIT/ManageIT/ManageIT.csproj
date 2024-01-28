@@ -112,7 +112,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-
+    <Compile Include="MainActivity\UcReciepts.xaml.cs">
+      <DependentUpon>UcReciepts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainActivity\UcReports.xaml.cs">
       <DependentUpon>UcReports.xaml</DependentUpon>
     </Compile>
@@ -139,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainActivity\UcClients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainActivity\UcReciepts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

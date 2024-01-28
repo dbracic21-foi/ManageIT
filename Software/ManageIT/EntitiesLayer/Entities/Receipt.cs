@@ -9,7 +9,7 @@ namespace EntitiesLayer.Entities
     public partial class Receipt
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID_receipt { get; set; }
 
         public int? ID_Worker { get; set; }
