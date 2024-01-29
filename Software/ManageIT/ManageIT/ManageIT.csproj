@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="MainActivity\UcEmptyDay.xaml.cs">
       <DependentUpon>UcEmptyDay.xaml</DependentUpon>
+			</Compile>
 
     <Compile Include="MainActivity\UcReciepts.xaml.cs">
       <DependentUpon>UcReciepts.xaml</DependentUpon>
@@ -167,6 +168,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainActivity\UcEmptyDay.xaml">
+			  <SubType>Designer</SubType>
+	  <Generator>MSBuild:Compile</Generator>
+		</Page>
 
     <Page Include="MainActivity\UcReciepts.xaml">
       <SubType>Designer</SubType>
