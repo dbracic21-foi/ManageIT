@@ -3,6 +3,7 @@ using EntitiesLayer.Entities;
 using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,9 @@ namespace ManageIT
         public Login()
         {
             InitializeComponent();
+            KeyDown += OnKeyDown;
+
+
         }
         ///<remarks>Darijo Bračić Ivan Juras</remarks>
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -49,7 +53,22 @@ namespace ManageIT
                 passwordBox.Password = "";
             }
         }
-
-           
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+            {
+                OpenPdfDocument("Helpers\\Helper.pdf");  
+            }
         }
+
+        private void OpenPdfDocument(string pdfPath)
+        {
+           
+                string fullPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pdfPath);
+
+               Process.Start(fullPath);
+          
+        }
+
+    }
     }

@@ -3,6 +3,7 @@ using EntitiesLayer.Entities;
 using ManageIT.SideActivities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,6 +68,8 @@ namespace ManageIT.MainActivity
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             ShowAllWorkers();
+            KeyDown += OnKeyDown;
+
         }
         ///<remarks>Darijo Bračić </remarks>
 
@@ -75,12 +78,6 @@ namespace ManageIT.MainActivity
             var allWorkers = services.GetWorkers();
             dgUsers.ItemsSource = allWorkers;
             HideColumns();
-
-
-
-
-
-
         }
         ///<remarks>Darijo Bračić </remarks>
 
@@ -119,6 +116,22 @@ namespace ManageIT.MainActivity
 
            
         }
-      
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+            {
+                OpenPdfDocument("Helpers\\Helper.pdf");
+            }
+        }
+
+        private void OpenPdfDocument(string pdfPath)
+        {
+
+            string fullPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pdfPath);
+
+            Process.Start(fullPath);
+
+        }
+
     }
 }
