@@ -25,6 +25,14 @@ namespace DataAccessLayer.Repositories
             return query;
         }
 
+        public IQueryable<Receipt> GetAllNotCanceled()
+        {
+            var query = from rec in Entities
+                        where rec.Canceled == 0
+                        select rec;
+            return query;
+        }
+
         public IQueryable<Receipt> GetReceiptByID(int id)
         {
             var query = from rec in Entities

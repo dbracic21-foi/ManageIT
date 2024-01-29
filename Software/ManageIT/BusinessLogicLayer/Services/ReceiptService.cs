@@ -21,7 +21,7 @@ namespace BusinessLogicLayer.Services
             using (var recieptRepo = new ReceiptRepository())
             {
                 List<Receipt> recieptList = new List<Receipt>();
-                recieptList = recieptRepo.GetAll().ToList();
+                recieptList = recieptRepo.GetAllNotCanceled().ToList();
 
                 return recieptList;
             }

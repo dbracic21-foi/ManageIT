@@ -40,6 +40,8 @@ namespace ManageIT.SideActivities
                 txtCompanyName.IsEnabled = false;
                 txtIBAN.Text = "";
                 txtIBAN.IsEnabled = false;
+                txtIBAN.Background = Brushes.Gray;
+                txtCompanyName.Background = Brushes.Gray;
                 txtLastName.Text = clientForUpdate.LastName;
                 txtFirstName.Text = clientForUpdate.FirstName;
             }
@@ -50,6 +52,8 @@ namespace ManageIT.SideActivities
                 txtLastName.Text = "";
                 txtFirstName.IsEnabled = false;
                 txtLastName.IsEnabled = false;
+                txtLastName.Background = Brushes.Gray;
+                txtFirstName.Background = Brushes.Gray;
                 txtCompanyName.Text = clientForUpdate.CompanyName;
                 txtIBAN.Text = clientForUpdate.IBAN;
             }
@@ -60,27 +64,62 @@ namespace ManageIT.SideActivities
 
         private void btnSaveUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Client updatedClient = new Client
+            if (LoadUpdatedClient(out Client updatedClient))
+            {
+                if (clientService.UpdateClient(updatedClient))
+                {
+                    MessageBox.Show("Successfully updated client!");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("That email address is already in usage!");
+                }
+            }
+        }
+
+        private bool LoadUpdatedClient(out Client updatedClient)
+        {
+            updatedClient = new Client
             {
                 ID_client = clientForUpdate.ID_client,
-                Email = txtEmail.Text.ToString(),
-                FirstName = txtFirstName.Text.ToString(),
-                LastName = txtLastName.Text.ToString(),
-                CompanyName = txtCompanyName.Text.ToString(),
-                IBAN = txtIBAN.Text.ToString(),
-                Client_Address = txtAddress.Text.ToString(),
-                Number = txtNumber.Text.ToString()
+                Email = txtEmail.Text.Trim(),
+                FirstName = txtFirstName.Text.Trim(),
+                LastName = txtLastName.Text.Trim(),
+                CompanyName = txtCompanyName.Text.Trim(),
+                IBAN = txtIBAN.Text.Trim(),
+                Client_Address = txtAddress.Text.Trim(),
+                Number = txtNumber.Text.Trim()
             };
 
-            if (clientService.UpdateClient(updatedClient))
+            if (string.IsNullOrWhiteSpace(updatedClient.Email) ||
+                string.IsNullOrWhiteSpace(updatedClient.Number) ||
+                string.IsNullOrWhiteSpace(updatedClient.Client_Address))
             {
-                MessageBox.Show("Succesfully updated client!");
-                Close();
+                MessageBox.Show("Please fill in all required fields.");
+                return false;
             }
-            else
+
+            if (clientForUpdate.ID_type == 1)
             {
-                MessageBox.Show("That email address is already in usage!");
+                if (string.IsNullOrWhiteSpace(updatedClient.FirstName) ||
+                    string.IsNullOrWhiteSpace(updatedClient.LastName))
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return false;
+                }
             }
+            else if (clientForUpdate.ID_type == 2)
+            {
+                if (string.IsNullOrWhiteSpace(updatedClient.CompanyName) ||
+                    string.IsNullOrWhiteSpace(updatedClient.IBAN))
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void btnExitUpdate_Click(object sender, RoutedEventArgs e)

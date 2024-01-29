@@ -25,7 +25,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Content="ID:"/>
         <Label Grid.Row="1" Grid.Column="0" Content="Type:"/>
         <Label Grid.Row="2" Grid.Column="0" Content="Email:"/>
         <Label Grid.Row="3" Grid.Column="0" Content="Number:"/>
@@ -35,7 +34,6 @@
         <Label Grid.Row="7" Grid.Column="0" Content="IBAN:"/>
         <Label Grid.Row="8" Grid.Column="0" Content="Address:"/>
 
-        <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtIDNew"/>
         <ComboBox x:Name="cmbClientType" HorizontalAlignment="Left"  Grid.Row="1" Grid.Column="1" Width="120" SelectionChanged="cmbClientType_SelectionChanged"/>
         <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtEmailNew" Margin="0,0,0,5"/>
         <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtNumberNew" Margin="0,0,0,5"/>
