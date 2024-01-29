@@ -164,10 +164,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainActivity\UcEmptyDay.xaml">
-			  <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-		</Page>
-
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainActivity\UcReciepts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,11 +231,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SideActivities\WorkOrderAdd.xaml">
-
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SideActivities\WorkOrderUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -263,6 +257,7 @@
     <Content Include="Helpers\Helper.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Helpers\UserDocumentation.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

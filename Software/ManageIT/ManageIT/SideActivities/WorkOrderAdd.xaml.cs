@@ -18,6 +18,7 @@ using QuestPDF.Fluent;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using DataAccessLayer.Repositories;
+using System.Diagnostics;
 
 namespace ManageIT.SideActivities {
     /// <remarks>
@@ -64,7 +65,7 @@ namespace ManageIT.SideActivities {
             cmbClient.ItemsSource = clients;
         }
         ///<remarks>Darijo Bračić Ivan Juras </remarks>
-       
+
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
 
             if (cmbClient.SelectedItem == null) {
@@ -155,6 +156,26 @@ namespace ManageIT.SideActivities {
             var selectedWorker = cmbWorker.SelectedItem as Worker;
             if (selectedWorker != null) {
                 txtEmail.Text = selectedWorker.Email;
+            }
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e) {
+            if (e.Key == Key.F1) {
+                OpenPdf();
+            }
+        }
+
+        private void OpenPdf() {
+            string pdfFilePath = "C:\\Users\\ivanj\\Documents\\GitHub\\rpp23-project-mdesanic21-dbracic21-ijuras21\\Software\\ManageIT\\ManageIT\\Helpers\\UserDocumentation.pdf";
+
+            // Check if the file exists before attempting to open
+            if (System.IO.File.Exists(pdfFilePath)) {
+                string command = $"/A \"page={10}\" \"{pdfFilePath}\"";
+
+                // Start the process with the command
+                Process.Start("AcroRd32.exe", command);
+            } else {
+                MessageBox.Show("PDF file not found!");
             }
         }
     }

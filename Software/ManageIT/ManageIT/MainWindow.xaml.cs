@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,5 +113,31 @@ namespace ManageIT {
         {
             contentPanel.Content = new MainActivity.UcReports(currentWorker);
         }
+
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
+         private void Window_PreviewKeyDown(object sender, KeyEventArgs e) {
+             if(e.Key == Key.F1) {
+                 OpenPdf();
+             }
+         }
+         /// <remarks>
+         /// Ivan Juras
+         /// </remarks>
+         private void OpenPdf() {
+             string pdfFilePath = "C:\\Users\\ivanj\\Documents\\GitHub\\rpp23-project-mdesanic21-dbracic21-ijuras21\\Software\\ManageIT\\ManageIT\\Helpers\\UserDocumentation.pdf";
+
+             // Check if the file exists before attempting to open
+             if (System.IO.File.Exists(pdfFilePath)) {
+                 string command = $"/A \"page={1}\" \"{pdfFilePath}\"";
+
+                 // Start the process with the command
+                 Process.Start("AcroRd32.exe", command);
+             } else {
+                 MessageBox.Show("PDF file not found!");
+             }
+         }
+
     }
 }
