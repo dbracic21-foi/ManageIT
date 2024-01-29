@@ -31,6 +31,7 @@ namespace ManageIT.MainActivity
             ReportList = new ObservableCollection<string>(reportService.GetAllReports());
             currentWorker = worker;
             InitializeComponent();
+            chkSelectAll.IsChecked = true;
             LoadWorkers();
         }
 
@@ -82,7 +83,7 @@ namespace ManageIT.MainActivity
                 string time = DateTime.Now.ToString("HH.mm");
 
 
-                var fileName = $"Report{reportModel.ID_Report}-IDWorker-{ID_Worker}-{date}_{time}-{formattedStartDate}_{formattedFinishDate}.pdf";
+                var fileName = $"Report{reportModel.ID_Report}-IDWorker_{ID_Worker}-{date}_{time}-Start-{formattedStartDate}_Finish-{formattedFinishDate}.pdf";
                 string filePath = Path.Combine("../../../BusinessLogicLayer/Reports", fileName);
                 report.GeneratePdf(filePath);
                 RefreshList();
@@ -133,5 +134,7 @@ namespace ManageIT.MainActivity
             cmbWorkers.IsEnabled = true;
             cmbWorkers.Background = System.Windows.Media.Brushes.White;
         }
+
+
     }
 }

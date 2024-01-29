@@ -65,14 +65,32 @@ namespace ManageIT.SideActivities
         private bool LoadNewClient()
         {
             var clientType = cmbClientType.SelectedItem as ClientType;
-            if (int.TryParse(txtIDNew.Text, out int id))
+            if (string.IsNullOrWhiteSpace(txtEmailNew.Text) ||
+                string.IsNullOrWhiteSpace(txtNumberNew.Text) ||
+                string.IsNullOrWhiteSpace(txtAddressNew.Text) ||
+            clientType == null)
             {
-                client.ID_client = id;
-            }
-            else
-            {
-                MessageBox.Show("Invalid ID format. Please enter a valid integer.");
+                MessageBox.Show("Please fill in all required fields.");
                 return false;
+            }
+
+            if (clientType.ID_type == 1)
+            {
+                if (string.IsNullOrWhiteSpace(txtFirstNameNew.Text) ||
+                    string.IsNullOrWhiteSpace(txtLastNameNew.Text))
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return false;
+                }
+            }
+            else if (clientType.ID_type == 2)
+            {
+                if (string.IsNullOrWhiteSpace(txtCompanyNameNew.Text) ||
+                    string.IsNullOrWhiteSpace(txtIBANNew.Text))
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return false;
+                }
             }
 
             client.Email = txtEmailNew.Text.ToString();
