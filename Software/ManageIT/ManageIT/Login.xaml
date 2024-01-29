@@ -27,11 +27,11 @@
             <PasswordBox x:Name="passwordBox" Width="200" Margin="0,0,10,0"/>
         </StackPanel>
 
-        <Button Content="Prijavi se" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20" Width="150" Background="#007ACC" Foreground="White" Click="Button_Click"/>
+        <Button Content="Log in" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20" Width="150" Background="#007ACC" Foreground="White" Click="Button_Click"/>
         <StackPanel Grid.Row="4" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Margin="0,20">
             <Label x:Name="lblErrorMessage" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Red" Margin="10,0,0,0"/>
         </StackPanel>
-
+        
 
     </Grid>
 </Window>

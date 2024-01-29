@@ -112,7 +112,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-
     <Compile Include="MainActivity\UcReports.xaml.cs">
       <DependentUpon>UcReports.xaml</DependentUpon>
     </Compile>
@@ -199,10 +198,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SideActivities\WorkOrderAdd.xaml">
-		 <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-		</Page>
-
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SideActivities\WorkOrderAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +228,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="Helpers\Helper.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
