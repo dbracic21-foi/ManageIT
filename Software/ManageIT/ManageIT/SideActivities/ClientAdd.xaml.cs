@@ -19,6 +19,9 @@ namespace ManageIT.SideActivities
     /// <summary>
     /// Interaction logic for ClientAdd.xaml
     /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public partial class ClientAdd : Window
     {
         ClientService clientService = new ClientService();
@@ -99,6 +102,7 @@ namespace ManageIT.SideActivities
             cmbClientType.ItemsSource = clientTypes;
         }
 
+        // Note: decided to save different data based on the type of the client, and to make it easier to understand I decided to play with IsEnabled and colors
         private void CheckClientType()
         {
             var ct = cmbClientType.SelectedItem as ClientType;

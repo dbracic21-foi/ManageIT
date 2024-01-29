@@ -24,6 +24,10 @@ namespace ManageIT.MainActivity
     /// <summary>
     /// Interaction logic for ClientView.xaml
     /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
+    // Classic form for viewing the clients and working with them. Uses some established concepts for automatically refreshing the grid view on the neccesarry calls, loading the data into it and other things.
     public partial class UcClients : UserControl
     {
         ClientService clientService = new ClientService();

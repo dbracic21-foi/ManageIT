@@ -11,10 +11,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace BusinessLogicLayer.Services {
+
+namespace BusinessLogicLayer.Services
+{
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
+    // Has all normal service methods working with repository. Used mainly to load client data, change client data, remove client, add client, and fetching client by some filters
     public class ClientService {
         public List<Client> GetClients() {
             using (var clientRepo = new ClientRepo()) {
+
                 return clientRepo.GetAll().ToList();
             }
         }

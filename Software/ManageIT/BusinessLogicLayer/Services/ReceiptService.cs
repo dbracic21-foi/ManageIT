@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
+    // Receipts are added inside the WorkOrder service because we decided that we should automatically add a reciept when we add a new work order. Only functionallities of this service are for fetching the receipts and changing one attribute = Canceled to true if something was wrong with the work order previously created.
     public class ReceiptService
     {
         public List<Receipt> GetReceipts()
@@ -33,7 +37,7 @@ namespace BusinessLogicLayer.Services
                 return recieptList;
             }
         }
-
+        // We have only function for canceling receipts because we know that in the real world, the receipt is automatically sent to the government tax facility, and there is no option to un-cancle the canceled receipt because it would be illegal
         public void CancelReciept(int id)
         {
             using (var recieptRepo = new ReceiptRepository())
@@ -46,7 +50,7 @@ namespace BusinessLogicLayer.Services
                 recieptRepo.UpdateReceipt(receiptToCancel);
             }
         }
-
+        // Opens an another application for showing .pdf files. Opens up the defualt .pdf opener for the user.
         public void OpenReciept(string receiptName)
         {
             string filePath = Path.Combine("../../../BusinessLogicLayer/Receipts", receiptName);

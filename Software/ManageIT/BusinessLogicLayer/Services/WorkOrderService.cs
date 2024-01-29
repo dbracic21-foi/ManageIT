@@ -29,6 +29,11 @@ namespace BusinessLogicLayer.Services {
             return isSuccessful;
         }
 
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
+
+        // This is inside of the WorkOrder repository because we thought of this method as an "extra" functionallity for the work order, it automatically runs after we add the work order
         public Receipt AddReceipt(WorkOrder workOrder)
         {
             using (var repo = new ReceiptRepository())

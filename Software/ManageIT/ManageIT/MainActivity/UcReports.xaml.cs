@@ -14,9 +14,9 @@ using NuGet.Packaging;
 
 namespace ManageIT.MainActivity
 {
-    /// <summary>
-    /// Interaction logic for UcReports.xaml
-    /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public partial class UcReports : UserControl
     {
         private int ID_Worker { get; set; }
@@ -42,6 +42,7 @@ namespace ManageIT.MainActivity
         }
         private void btnGenerateReport_Click(object sender, RoutedEventArgs e)
         {
+            // ID_Worker is used to generate reports based on the worker id; if the ID_Worker is 0, report is generated for all the workers for a specific time period.
             ID_Worker = 0;
             Worker selectedWorker = cmbWorkers.SelectedItem as Worker;
             if(selectedWorker != null)
@@ -51,6 +52,7 @@ namespace ManageIT.MainActivity
             DateTime fromDate = (DateTime)dtpStartDate.SelectedDate;
             DateTime endDate = (DateTime)dtpEndDate.SelectedDate;
 
+            // Conditions to access the generation of the PDF; we need all this data to create a fully functional report
             if(dtpEndDate == null || dtpStartDate == null)
             {
                 MessageBox.Show("You must select both dates to generate PDF.");
@@ -64,15 +66,23 @@ namespace ManageIT.MainActivity
                 }
                 List<ReportView> reportViewList = new List<ReportView>();
                 ReportModel reportModel = new ReportModel();
+
+                // Needed to bind both reportViewList and reportModel separately because I am using it in reportGenerator to forward all the data to it
+
                 reportViewList = reportService.DefineListItem(fromDate, endDate, currentWorker, ID_Report, ID_Worker);
                 reportModel = reportService.FillDataToModel(fromDate, endDate, currentWorker, ID_Report, ID_Worker);
 
                 var report = new ReportGenerator(reportModel, reportViewList);
+
+                // Important parts of the name, used to create different name for every report, and for the report to be easy to identify
+
                 string formattedStartDate = fromDate.ToString("d.M.yyyy");
                 string formattedFinishDate = endDate.ToString("d.M.yyyy");
                 string date = DateTime.Now.ToString("d.M.yyyy");
                 string time = DateTime.Now.ToString("HH.mm");
-                var fileName = $"Report_IDWorker-{ID_Worker}_{date}_{time}_{formattedStartDate}_{formattedFinishDate}.pdf";
+
+
+                var fileName = $"Report{reportModel.ID_Report}-IDWorker-{ID_Worker}-{date}_{time}-{formattedStartDate}_{formattedFinishDate}.pdf";
                 string filePath = Path.Combine("../../../BusinessLogicLayer/Reports", fileName);
                 report.GeneratePdf(filePath);
                 RefreshList();

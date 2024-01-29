@@ -20,6 +20,10 @@ namespace ManageIT.MainActivity
     /// <summary>
     /// Interaction logic for UcReciepts.xaml
     /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
+    // Classic form code for interacting with the data inside the data grid, in this example the receipts.
     public partial class UcReciepts : UserControl
     {
         ReceiptService recieptService = new ReceiptService();
@@ -28,6 +32,7 @@ namespace ManageIT.MainActivity
             InitializeComponent();
         }
 
+        // Neccesarry logic for fetching the reciepts name for openig the receipt .pdf file.
         private void btnOpenReciept_Click(object sender, RoutedEventArgs e)
         {
             Receipt receiptToCancel = new Receipt();

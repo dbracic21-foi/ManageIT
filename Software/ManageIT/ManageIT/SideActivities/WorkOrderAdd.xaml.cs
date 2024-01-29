@@ -55,6 +55,7 @@ namespace ManageIT.SideActivities {
             cmbClient.ItemsSource = clients;
         }
         ///<remarks>Darijo Bračić </remarks>
+       
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
 
             if (cmbClient.SelectedItem == null) {
@@ -106,6 +107,10 @@ namespace ManageIT.SideActivities {
             ID_Racun++;
             workOrder.ID_Work_Order = ID_Racun;
 
+            /// <remarks>
+            /// Matej Desanić
+            /// </remarks>
+            // A simple connection of the data for the reciept, and receipt generation
             Receipt receiptAdd = new Receipt();
             receiptAdd = workOrderService.AddReceipt(workOrder);
 

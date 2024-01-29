@@ -15,10 +15,18 @@ using System.Web.UI.WebControls;
 
 namespace BusinessLogicLayer.Generator
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
+    // Using QuestPDF NuGet package for PDF generating. Regards to the QuestPDF team, and here is the template for the PDF generation, and a link for their project on the GitHub
+    // Template: https://github.com/QuestPDF/QuestPDF-ExampleInvoice
+    // QuestPDF on GitHub: https://github.com/QuestPDF/QuestPDF
     public class ReportGenerator : IDocument
     {
         public ReportModel reportNew { get;  }
         public List<ReportView> reportViewList { get; }
+
+        // Had to get data in the constructor and bind it to the properties because I wanted this generator to only create a PDF file, not to fetch any data
         public ReportGenerator(ReportModel reportModel, List<ReportView> reportViewListFetched)
         {
             reportNew = reportModel;
