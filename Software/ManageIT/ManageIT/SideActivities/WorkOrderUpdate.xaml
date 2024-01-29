@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ManageIT.SideActivities"
         mc:Ignorable="d"
-        Title="Work order details" Height="450" Width="800" Loaded="UserControl_Loaded">
+        Title="Work order details" Height="450" Width="800" Loaded="UserControl_Loaded" PreviewKeyDown="Window_PreviewKeyDown">
     <Grid Margin="30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ManageIT.SideActivities"
         mc:Ignorable="d"
-        Title="Create Client" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Create Client" Height="450" Width="800" Loaded="Window_Loaded" PreviewKeyDown="Window_PreviewKeyDown">
     <Grid Margin="30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
