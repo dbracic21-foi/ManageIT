@@ -51,6 +51,23 @@ namespace DataAccessLayer.Repositories {
             return query;
         }
 
+
+        public WorkOrder GetWorkOrderById(int workOrderId) {
+            var query = from p in Entities
+                        where p.ID_Work_Order == workOrderId
+                        select p;
+            return query.SingleOrDefault();
+        }
+
+        public void ConcludeWorkOrder(int workOrderId, bool saveChanges = true) {
+            var workOrder = GetWorkOrderById(workOrderId);
+            if (workOrder != null && !workOrder.IsFinished) {
+                workOrder.IsFinished = true;
+                if (saveChanges) {
+                    SaveChanges();
+                }
+            }
+
         public int GetLastWorkOrderID()
         {
             var query = from p in Entities
@@ -58,6 +75,7 @@ namespace DataAccessLayer.Repositories {
                         select p.ID_Work_Order;
 
             return query.FirstOrDefault();
+
         }
     }
 }
