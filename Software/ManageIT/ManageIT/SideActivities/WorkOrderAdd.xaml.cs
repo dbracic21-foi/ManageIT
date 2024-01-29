@@ -59,7 +59,7 @@ namespace ManageIT.SideActivities {
 
             if (cmbClient.SelectedItem == null) {
                 MessageBox.Show("Please select a client!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return; 
+                return;
             }
             if (cmbWorker.SelectedItem == null) {
                 MessageBox.Show("Please select a worker!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -83,8 +83,7 @@ namespace ManageIT.SideActivities {
 
             bool receiptType = false;
 
-            if(orderDetail.Client.ID_type == 2)
-            {
+            if (orderDetail.Client.ID_type == 2) {
                 receiptType = true;
             }
 
@@ -96,7 +95,7 @@ namespace ManageIT.SideActivities {
                 Worker = currentWorker
             };
             var workOrderService = new WorkOrderService();
-            
+
 
             if (workOrderService.AddWorkOrder(workOrder)) {
                 MessageBox.Show("Succesfully added a work order!");
@@ -114,7 +113,7 @@ namespace ManageIT.SideActivities {
             var fileName = $"Receipt#{receiptAdd.ID_receipt}.pdf";
             string filePath = System.IO.Path.Combine("../../../BusinessLogicLayer/Receipts", fileName);
             receipt.GeneratePdf(filePath);
-        }   
+        }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
             Close();
@@ -132,16 +131,11 @@ namespace ManageIT.SideActivities {
             return date.Date + time;
         }
         ///<remarks>Darijo Bračić </remarks>
-        private void cmbWorker_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void cmbWorker_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var selectedWorker = cmbWorker.SelectedItem as Worker;
-            if (selectedWorker != null)
-            {
+            if (selectedWorker != null) {
                 txtEmail.Text = selectedWorker.Email;
             }
         }
     }
 }
-
-
-

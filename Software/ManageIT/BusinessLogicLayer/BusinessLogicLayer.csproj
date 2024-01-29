@@ -197,9 +197,16 @@
     <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\OrderDetailService.cs" />
     <Compile Include="Services\WorkerService.cs" />
-    <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\WorkOrderService.cs" />
     <Compile Include="Services\WorkTypeService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Receipts\" />
+    <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
@@ -210,14 +217,6 @@
       <Project>{40b4dfb8-0194-4f1c-a3e6-32d77eef8826}</Project>
       <Name>EntitiesLayer</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Receipts\" />
-    <Folder Include="Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
