@@ -15,6 +15,9 @@ using System.Web.UI.WebControls;
 
 namespace BusinessLogicLayer.Generator
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ReportGenerator : IDocument
     {
         public ReportModel reportNew { get;  }

@@ -24,6 +24,9 @@ namespace ManageIT.MainActivity
     /// <summary>
     /// Interaction logic for ClientView.xaml
     /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public partial class UcClients : UserControl
     {
         ClientService clientService = new ClientService();

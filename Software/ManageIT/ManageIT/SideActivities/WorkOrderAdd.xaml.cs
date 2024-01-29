@@ -55,6 +55,9 @@ namespace ManageIT.SideActivities {
             cmbClient.ItemsSource = clients;
         }
         ///<remarks>Darijo Bračić </remarks>
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
 
             if (cmbClient.SelectedItem == null) {

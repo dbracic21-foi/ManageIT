@@ -19,6 +19,9 @@ namespace ManageIT.SideActivities
     /// <summary>
     /// Interaction logic for ClientAdd.xaml
     /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public partial class ClientAdd : Window
     {
         ClientService clientService = new ClientService();

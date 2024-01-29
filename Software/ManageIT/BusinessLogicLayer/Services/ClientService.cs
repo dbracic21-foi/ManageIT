@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ClientService
     {
         public List<Client> GetClients()

@@ -12,6 +12,9 @@ using System.Web.UI.WebControls;
 
 namespace BusinessLogicLayer.Generator
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class RecieptGenerator: IDocument
     {
         public Receipt receiptNew { get; set; }

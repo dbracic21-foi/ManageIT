@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Models
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ReportModel
     {
         public List<WorkOrder> workOrderReport { get; set; }

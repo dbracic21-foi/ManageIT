@@ -19,6 +19,9 @@ namespace ManageIT.SideActivities
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public partial class ClientUpdate : Window
     {
         private Client clientForUpdate;

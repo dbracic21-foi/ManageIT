@@ -42,7 +42,9 @@ namespace DataAccessLayer.Repositories
 
             return query;
         }
-        ///<remarks>Darijo Bračić </remarks>
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         public IQueryable<Worker> GetWorkerByID(int id)
         {
             var query = from w in Entities

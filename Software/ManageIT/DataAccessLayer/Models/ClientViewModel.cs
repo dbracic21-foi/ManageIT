@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Models
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ClientViewModel
     {
         public int ID_Client { get; set; }

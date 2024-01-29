@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ClientTypeService
     {
         public List<ClientType> GetClientTypes() 

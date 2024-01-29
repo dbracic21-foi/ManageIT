@@ -20,6 +20,9 @@ namespace ManageIT.MainActivity
     /// <summary>
     /// Interaction logic for UcReciepts.xaml
     /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public partial class UcReciepts : UserControl
     {
         ReceiptService recieptService = new ReceiptService();

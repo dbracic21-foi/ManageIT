@@ -17,6 +17,9 @@ namespace ManageIT.MainActivity
     /// <summary>
     /// Interaction logic for UcReports.xaml
     /// </summary>
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public partial class UcReports : UserControl
     {
         private int ID_Worker { get; set; }

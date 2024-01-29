@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ReceiptRepository: Repository<Receipt>
     {
         public ReceiptRepository() : base(new ManageIT())

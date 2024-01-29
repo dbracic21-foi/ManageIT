@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ReceiptService
     {
         public List<Receipt> GetReceipts()

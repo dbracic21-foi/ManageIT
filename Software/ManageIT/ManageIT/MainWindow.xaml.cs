@@ -19,8 +19,12 @@ namespace ManageIT {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window {
 
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         public bool IsAdmin { get; private set; }
         public int ID_Worker { get; set; }
         Worker currentWorker { get; set; }
@@ -32,6 +36,10 @@ namespace ManageIT {
             InitializeComponent();
             InitializeUI();
         }
+
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         public MainWindow(int user_role, int id_worker, Worker worker) : this()
         {
             givenWorker = worker;
@@ -58,12 +66,16 @@ namespace ManageIT {
         {
             contentPanel.Content = new MainActivity.UcCalendar(givenWorker);
         }
-
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         private void btnReciepts_Click(object sender, RoutedEventArgs e)
         {
             contentPanel.Content = new MainActivity.UcReciepts();
         }
-
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         private void btnClients_Click(object sender, RoutedEventArgs e)
         {
             contentPanel.Content = new MainActivity.UcClients();
@@ -73,7 +85,9 @@ namespace ManageIT {
         {
             contentPanel.Content = new MainActivity.UcWorkOrders(ID_Worker, currentWorker);
         }
-
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -87,7 +101,9 @@ namespace ManageIT {
         public static implicit operator MainWindow(WorkOrderAdd v) {
             throw new NotImplementedException();
         }
-
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         private void btnReports_Click(object sender, RoutedEventArgs e)
         {
             contentPanel.Content = new MainActivity.UcReports(currentWorker);

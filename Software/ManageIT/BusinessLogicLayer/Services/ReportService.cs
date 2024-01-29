@@ -13,6 +13,9 @@ using System.Web.UI.WebControls;
 
 namespace BusinessLogicLayer.Services
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ReportService
     {
         public ReportModel reportNew { get; set; }
