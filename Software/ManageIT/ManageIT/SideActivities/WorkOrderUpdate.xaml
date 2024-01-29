@@ -32,7 +32,7 @@
 
 
 
-        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cmbClient" Margin="0,0,0,5" SelectionChanged="cmbClient_SelectionChanged"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cmbClient" Margin="0,0,0,5"/>
         <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtLocation" Margin="0,0,0,5"/>
         <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtStartTime" Margin="0,0,0,5" />
         <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtTime" Margin="0,0,0,5" />

@@ -20,6 +20,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using DataAccessLayer.Repositories;
 
 namespace ManageIT.SideActivities {
+    /// <remarks>
+    /// Ivan Juras
+    /// </remarks>
     public partial class WorkOrderAdd : Window {
         public int id_worker { get; set; }
         public Worker currentWorker { get; set; }
@@ -36,25 +39,31 @@ namespace ManageIT.SideActivities {
             txtLocation.Text = "";
             txtLocation.IsEnabled = false;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadWorkTypes() {
             var workTypeService = new WorkTypeService();
             var workType = workTypeService.GetWorkTypes();
             cmbWorkType.ItemsSource = workType;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadWorkers() {
             var workerService = new WorkerService();
             var workers = workerService.GetWorkers();
             cmbWorker.ItemsSource = workers;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadClients() {
             var clientService = new ClientService();
             var clients = clientService.GetClients();
             cmbClient.ItemsSource = clients;
         }
-        ///<remarks>Darijo Bračić </remarks>
+        ///<remarks>Darijo Bračić Ivan Juras </remarks>
        
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
 
@@ -119,11 +128,15 @@ namespace ManageIT.SideActivities {
             string filePath = System.IO.Path.Combine("../../../BusinessLogicLayer/Receipts", fileName);
             receipt.GeneratePdf(filePath);
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
             Close();
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void cmbClient_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var selectedClient = cmbClient.SelectedItem as Client;
 
@@ -131,7 +144,9 @@ namespace ManageIT.SideActivities {
                 txtLocation.Text = selectedClient.Client_Address;
             }
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private DateTime CombineDateAndTime(DateTime date, TimeSpan time) {
             return date.Date + time;
         }

@@ -21,6 +21,10 @@ namespace ManageIT.MainActivity {
     /// <summary>
     /// Interaction logic for UcDay.xaml
     /// </summary>
+
+    /// <remarks>
+    /// Ivan Juras
+    /// </remarks>
     public partial class UcDay : UserControl {
         Worker givenWorker;
 
@@ -30,23 +34,32 @@ namespace ManageIT.MainActivity {
         int year;
         int month;
         int day;
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         public UcDay(Worker worker, int year, int month) {
             this.year = year;
             this.month = month;
             givenWorker = worker;
             InitializeComponent();
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
             ShowButtonsIfWorkOrdersExist(Convert.ToInt32(lbDay.Content));
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         public void days(int numday) {
             lbDay.Content = numday + "";
             ShowButtonsIfWorkOrdersExist(numday);
             day = numday;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void ShowButtonsIfWorkOrdersExist(int day) {
             DateTime dateToCheck = new DateTime(year, month, day);
             var today = DateTime.Now.Date;
@@ -66,13 +79,17 @@ namespace ManageIT.MainActivity {
                 btnConclude.IsEnabled = false;
             }
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void btnConclude_Click(object sender, RoutedEventArgs e) {
             DateTime dateToCheck = new DateTime(year, month, day);
             workOrderService.ConcludeWorkOrder(givenWorker.ID_worker, dateToCheck);
             MessageBox.Show("Work order successfully concluded!");
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void btnDetails_Click(object sender, RoutedEventArgs e) {
             DateTime dateToCheck = new DateTime(year, month, day);
             var orderDetails = service.GetOrderDetailsForWorkerAndDate(givenWorker.ID_worker, dateToCheck);

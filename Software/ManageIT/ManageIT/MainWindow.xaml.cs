@@ -61,7 +61,9 @@ namespace ManageIT {
         {
             btnWorkers.Visibility = IsAdmin ? Visibility.Visible : Visibility.Collapsed;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void btnSchedule_Click(object sender, RoutedEventArgs e)
         {
             contentPanel.Content = new MainActivity.UcCalendar(givenWorker);
@@ -80,7 +82,9 @@ namespace ManageIT {
         {
             contentPanel.Content = new MainActivity.UcClients();
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void btnWorkOrder_Click(object sender, RoutedEventArgs e)
         {
             contentPanel.Content = new MainActivity.UcWorkOrders(ID_Worker, currentWorker);

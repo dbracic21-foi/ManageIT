@@ -18,13 +18,22 @@ namespace ManageIT.SideActivities {
     /// <summary>
     /// Interaction logic for WorkOrderUpdate.xaml
     /// </summary>
+
+    /// <remarks>
+    /// Ivan Juras
+    /// </remarks>
     public partial class WorkOrderUpdate : Window {
         private OrderDetail orderDetail;
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         public WorkOrderUpdate(OrderDetail selectedOrder) {
             InitializeComponent();
             orderDetail = selectedOrder;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
             txtLocation.Text = orderDetail.Location;
             txtStartTime.Text = orderDetail.Date.ToString();
@@ -43,7 +52,9 @@ namespace ManageIT.SideActivities {
             LoadWorkTypes();
             SelectWorkType(orderDetail.ID_Work_Type);
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void SelectWorkType(int? iD_Work_Type) {
             for (int i = 0; i < cmbWorkType.Items.Count; i++) {
                 WorkType c = cmbWorkType.Items[i] as WorkType;
@@ -53,7 +64,9 @@ namespace ManageIT.SideActivities {
                 }
             }
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void SelectWorker(int? iD_Worker) {
             for (int i = 0; i < cmbWorker.Items.Count; i++) {
                 Worker c = cmbWorker.Items[i] as Worker;
@@ -63,7 +76,9 @@ namespace ManageIT.SideActivities {
                 }
             }
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void SelectClient(int? iD_Client) {
             for (int i = 0; i < cmbClient.Items.Count; i++) {
                 Client c = cmbClient.Items[i] as Client;
@@ -73,39 +88,35 @@ namespace ManageIT.SideActivities {
                 }
             }
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadWorkers() {
             var workerService = new WorkerService();
             var workers = workerService.GetWorkers();
             cmbWorker.ItemsSource = workers;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadWorkTypes() {
             var workTypeService = new WorkTypeService();
             var workType = workTypeService.GetWorkTypes();
             cmbWorkType.ItemsSource = workType;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadClients() {
             var clientService = new ClientService();
             var clients = clientService.GetClients();
             cmbClient.ItemsSource = clients;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
             Close();
-        }
-
-        private void cmbClient_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var selectedClient = cmbClient.SelectedItem as Client;
-
-            if (selectedClient != null) {
-                txtLocation.Text = selectedClient.Client_Address;
-            }
-        }
-
-        private DateTime CombineDateAndTime(DateTime date, TimeSpan time) {
-            return date.Date + time;
         }
     }
 }

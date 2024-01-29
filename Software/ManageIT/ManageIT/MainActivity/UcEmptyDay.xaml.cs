@@ -17,6 +17,9 @@ namespace ManageIT.MainActivity {
     /// <summary>
     /// Interaction logic for UcEmptyDay.xaml
     /// </summary>
+    /// <remarks>
+    /// Ivan Juras
+    /// </remarks>
     public partial class UcEmptyDay : UserControl {
         public UcEmptyDay() {
             InitializeComponent();

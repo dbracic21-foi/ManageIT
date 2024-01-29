@@ -39,8 +39,8 @@ namespace BusinessLogicLayer.Services
             {
                 return workerRepo.GetAll().ToList();
             }
-        }   
-  
+        }
+        ///<remarks>Darijo Bračić </remarks>
         public List<Worker> GetWorkers()
         {
             using (var workerRepo = new WorkerRepo())

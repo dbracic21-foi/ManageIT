@@ -7,12 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories {
+    /// <remarks>
+    /// Ivan Juras
+    /// </remarks>
     public class OrderDetailsRepository: Repository<OrderDetail> {
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         public OrderDetailsRepository(): base(new ManageIT())
         {
             
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         public override int Add(OrderDetail entity, bool saveChanges = true) {
             var client = Context.Clients.SingleOrDefault(c => c.ID_client == entity.Client.ID_client);
             var workType = Context.WorkTypes.SingleOrDefault(w => w.ID_Work_Type == entity.WorkType.ID_Work_Type);
@@ -33,12 +41,16 @@ namespace DataAccessLayer.Repositories {
                 return 0;
             }
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         public OrderDetail GetOrderDetailById(int id) {
             var orderDetail = Context.OrderDetails.SingleOrDefault(o => o.Id_Order_Details == id);
             return orderDetail;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         public int Update(OrderDetail entity, bool saveChanges = true) {
             var client = Context.Clients.SingleOrDefault(c => c.ID_client == entity.Client.ID_client);
             var workType = Context.WorkTypes.SingleOrDefault(w => w.ID_Work_Type == entity.WorkType.ID_Work_Type);
@@ -58,7 +70,9 @@ namespace DataAccessLayer.Repositories {
                 return 0;
             }
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         public List<OrderDetail> GetOrderDetailsForWorkerAndDate(int workerId, DateTime date) {
             return Context.OrderDetails
                 .Where(od => od.ID_Worker == workerId && od.Date == date.Date)
