@@ -102,6 +102,7 @@ namespace ManageIT.SideActivities
             cmbClientType.ItemsSource = clientTypes;
         }
 
+        // Note: decided to save different data based on the type of the client, and to make it easier to understand I decided to play with IsEnabled and colors
         private void CheckClientType()
         {
             var ct = cmbClientType.SelectedItem as ClientType;

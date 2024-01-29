@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace ManageIT.SideActivities
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
     /// <remarks>
     /// Matej Desanić
     /// </remarks>
@@ -32,12 +29,13 @@ namespace ManageIT.SideActivities
             clientForUpdate = client;
         }
 
+        // Note: decided to enable or disable some fileds based on the already set ID_type of the client is individual or corporation because we save different data for different types of clients.
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             txtID.Text = clientForUpdate.ID_client.ToString();
             if(clientForUpdate.ID_type == 1)
             {
-                txtTypeName.Text = "Pojedinac";
+                txtTypeName.Text = "Individual";
                 txtCompanyName.Text = "";
                 txtCompanyName.IsEnabled = false;
                 txtIBAN.Text = "";
@@ -47,7 +45,7 @@ namespace ManageIT.SideActivities
             }
             else
             {
-                txtTypeName.Text = "Tvrtka";
+                txtTypeName.Text = "Corporation";
                 txtFirstName.Text = "";
                 txtLastName.Text = "";
                 txtFirstName.IsEnabled = false;

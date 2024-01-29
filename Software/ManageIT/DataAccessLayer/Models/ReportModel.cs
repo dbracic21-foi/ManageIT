@@ -10,6 +10,7 @@ namespace DataAccessLayer.Models
     /// <remarks>
     /// Matej Desanić
     /// </remarks>
+    // Needed a way to connect all the data which should be shown in the report. We decided not to create table Report because we thought it would be redundant to have the same data in the PDF file and the database. The model is used to extract data and furthermore to acces data for the ReportView.
     public class ReportModel
     {
         public List<WorkOrder> workOrderReport { get; set; }

@@ -10,6 +10,7 @@ namespace DataAccessLayer.Models
     /// <remarks>
     /// Matej Desanić
     /// </remarks>
+    // Used only for storing and showing specific list item data in the report.
     public class ReportView
     {
         public string WorkType { get; set; }

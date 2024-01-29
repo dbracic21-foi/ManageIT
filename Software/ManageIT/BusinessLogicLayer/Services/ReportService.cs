@@ -16,6 +16,7 @@ namespace BusinessLogicLayer.Services
     /// <remarks>
     /// Matej Desanić
     /// </remarks>
+    // Used to bind the data to the reportModel and reportView. Report model is used for connecting the data for the report and also to fill the reciept view which is used to create items for the list in the report
     public class ReportService
     {
         public ReportModel reportNew { get; set; }
@@ -23,6 +24,8 @@ namespace BusinessLogicLayer.Services
         {
             reportNew = new ReportModel();
         }
+
+        // Structures ReportView according to the passed data. The reason we bind the data to the reportNew again is because this is inside the context, which means I can access the List<WorkOrder> here, and it was easier to just copy the code below and reatach the data to the reportView from the reportNew
         public List<ReportView> DefineListItem(DateTime startDate, DateTime endDate, Worker creatorWorker, int ID_report, int ID_Worker)
         {
             using (var reportRepo = new ReportRepo())
@@ -85,6 +88,7 @@ namespace BusinessLogicLayer.Services
             }
         }
 
+        // This doesnt return any entities created in the application, but fetches all the files inside the /Reports folder and binds their name to the fileList as a string. We do it this way cause only that fully generated PDF has all the data of the report inside of it.
         public List<string> GetAllReports()
         {
             if (Directory.Exists("../../../BusinessLogicLayer/Reports"))

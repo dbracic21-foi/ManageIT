@@ -15,11 +15,16 @@ namespace BusinessLogicLayer.Generator
     /// <remarks>
     /// Matej Desanić
     /// </remarks>
+    // Using QuestPDF NuGet package for PDF generating. Regards to the QuestPDF team, and here is the template for the PDF generation, and a link for their project on the GitHub
+    // Template: https://github.com/QuestPDF/QuestPDF-ExampleInvoice
+    // QuestPDF on GitHub: https://github.com/QuestPDF/QuestPDF
     public class RecieptGenerator: IDocument
     {
         public Receipt receiptNew { get; set; }
         public WorkOrder workOrderForReceipt { get; set; }
         public bool isR1 { get; set; }
+
+        // Catching the data for the generation. Because this is an IDocument item, I decided to just forward the data to it, not to fetch it over here.
         public RecieptGenerator(Receipt receipt, WorkOrder workOrder, bool R1) 
         {
             isR1 = R1;
