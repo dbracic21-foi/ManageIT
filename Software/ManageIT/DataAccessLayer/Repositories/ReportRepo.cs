@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ReportRepo : Repository<WorkOrder>
     {
         public ReportRepo() : base(new ManageIT())

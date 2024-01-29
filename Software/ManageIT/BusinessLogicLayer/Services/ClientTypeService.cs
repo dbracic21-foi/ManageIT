@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
+    // Used to get the list of client types for usage in selecting client type inside the form.
     public class ClientTypeService
     {
         public List<ClientType> GetClientTypes() 

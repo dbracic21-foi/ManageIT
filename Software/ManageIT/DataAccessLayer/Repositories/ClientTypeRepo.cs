@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
     public class ClientTypeRepo: Repository<ClientType>
     {
         public ClientTypeRepo() : base(new ManageIT())

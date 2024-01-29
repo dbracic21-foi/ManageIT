@@ -39,8 +39,8 @@ namespace BusinessLogicLayer.Services
             {
                 return workerRepo.GetAll().ToList();
             }
-        }   
-  
+        }
+        ///<remarks>Darijo Bračić </remarks>
         public List<Worker> GetWorkers()
         {
             using (var workerRepo = new WorkerRepo())
@@ -48,7 +48,9 @@ namespace BusinessLogicLayer.Services
                 return workerRepo.GetWorkers().ToList();
             }
         }
-        ///<remarks>Darijo Bračić </remarks>
+        /// <remarks>
+        /// Matej Desanić
+        /// </remarks>
         public Worker GetWorkersByID(int id)
         {
             using (var workerRepo = new WorkerRepo())

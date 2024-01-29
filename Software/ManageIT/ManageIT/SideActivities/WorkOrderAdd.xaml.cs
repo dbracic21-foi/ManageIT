@@ -11,14 +11,27 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BusinessLogicLayer.Generator;
 using BusinessLogicLayer.Services;
 using EntitiesLayer.Entities;
+using QuestPDF.Fluent;
+using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using DataAccessLayer.Repositories;
 
 namespace ManageIT.SideActivities {
+    /// <remarks>
+    /// Ivan Juras
+    /// </remarks>
     public partial class WorkOrderAdd : Window {
         public int id_worker { get; set; }
-        public WorkOrderAdd(int ID_Worker) {
+        public Worker currentWorker { get; set; }
+        public int ID_Racun { get; set; }
+        public WorkOrderAdd(int ID_Worker, Worker worker) {
             id_worker = ID_Worker;
+            WorkOrderRepository woRepo = new WorkOrderRepository();
+            ID_Racun = woRepo.GetLastWorkOrderID();
+            currentWorker = worker;
             InitializeComponent();
             LoadClients();
             LoadWorkers();
@@ -26,30 +39,37 @@ namespace ManageIT.SideActivities {
             txtLocation.Text = "";
             txtLocation.IsEnabled = false;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadWorkTypes() {
             var workTypeService = new WorkTypeService();
             var workType = workTypeService.GetWorkTypes();
             cmbWorkType.ItemsSource = workType;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadWorkers() {
             var workerService = new WorkerService();
             var workers = workerService.GetWorkers();
             cmbWorker.ItemsSource = workers;
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void LoadClients() {
             var clientService = new ClientService();
             var clients = clientService.GetClients();
             cmbClient.ItemsSource = clients;
         }
-        ///<remarks>Darijo Bračić </remarks>
+        ///<remarks>Darijo Bračić Ivan Juras </remarks>
+       
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
 
             if (cmbClient.SelectedItem == null) {
                 MessageBox.Show("Please select a client!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return; 
+                return;
             }
             if (cmbWorker.SelectedItem == null) {
                 MessageBox.Show("Please select a worker!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -68,20 +88,24 @@ namespace ManageIT.SideActivities {
                 WorkType = cmbWorkType.SelectedItem as WorkType,
                 Duration = TimeSpan.Parse(txtTime.Text),
             };
-
             var orderDetailService = new OrderDetailService();
             orderDetailService.AddOrderDetail(orderDetail);
+
+            bool receiptType = false;
+
+            if (orderDetail.Client.ID_type == 2) {
+                receiptType = true;
+            }
 
             var workOrder = new WorkOrder {
                 OrderDetail = orderDetail,
                 ID_Worker = id_worker,
                 DateCreated = DateTime.Now,
                 IsFinished = false,
-                Worker = new Worker {
-                    Email = txtEmail.Text,
-                }
+                Worker = currentWorker
             };
             var workOrderService = new WorkOrderService();
+
 
             if (workOrderService.AddWorkOrder(workOrder)) {
                 MessageBox.Show("Succesfully added a work order!");
@@ -89,12 +113,30 @@ namespace ManageIT.SideActivities {
             } else {
                 MessageBox.Show("Please fill in all the fields!");
             }
-        }   
+            ID_Racun++;
+            workOrder.ID_Work_Order = ID_Racun;
 
+            /// <remarks>
+            /// Matej Desanić
+            /// </remarks>
+            // A simple connection of the data for the reciept, and receipt generation
+            Receipt receiptAdd = new Receipt();
+            receiptAdd = workOrderService.AddReceipt(workOrder);
+
+            var receipt = new RecieptGenerator(receiptAdd, workOrder, receiptType);
+            var fileName = $"Receipt#{receiptAdd.ID_receipt}.pdf";
+            string filePath = System.IO.Path.Combine("../../../BusinessLogicLayer/Receipts", fileName);
+            receipt.GeneratePdf(filePath);
+        }
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
             Close();
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private void cmbClient_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var selectedClient = cmbClient.SelectedItem as Client;
 
@@ -102,21 +144,18 @@ namespace ManageIT.SideActivities {
                 txtLocation.Text = selectedClient.Client_Address;
             }
         }
-
+        /// <remarks>
+        /// Ivan Juras
+        /// </remarks>
         private DateTime CombineDateAndTime(DateTime date, TimeSpan time) {
             return date.Date + time;
         }
         ///<remarks>Darijo Bračić </remarks>
-        private void cmbWorker_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void cmbWorker_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var selectedWorker = cmbWorker.SelectedItem as Worker;
-            if (selectedWorker != null)
-            {
+            if (selectedWorker != null) {
                 txtEmail.Text = selectedWorker.Email;
             }
         }
     }
 }
-
-
-

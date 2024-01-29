@@ -103,15 +103,29 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MainActivity\UcCalendar.xaml.cs">
+      <DependentUpon>UcCalendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainActivity\UcDay.xaml.cs">
+      <DependentUpon>UcDay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainActivity\UcEmptyDay.xaml.cs">
+      <DependentUpon>UcEmptyDay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainActivity\UcReciepts.xaml.cs">
+      <DependentUpon>UcReciepts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainActivity\UcReports.xaml.cs">
       <DependentUpon>UcReports.xaml</DependentUpon>
     </Compile>
@@ -137,7 +151,24 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MainActivity\UcCalendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainActivity\UcClients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainActivity\UcDay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainActivity\UcEmptyDay.xaml">
+			  <SubType>Designer</SubType>
+	  <Generator>MSBuild:Compile</Generator>
+		</Page>
+
+    <Page Include="MainActivity\UcReciepts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,6 +233,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SideActivities\WorkOrderAdd.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

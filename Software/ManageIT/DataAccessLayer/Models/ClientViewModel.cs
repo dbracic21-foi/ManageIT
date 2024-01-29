@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Models
 {
+    /// <remarks>
+    /// Matej Desanić
+    /// </remarks>
+    // Used for showing all the important Client data in the data grid. Decided to use this approach because Client entity inside EntitiesLayer had unnecessary info which was conflicting with my view. 
     public class ClientViewModel
     {
         public int ID_Client { get; set; }

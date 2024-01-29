@@ -33,7 +33,7 @@ namespace ManageIT
 
 
         }
-        ///<remarks>Darijo Bračić </remarks>
+        ///<remarks>Darijo Bračić Ivan Juras</remarks>
         private void Button_Click(object sender, RoutedEventArgs e)
         {        
             string username = txtUsername.Text;
