@@ -164,9 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainActivity\UcEmptyDay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+			  <SubType>Designer</SubType>
+	  <Generator>MSBuild:Compile</Generator>
+		</Page>
+
     <Page Include="MainActivity\UcReciepts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

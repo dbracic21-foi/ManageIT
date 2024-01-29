@@ -42,6 +42,7 @@ namespace ManageIT.MainActivity
         }
         private void btnGenerateReport_Click(object sender, RoutedEventArgs e)
         {
+            ID_Worker = 0;
             Worker selectedWorker = cmbWorkers.SelectedItem as Worker;
             if(selectedWorker != null)
             {
@@ -112,6 +113,7 @@ namespace ManageIT.MainActivity
         private void chkSelectAll_Checked(object sender, RoutedEventArgs e)
         {
             cmbWorkers.IsEnabled = false;
+            cmbWorkers.SelectedIndex = -1;
             cmbWorkers.Background = System.Windows.Media.Brushes.Gray;
             ID_Worker = 0;
         }
